@@ -20417,8 +20417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 0}
-  mTex: {fileID: 0}
+  mMat: {fileID: 2100000, guid: d8b820aea6eaf4d669cf7f565dad14e7, type: 2}
+  mTex: {fileID: 2800000, guid: 5637a1c8e3ff0465a963a3e82bc5aaf3, type: 3}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 11

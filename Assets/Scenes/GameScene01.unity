@@ -22864,10 +22864,10 @@ MonoBehaviour:
   m_deleteSave: 0
   m_resetIfDiffVersion: 0
   m_unlockHeroes: 0
-  m_doCustomParty: 1
+  m_doCustomParty: 0
   m_doStartItems: 0
   m_doTrial: 0
-  m_startLevel: 8
+  m_startLevel: 0
   m_customParty:
   - {fileID: 100004, guid: b00953e86600446cb8bc4bd5130316ca, type: 2}
   - {fileID: 100004, guid: 42f0dfd5a06a24dfcac24db73c91a3ae, type: 2}

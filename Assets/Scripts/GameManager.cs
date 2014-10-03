@@ -224,31 +224,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		StartCoroutine(Initialize());
-		
-//		for (int i=0; i< 2; i++){
-//		GameObject randItem = (GameObject)Instantiate(m_itemBank[1], Vector3.zero, Quaternion.identity);
-//		Item itemRef = (Item)randItem.GetComponent("Item");
-//		m_inventory.Add(itemRef);
-//		}
-		
-		
-//		for (int i=0; i< 1; i++){
-//		GameObject randItem = (GameObject)Instantiate(m_itemBank[0], Vector3.zero, Quaternion.identity);
-//		Item itemRef = (Item)randItem.GetComponent("Item");
-//		m_inventory.Add(itemRef);
-//		}
-		
-//		for (int i=0; i< 1; i++){
-//		GameObject randItem = (GameObject)Instantiate(m_itemBank[4], Vector3.zero, Quaternion.identity);
-//		Item itemRef = (Item)randItem.GetComponent("Item");
-//		m_inventory.Add(itemRef);
-//		}
-		
-//		for (int i=0; i< 2; i++){
-//		GameObject randItem = (GameObject)Instantiate(m_itemBank[0], Vector3.zero, Quaternion.identity);
-//		Item itemRef = (Item)randItem.GetComponent("Item");
-//		m_inventory.Add(itemRef);
-//		}
 	}
 	
 	private IEnumerator Initialize ()
@@ -313,7 +288,7 @@ public class GameManager : MonoBehaviour {
 		
 		if (!m_doCustomParty && SettingsManager.m_settingsManager.party == null)
 		{
-			yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.CharSelect));
+			//yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.CharSelect));
 		} else {
 			if (m_doCustomParty)
 			{
@@ -450,7 +425,7 @@ public class GameManager : MonoBehaviour {
 					m_followers.Add(thisFollower);
 				}
 				
-				SettingsManager.m_settingsManager.party = null;
+				//SettingsManager.m_settingsManager.party = null;
 			}
 		}
 

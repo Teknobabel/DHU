@@ -401,7 +401,10 @@ public class Player : MonoBehaviour {
 				{
 					if (thisCard.cardState == Card.CardState.Hidden)
 					{
-						GainEnergy(thisCard.GetEnergyValue());
+						if (m_currentEnergy < m_maxEnergy)
+						{
+							GainEnergy(thisCard.GetEnergyValue());
+						}
 //						if (!SettingsManager.m_settingsManager.trial)
 //						{
 //							GameManager.m_gameManager.accruedXP += 1;
