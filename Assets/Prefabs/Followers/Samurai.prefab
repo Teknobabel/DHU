@@ -1,0 +1,225 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 33: {fileID: 3300000}
+  - 23: {fileID: 2300000}
+  m_Layer: 0
+  m_Name: GenericFollowerMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400004}
+  - 111: {fileID: 11100000}
+  - 114: {fileID: 11400000}
+  - 54: {fileID: 5400000}
+  - 65: {fileID: 6500000}
+  m_Layer: 0
+  m_Name: Samurai
+  m_TagString: Follower
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_Children: []
+  m_Father: {fileID: 400004}
+--- !u!4 &400004
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400000}
+  m_Father: {fileID: 0}
+--- !u!23 &2300000
+Renderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: a0a1e564312df45858b9634c9348b817, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &3300000
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Mesh: {fileID: 4300000, guid: 0b375c9ef2b9c411c8786a449a94f52f, type: 3}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .419999987, y: .829999983, z: .340000004}
+  m_Center: {x: 0, y: .5, z: 0}
+--- !u!111 &11100000
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: f56eb4e9d7a6e4f1d8ccb0ee8931c8c1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b66500b18f794e07a5c7016010ebb68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_followerType: 13
+  m_followerClass: 3
+  m_abilityText: '5#: +1 Action when defeating an enemy.'
+  m_nameText: Lucien
+  m_portraitSpriteName: Card_Portrait_Hero02
+  m_fullPortraitSpriteName: Card_Hero_PH_Short
+  m_startingDamage: 9
+  m_startingHealth: 26
+  m_startingEnergy: 12
+  m_startingArmor: 0
+  m_minDifficulty: 3
+  m_abilityCost: 5
+  m_abilityEffect: 1
+  m_abilityRange: 0
+  m_levelTable:
+  - m_damageMod: 0
+    m_healthMod: 0
+    m_energyMod: 0
+    m_armorMod: 0
+    m_abilityCostMod: 0
+    m_abilityEffectMod: 0
+    m_abilityRangeMod: 0
+  - m_damageMod: 0
+    m_healthMod: 0
+    m_energyMod: 1
+    m_armorMod: 0
+    m_abilityCostMod: 0
+    m_abilityEffectMod: 0
+    m_abilityRangeMod: 0
+  - m_damageMod: 0
+    m_healthMod: 0
+    m_energyMod: 1
+    m_armorMod: 0
+    m_abilityCostMod: -1
+    m_abilityEffectMod: 0
+    m_abilityRangeMod: 0
+  - m_damageMod: 0
+    m_healthMod: 1
+    m_energyMod: 1
+    m_armorMod: 0
+    m_abilityCostMod: -1
+    m_abilityEffectMod: 0
+    m_abilityRangeMod: 0
+  - m_damageMod: 0
+    m_healthMod: 1
+    m_energyMod: 2
+    m_armorMod: 0
+    m_abilityCostMod: -1
+    m_abilityEffectMod: 0
+    m_abilityRangeMod: 0
+  - m_damageMod: 0
+    m_healthMod: 1
+    m_energyMod: 2
+    m_armorMod: 0
+    m_abilityCostMod: -1
+    m_abilityEffectMod: 1
+    m_abilityRangeMod: 0
+  m_heroBadgeTable:
+  - m_leftBadge: 5
+    m_rightBadge: 2
+  - m_leftBadge: 4
+    m_rightBadge: 0
+  - m_leftBadge: 2
+    m_rightBadge: 18
+  - m_leftBadge: 1
+    m_rightBadge: 5
+  - m_leftBadge: 4
+    m_rightBadge: 28
+  m_deck: []
+  m_followerMesh: {fileID: 100000}
+  m_shadowMesh: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100004}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

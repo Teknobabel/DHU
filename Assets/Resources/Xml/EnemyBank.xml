@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<system>
+<EnemyBank>
+
+	<Bank level="0">
+		<Enemy>Lagomorph</Enemy>
+        <Enemy>Lagomorph</Enemy>
+      	<Enemy>Lagomorph</Enemy>
+	</Bank>
+	
+	<Bank level="1">
+		<Enemy>Lagomorph</Enemy>
+        <Enemy>Lagomorph</Enemy>
+      	<Enemy>Lagomorph</Enemy>
+	</Bank>
+	
+	<Bank level="2">
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph</Enemy>
+        <Enemy>Lagomorph</Enemy>
+      	<Enemy>Lagomorph</Enemy>
+	</Bank>
+    
+	<Bank level="3">
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>		
+		<Enemy>Giant Rat</Enemy>
+	</Bank>
+	<Bank level="4">
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>	
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+	</Bank>
+    <Bank level="5">
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+	</Bank>
+    <Bank level="6">
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Skweek02</Enemy>
+	</Bank>
+    <Bank level="7">
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Skweek02</Enemy>
+	</Bank>
+        <Bank level="8">
+		<Enemy>Slime</Enemy>
+		<Enemy>Slime</Enemy>
+		<Enemy>Slime</Enemy>
+        <Enemy>Slime</Enemy>
+        <Enemy>Lagomorph</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Giant Rat</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Silverfish</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Spectre</Enemy>
+	</Bank>
+    <Bank level="9">
+		<Enemy>Rex</Enemy>
+	</Bank>
+	
+	
+	
+	
+	 <Bank level="10">
+		<Enemy>Slime</Enemy>
+		<Enemy>Slime</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek</Enemy>
+		<Enemy>Skweek02</Enemy>
+		<Enemy>Skweek02</Enemy>
+		<Enemy>DarkElf01</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+	</Bank>
+    <Bank level="11">
+   		 <Enemy>DarkElf01</Enemy>
+   		 <Enemy>DarkElf01</Enemy>
+   		 <Enemy>DarkElf01</Enemy>
+   		 <Enemy>Skweek</Enemy>
+   		 <Enemy>Skweek</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Lagomorph02</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Silverfish</Enemy>
+	</Bank>
+	<Bank level="12">
+		<Enemy>Skweek03</Enemy>
+		 <Enemy>DarkElf01</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+ 		<Enemy>Skweek02</Enemy>
+ 		<Enemy>Skweek</Enemy>
+ 		<Enemy>Skweek</Enemy>
+	</Bank>
+	<Bank level="13">
+		 <Enemy>Slime</Enemy>
+		 <Enemy>Slime</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		<Enemy>Skweek03</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>DarkElf01</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Skweek</Enemy>
+		 <Enemy>Skweek</Enemy>
+	</Bank>
+	<Bank level="14">
+		 <Enemy>Silverfish</Enemy>
+		 <Enemy>Slime</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Skweek</Enemy>
+		 <Enemy>Skweek</Enemy>
+	</Bank>
+	<Bank level="15">
+		 <Enemy>Silverfish</Enemy>
+		 <Enemy>Silverfish</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>DarkElf01</Enemy>
+	</Bank>
+	<Bank level="16">
+		 <Enemy>Slime</Enemy>
+		 <Enemy>Slime</Enemy>
+		 <Enemy>Lagomorph02</Enemy>
+		 <Enemy>Lagomorph02</Enemy>
+		  <Enemy>Lagomorph02</Enemy>
+		 <Enemy>Lagomorph02</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Grok</Enemy>
+	</Bank>
+	<Bank level="17">
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Grok</Enemy>
+		 <Enemy>DarkElf01</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Skeleton</Enemy>
+	</Bank>
+	<Bank level="18">
+		 <Enemy>Spectre</Enemy>
+		 <Enemy>Grok</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Rex</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Skweek02</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Skeleton</Enemy>
+	</Bank>
+	<Bank level="19">
+		 <Enemy>Spectre</Enemy>
+		 <Enemy>Spectre</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Skweek03</Enemy>
+		 <Enemy>Lagomorph02</Enemy>
+		 <Enemy>Skeleton</Enemy>
+	</Bank>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<Bank level="160">
+		 <Enemy>Tutorial_Dummy01</Enemy>
+	</Bank>
+	<Bank level="170">
+		 <Enemy>Tutorial_Dummy02</Enemy>
+	</Bank>
+	<Bank level="180">
+		 <Enemy>Lagomorph</Enemy>
+	</Bank>
+	<Bank level="190">
+		 <Enemy>Skweek</Enemy>
+	</Bank>
+	
+</EnemyBank>
+
+<BiomeBank>
+    <Bank type="Beehive">
+        <Enemy>Giant Bee</Enemy>
+    </Bank>
+    <Bank type="Beehive02">
+        <Enemy>Soldier Bee</Enemy>
+    </Bank>
+    <Bank type="Bugs">
+        <Enemy>Silverfish</Enemy>
+    </Bank>
+    <Bank type="Spiderwebs">
+        <Enemy>Spider</Enemy>
+    </Bank>
+    <Bank type="Spiderwebs02">
+        <Enemy>DarkElf01</Enemy>
+    </Bank>
+    <Bank type="Catacomb">
+        <Enemy>Skeleton</Enemy>
+        <Enemy>Zombie</Enemy>
+    </Bank>
+    <Bank type="Catacomb02">
+        <Enemy>ShadowMage</Enemy>
+    </Bank>
+    <Bank type="Warren">
+        <Enemy>GoblinLasher</Enemy>
+    </Bank>
+    <Bank type="Warren02">
+        <Enemy>Goblin</Enemy>
+        <Enemy>Goblin</Enemy>
+        <Enemy>Goblin</Enemy>
+        <Enemy>Goblin Archer</Enemy>
+    </Bank>
+    <Bank type="Inferno">
+        <Enemy>DarkElf02</Enemy>
+    </Bank>
+    <Bank type="Inferno02">
+        <Enemy>FlameSprite</Enemy>
+    </Bank>
+    <Bank type="CrystalField">
+        <Enemy>CrystalWall</Enemy>
+    </Bank>
+</BiomeBank>
+
+<BossBank>
+	<Bank level="9">
+		<Enemy>Boss_Grok</Enemy>
+	</Bank>
+	<Bank level="19">
+		<Enemy>Boss_ShadowMage</Enemy>
+	</Bank>
+	<Bank level="29">
+		<Enemy>Boss_Beholder</Enemy>
+	</Bank>
+</BossBank>
+</system>

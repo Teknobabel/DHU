@@ -1,0 +1,324 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PlayerJump01
+  serializedVersion: 4
+  m_AnimationType: 1
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 3.42857146, z: 0}
+        outSlope: {x: 0, y: 3.42857146, z: 0}
+        tangentMode: 135270416
+      - time: .11666663
+        value: {x: 0, y: .400000006, z: 0}
+        inSlope: {x: 0, y: .214285612, z: 0}
+        outSlope: {x: 0, y: .214285612, z: 0}
+        tangentMode: 0
+      - time: .249999911
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: -3.31596136, z: 0}
+        outSlope: {x: Infinity, y: Infinity, z: Infinity}
+        tangentMode: 0
+      - time: .266666681
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: Infinity, y: Infinity, z: Infinity}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: -33686019
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: PlayerMesh
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: .817324877, z: 1}
+        inSlope: {x: 0, y: .123006098, z: 0}
+        outSlope: {x: 0, y: .123006098, z: 0}
+        tangentMode: -559038737
+      - time: .0166666675
+        value: {x: 1, y: .819374979, z: 1}
+        inSlope: {x: 0, y: 1.45317996, z: 0}
+        outSlope: {x: 0, y: 1.45317996, z: 0}
+        tangentMode: -559038737
+      - time: .116666667
+        value: {x: 1, y: 1.09771037, z: 1}
+        inSlope: {x: 0, y: .380921483, z: 0}
+        outSlope: {x: 0, y: .380921483, z: 0}
+        tangentMode: -559038737
+      - time: .233333334
+        value: {x: 1, y: .815379739, z: 1}
+        inSlope: {x: 0, y: -.329482585, z: 0}
+        outSlope: {x: 0, y: -.329482585, z: 0}
+        tangentMode: -559038737
+      - time: .25
+        value: {x: 1, y: .828175604, z: 1}
+        inSlope: {x: 0, y: 1.96481216, z: 0}
+        outSlope: {x: 0, y: 1.96481216, z: 0}
+        tangentMode: 0
+      - time: .283333331
+        value: {x: 1, y: 1.04313731, z: 1}
+        inSlope: {x: 0, y: 7.27991152, z: 0}
+        outSlope: {x: 0, y: 7.27991152, z: 0}
+        tangentMode: -559038737
+      - time: .300000012
+        value: {x: 1, y: 1.12573242, z: 1}
+        inSlope: {x: 0, y: 1.71824372, z: 0}
+        outSlope: {x: 0, y: 1.71824372, z: 0}
+        tangentMode: 0
+      - time: .333333343
+        value: {x: 1, y: 1.05758822, z: 1}
+        inSlope: {x: 0, y: -3.92561102, z: 0}
+        outSlope: {x: 0, y: -3.92561102, z: 0}
+        tangentMode: -559038737
+      - time: .350000024
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: -2.51464772, z: 0}
+        outSlope: {x: 0, y: -2.51464772, z: 0}
+        tangentMode: -559038737
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: PlayerMesh
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .11666663
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .249999911
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 25
+      - time: .266666681
+        value: 0
+        inSlope: Infinity
+        outSlope: 0
+        tangentMode: 7
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.x
+    path: PlayerMesh
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 3.42857146
+        outSlope: 3.42857146
+        tangentMode: 10
+      - time: .116666667
+        value: .400000006
+        inSlope: .214285612
+        outSlope: .214285612
+        tangentMode: 10
+      - time: .25
+        value: 0
+        inSlope: -3.31596136
+        outSlope: Infinity
+        tangentMode: 25
+      - time: .266666681
+        value: 0
+        inSlope: Infinity
+        outSlope: 0
+        tangentMode: 7
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.y
+    path: PlayerMesh
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .11666663
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .249999911
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 25
+      - time: .266666681
+        value: 0
+        inSlope: Infinity
+        outSlope: 0
+        tangentMode: 7
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalPosition.z
+    path: PlayerMesh
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .0166666675
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .116666667
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .233333334
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .283333331
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .333333343
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.x
+    path: PlayerMesh
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .817324877
+        inSlope: .123006098
+        outSlope: .123006098
+        tangentMode: 10
+      - time: .0166666675
+        value: .819374979
+        inSlope: 1.45317996
+        outSlope: 1.45317996
+        tangentMode: 10
+      - time: .116666667
+        value: 1.09771037
+        inSlope: .380921483
+        outSlope: .380921483
+        tangentMode: 10
+      - time: .25
+        value: .828175604
+        inSlope: 1.96481216
+        outSlope: 1.96481216
+        tangentMode: 10
+      - time: .300000012
+        value: 1.12573242
+        inSlope: 1.71824372
+        outSlope: 1.71824372
+        tangentMode: 10
+      - time: .350000024
+        value: 1
+        inSlope: -2.51464772
+        outSlope: -2.51464772
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.y
+    path: PlayerMesh
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .0166666675
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .116666667
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .233333334
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .283333331
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: .333333343
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalScale.z
+    path: PlayerMesh
+    classID: 4
+    script: {fileID: 0}
+  m_EulerEditorCurves: []
+  m_Events: []

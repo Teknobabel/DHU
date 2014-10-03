@@ -1,0 +1,1434 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Card Atlas02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 39d7a7eba088c48608443530b53aef24, type: 2}
+  sprites:
+  - name: Card_Portrait_August02
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 57
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 57
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Portrait_Brand02
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 389
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 389
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Back03
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 721
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 721
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Portrait_Telina02
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Portrait_Jin02
+    outer:
+      serializedVersion: 2
+      x: 1809
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1809
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Portrait_Hero02
+    outer:
+      serializedVersion: 2
+      x: 1608
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1608
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_StatBar01
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 8
+      width: 185
+      height: 48
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 8
+      width: 185
+      height: 48
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Portrait_Enemy
+    outer:
+      serializedVersion: 2
+      x: 1407
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1407
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Portrait_Item02
+    outer:
+      serializedVersion: 2
+      x: 1005
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1005
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Back04
+    outer:
+      serializedVersion: 2
+      x: 1206
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1206
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Keyword_Craftable
+    outer:
+      serializedVersion: 2
+      x: 1616
+      y: 925
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1616
+      y: 925
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Keyword_Consumeable
+    outer:
+      serializedVersion: 2
+      x: 1680
+      y: 989
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1680
+      y: 989
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Keyword_Equippable
+    outer:
+      serializedVersion: 2
+      x: 1680
+      y: 925
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1680
+      y: 925
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Card_StatBar02
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 8
+      width: 185
+      height: 48
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 8
+      width: 185
+      height: 48
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Icon_Stopwatch
+    outer:
+      serializedVersion: 2
+      x: 1552
+      y: 988
+      width: 63
+      height: 64
+    inner:
+      serializedVersion: 2
+      x: 1552
+      y: 988
+      width: 63
+      height: 64
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Icon_Poison01
+    outer:
+      serializedVersion: 2
+      x: 1744
+      y: 989
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1744
+      y: 989
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Icon_BG01
+    outer:
+      serializedVersion: 2
+      x: 1744
+      y: 925
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1744
+      y: 925
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Icon_Energy
+    outer:
+      serializedVersion: 2
+      x: 2010
+      y: 1974
+      width: 30
+      height: 37
+    inner:
+      serializedVersion: 2
+      x: 2010
+      y: 1974
+      width: 30
+      height: 37
+    paddingLeft: .166666672
+    paddingRight: .13333334
+    paddingTop: 0
+    paddingBottom: .0540540554
+  - name: Icon_Health
+    outer:
+      serializedVersion: 2
+      x: 2010
+      y: 1937
+      width: 23
+      height: 36
+    inner:
+      serializedVersion: 2
+      x: 2010
+      y: 1937
+      width: 23
+      height: 36
+    paddingLeft: .347826093
+    paddingRight: .347826093
+    paddingTop: .027777778
+    paddingBottom: .055555556
+  - name: Card_Brand_Full
+    outer:
+      serializedVersion: 2
+      x: 1005
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1005
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Icon_Armor
+    outer:
+      serializedVersion: 2
+      x: 2010
+      y: 2012
+      width: 33
+      height: 36
+    inner:
+      serializedVersion: 2
+      x: 2010
+      y: 2012
+      width: 33
+      height: 36
+    paddingLeft: .0909090936
+    paddingRight: .0909090936
+    paddingTop: .027777778
+    paddingBottom: .055555556
+  - name: Card_Jin_Full
+    outer:
+      serializedVersion: 2
+      x: 1407
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1407
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_August_Full
+    outer:
+      serializedVersion: 2
+      x: 1608
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1608
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Telina_Full
+    outer:
+      serializedVersion: 2
+      x: 1809
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1809
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Icon_Attack
+    outer:
+      serializedVersion: 2
+      x: 2010
+      y: 1900
+      width: 22
+      height: 36
+    inner:
+      serializedVersion: 2
+      x: 2010
+      y: 1900
+      width: 22
+      height: 36
+    paddingLeft: .363636374
+    paddingRight: .409090906
+    paddingTop: .027777778
+    paddingBottom: .055555556
+  - name: Card_HeroPH_Full
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 389
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 389
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Empty
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 57
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 57
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_ItemPH_Full
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Placeholder
+    outer:
+      serializedVersion: 2
+      x: 532
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 532
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Brand
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_CounterAttack
+    outer:
+      serializedVersion: 2
+      x: 668
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 668
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_ArmorBonus
+    outer:
+      serializedVersion: 2
+      x: 733
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 733
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_DamageBonus
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_ArmorPierce
+    outer:
+      serializedVersion: 2
+      x: 869
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 869
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_InflictPoison
+    outer:
+      serializedVersion: 2
+      x: 934
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 934
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Stun
+    outer:
+      serializedVersion: 2
+      x: 1423
+      y: 891
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1423
+      y: 891
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Poison
+    outer:
+      serializedVersion: 2
+      x: 1808
+      y: 1020
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1808
+      y: 1020
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Dark
+    outer:
+      serializedVersion: 2
+      x: 1808
+      y: 987
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1808
+      y: 987
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Tower
+    outer:
+      serializedVersion: 2
+      x: 1808
+      y: 954
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1808
+      y: 954
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_HighGround
+    outer:
+      serializedVersion: 2
+      x: 1808
+      y: 921
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1808
+      y: 921
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Fort
+    outer:
+      serializedVersion: 2
+      x: 1808
+      y: 888
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1808
+      y: 888
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Quicksand
+    outer:
+      serializedVersion: 2
+      x: 1873
+      y: 1020
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1873
+      y: 1020
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Stalactites
+    outer:
+      serializedVersion: 2
+      x: 1938
+      y: 1020
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1938
+      y: 1020
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_RazorVine
+    outer:
+      serializedVersion: 2
+      x: 1873
+      y: 987
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1873
+      y: 987
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Bttn_Pause
+    outer:
+      serializedVersion: 2
+      x: 1616
+      y: 989
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1616
+      y: 989
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Bttn_SkipTurn
+    outer:
+      serializedVersion: 2
+      x: 1552
+      y: 924
+      width: 63
+      height: 63
+    inner:
+      serializedVersion: 2
+      x: 1552
+      y: 924
+      width: 63
+      height: 63
+    paddingLeft: .0158730168
+    paddingRight: 0
+    paddingTop: .0158730168
+    paddingBottom: 0
+  - name: Button_Back_Up
+    outer:
+      serializedVersion: 2
+      x: 1214
+      y: 874
+      width: 208
+      height: 178
+    inner:
+      serializedVersion: 2
+      x: 1214
+      y: 874
+      width: 208
+      height: 178
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: .0393258445
+    paddingBottom: .0393258445
+  - name: Button_Back_Down
+    outer:
+      serializedVersion: 2
+      x: 1005
+      y: 874
+      width: 208
+      height: 178
+    inner:
+      serializedVersion: 2
+      x: 1005
+      y: 874
+      width: 208
+      height: 178
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: .0393258445
+    paddingBottom: .0393258445
+  - name: Effect_Hero_Placeholder
+    outer:
+      serializedVersion: 2
+      x: 1938
+      y: 987
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 1938
+      y: 987
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_LongSword_Short
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 389
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 389
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_EnergyPot_Short
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 57
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 57
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Shield_Short
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Hero_Jin_Short
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_ShortSword_Short
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 721
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 721
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_IronOre_Short
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 389
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 389
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_PH_Short
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 57
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 57
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Hero_Brand_Short
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_HealthPot_Short
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Hero_PH_Short
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 721
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 721
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Hero_August_Short
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_LeatherArmor_Short
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Hero_Telina_Short
+    outer:
+      serializedVersion: 2
+      x: 1809
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1809
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Leather_Short
+    outer:
+      serializedVersion: 2
+      x: 1608
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1608
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Dagger_Short
+    outer:
+      serializedVersion: 2
+      x: 1407
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1407
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_HealthDrop_Short
+    outer:
+      serializedVersion: 2
+      x: 1206
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1206
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_EnergyDrop_Short
+    outer:
+      serializedVersion: 2
+      x: 1005
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1005
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Chest
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_IronOre
+    outer:
+      serializedVersion: 2
+      x: 603
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 603
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_HealthDrop
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Shield
+    outer:
+      serializedVersion: 2
+      x: 201
+      y: 1717
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 201
+      y: 1717
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_ShortSword
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 57
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 57
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_LongSword
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 389
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 389
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_HealthPot
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 721
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 721
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Dagger
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_EnergyPot
+    outer:
+      serializedVersion: 2
+      x: 0
+      y: 1385
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 0
+      y: 1385
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_LeatherArmor
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 721
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 721
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_Leather
+    outer:
+      serializedVersion: 2
+      x: 1206
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 1206
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Card_Item_EnergyDrop
+    outer:
+      serializedVersion: 2
+      x: 804
+      y: 1053
+      width: 200
+      height: 331
+    inner:
+      serializedVersion: 2
+      x: 804
+      y: 1053
+      width: 200
+      height: 331
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Enemy
+    outer:
+      serializedVersion: 2
+      x: 402
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 402
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Icon_Limbo02
+    outer:
+      serializedVersion: 2
+      x: 1423
+      y: 924
+      width: 128
+      height: 128
+    inner:
+      serializedVersion: 2
+      x: 1423
+      y: 924
+      width: 128
+      height: 128
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Effect_Reaper
+    outer:
+      serializedVersion: 2
+      x: 467
+      y: 24
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 467
+      y: 24
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  mCoordinates: 0
+  mPixelSize: 1
+  mReplacement: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

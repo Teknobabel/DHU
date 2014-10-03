@@ -1,0 +1,34 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class RecoverHealthAndEnergy : Item {
+
+	public int
+		m_energyBonus = 0,
+		m_healthBonus = 0;
+	
+	public override IEnumerator Activate ()
+	{
+		string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+		UIManager.m_uiManager.UpdateActions (newString);
+
+		InputManager.m_inputManager.cardsMoving = true;
+		yield return StartCoroutine (CenterCard ());
+		
+		GameObject pFX = AssetManager.m_assetManager.m_particleFX[1];
+		Instantiate(pFX, Player.m_player.m_playerMesh.transform.position, pFX.transform.rotation);
+		UIManager.m_uiManager.SpawnFloatingText("+" + m_energyBonus.ToString(), UIManager.Icon.Energy, Player.m_player.m_playerMesh.transform);
+		Player.m_player.GainEnergy(m_energyBonus);
+		yield return new WaitForSeconds(0.5f);
+
+		Player.m_player.GainHealth(m_healthBonus);	
+		UIManager.m_uiManager.SpawnFloatingText("+" + m_healthBonus.ToString(), UIManager.Icon.Health, Player.m_player.m_playerMesh.transform);
+
+		yield return StartCoroutine( PayForCard());
+		yield return new WaitForSeconds(0.5f);
+		yield return StartCoroutine (SendToGrave ());
+		
+		InputManager.m_inputManager.cardsMoving = false;
+		yield return true;
+	}
+}
