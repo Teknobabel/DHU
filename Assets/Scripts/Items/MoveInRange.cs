@@ -62,7 +62,7 @@ public class MoveInRange : Item {
 					//move in that direction until selected card is reached
 					if (d != GameManager.Direction.None)
 					{
-						string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+						string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 						UIManager.m_uiManager.UpdateActions (newString);
 
 						bool atDestination = false;

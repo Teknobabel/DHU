@@ -431,7 +431,7 @@ public class Enemy : MonoBehaviour {
 					yield return new WaitForSeconds(0.5f);
 					UIManager.m_uiManager.SpawnAbilityName(m_abilityType.ToString(), this.transform);
 
-					string newString = m_displayName + " uses Knockback on " + GameManager.m_gameManager.currentFollower.m_nameText;
+					string newString = "\\4" + m_displayName + "\\0 uses \\3Knockback \\0on " + "\\1" + GameManager.m_gameManager.currentFollower.m_nameText;
 					UIManager.m_uiManager.UpdateActions (newString);
 
 					yield return new WaitForSeconds(1.0f);
@@ -494,7 +494,7 @@ public class Enemy : MonoBehaviour {
 					int r = Random.Range(0, GameManager.m_gameManager.inventory.Count);
 					Item randItem = (Item)GameManager.m_gameManager.inventory[r];
 
-					string newString = m_displayName + " sends " + randItem.m_name + " to The Grave";
+					string newString = "\\4" + m_displayName + "\\0 sends \\3" + randItem.m_name + "\\0 to \\7The Grave";
 					UIManager.m_uiManager.UpdateActions (newString);
 
 					// send item to grave
@@ -653,7 +653,7 @@ public class Enemy : MonoBehaviour {
 						{
 							if (!lc.isOccupied && lc.cardState == Card.CardState.Normal && lc.distanceToPlayer == 1)
 							{
-								string newString = m_displayName + " uses " + m_abilityType.ToString();
+								string newString = "\\4" + m_displayName + "\\0 uses \\3" + m_abilityType.ToString();
 								UIManager.m_uiManager.UpdateActions (newString);
 
 								UpdateTurnIcon ();
@@ -726,7 +726,7 @@ public class Enemy : MonoBehaviour {
 								newEnemy.gameObject.transform.parent = lc.m_cardMesh.transform;
 								GameManager.m_gameManager.currentMap.m_enemies.Add(newEnemy);
 
-								string newString = m_displayName + " Summons " + newEnemy.m_displayName;
+								string newString = "\\4" + m_displayName + "\\0 Summons \\4" + newEnemy.m_displayName;
 								UIManager.m_uiManager.UpdateActions (newString);
 
 								yield return new WaitForSeconds(1);
@@ -989,7 +989,7 @@ public class Enemy : MonoBehaviour {
 
 			if (m_stunDuration == 0)
 			{
-				string newString = m_displayName + " is no longer Stunned";
+				string newString = "\\4" + m_displayName + "\\0 is no longer \\3Stunned";
 				UIManager.m_uiManager.UpdateActions (newString);
 			}
 		}
@@ -1064,7 +1064,7 @@ public class Enemy : MonoBehaviour {
 	
 	private IEnumerator Attack ()
 	{
-		string newString = m_displayName + " attacks " + GameManager.m_gameManager.currentFollower.m_nameText + "!";
+		string newString ="\\4" +  m_displayName + "\\0 attacks " + "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0!";
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		UpdateTurnIcon ();
@@ -1687,7 +1687,7 @@ public class Enemy : MonoBehaviour {
 
 			if (m_abilityType == AbilityType.EnergySyphon && Player.m_player.currentEnergy > 0)
 			{
-				string newString = m_displayName + " uses Energy Syphon";
+				string newString = "\\4" + m_displayName + "\\0 uses Energy \\3Syphon";
 				UIManager.m_uiManager.UpdateActions (newString);
 
 				yield return new WaitForSeconds(0.5f);
@@ -1812,7 +1812,7 @@ public class Enemy : MonoBehaviour {
 		
 		damage = Mathf.Clamp(damage - effectiveArmor, 0, 100);
 
-		string newString = m_displayName + " takes " + damage.ToString () + " damage!";
+		string newString = "\\4" + m_displayName + "\\0 takes \\6" + damage.ToString () + " damage!";
 		if (effectiveArmor > 0) {
 			newString += " (" + effectiveArmor.ToString() + " Armor)";
 		}
@@ -1825,7 +1825,7 @@ public class Enemy : MonoBehaviour {
 		UIManager.m_uiManager.SpawnDamageNumber(damage, m_currentCard.transform);
 		if (m_currentHealth <= 0)
 		{
-			string newString2 = m_displayName + " enters The Grave";
+			string newString2 = "\\4" + m_displayName + "\\0 enters \\7The Grave";
 			UIManager.m_uiManager.UpdateActions (newString2);
 
 			AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.EnemyDefeated);

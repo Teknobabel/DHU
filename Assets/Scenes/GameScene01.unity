@@ -507,9 +507,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -525,7 +525,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -877,6 +886,7 @@ Transform:
   m_LocalPosition: {x: -682.664062, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1529054403}
   - {fileID: 802555530}
   - {fileID: 719766096}
   - {fileID: 1175052789}
@@ -1103,7 +1113,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -4956,9 +4966,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -4974,7 +4984,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -5561,9 +5580,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -5579,7 +5598,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -6881,7 +6909,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -7025,7 +7053,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 4
   mFont: {fileID: 11400000, guid: 2a4b6e02edd7042e7b06b61425f208d6, type: 2}
-  mText: Quit to Menu
+  mText: Ascend
   mMaxLineWidth: 0
   mEncoding: 1
   mMaxLineCount: 0
@@ -7086,9 +7114,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -7104,7 +7132,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -9379,7 +9416,7 @@ GameObject:
   m_Layer: 0
   m_Name: StackStart
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -771928, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9390,7 +9427,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 740526120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.931640625, y: 131.861343, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1175052789}
@@ -14197,9 +14234,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -14215,7 +14252,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -15413,7 +15459,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1192200364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 210.327774, z: -12.375}
+  m_LocalPosition: {x: 0, y: 113.666542, z: -12.375}
   m_LocalScale: {x: .510368645, y: .510368645, z: .510368645}
   m_Children:
   - {fileID: 1846831623}
@@ -21421,7 +21467,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529054402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -658.353516, y: -174.806793, z: 3.83789062}
+  m_LocalPosition: {x: 24.3105469, y: -174.806793, z: 3.83789062}
   m_LocalScale: {x: 80.4914627, y: 99.1979675, z: 80.4914627}
   m_Children:
   - {fileID: 1125649077}
@@ -21432,7 +21478,7 @@ Transform:
   - {fileID: 556609120}
   - {fileID: 37264186}
   - {fileID: 416150252}
-  m_Father: {fileID: 1704643773}
+  m_Father: {fileID: 79354223}
 --- !u!114 &1529054404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21445,9 +21491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Font: {fileID: 11400000, guid: f2cf86866c779465a82f0421acd627bd, type: 2}
-  Text: '
-
-'
+  Text: Action Text
   Size: 2
   Leading: 0
   Tracking: -.00999999978
@@ -21455,9 +21499,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .526115716, g: 0, b: .610294104, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .382352948, g: 0, b: .355983824, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -21473,7 +21517,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -22555,9 +22608,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -22573,7 +22626,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -22864,10 +22926,10 @@ MonoBehaviour:
   m_deleteSave: 0
   m_resetIfDiffVersion: 0
   m_unlockHeroes: 0
-  m_doCustomParty: 0
+  m_doCustomParty: 1
   m_doStartItems: 0
   m_doTrial: 0
-  m_startLevel: 0
+  m_startLevel: 6
   m_customParty:
   - {fileID: 100004, guid: b00953e86600446cb8bc4bd5130316ca, type: 2}
   - {fileID: 100004, guid: 42f0dfd5a06a24dfcac24db73c91a3ae, type: 2}
@@ -23846,9 +23908,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -23864,7 +23926,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -24685,9 +24756,9 @@ MonoBehaviour:
   WordWrap: 0
   Alignment: 0
   FillMode: 1
-  ColorTopLeft: {r: .301470578, g: .301470578, b: .301470578, a: 1}
+  ColorTopLeft: {r: 1, g: 1, b: 1, a: 1}
   ColorTopRight: {r: 1, g: 1, b: 1, a: 1}
-  ColorBottomLeft: {r: .139705896, g: .139705896, b: .139705896, a: 1}
+  ColorBottomLeft: {r: .529411793, g: .529411793, b: .529411793, a: 1}
   ColorBottomRight: {r: 1, g: 1, b: 1, a: 1}
   GenerateNormals: 1
   AutoRebuild: 1
@@ -24703,7 +24774,16 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
+  - {fileID: 2100000, guid: 4bd3c9b9eb92c4870b3e55da7da78121, type: 2}
   - {fileID: 2100000, guid: 5dfa06c0da89d498ab7eed801862f2f9, type: 2}
+  - {fileID: 2100000, guid: 3b9abd931633a4ad68d6d981fadcaee9, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 8b2c2d0ec50a24e8793aab354448ea09, type: 2}
+  - {fileID: 2100000, guid: 289fee567543c420aa5f6c4f612027d9, type: 2}
+  - {fileID: 2100000, guid: b7f9287ef18a0422b880d60f7eab845f, type: 2}
+  - {fileID: 2100000, guid: e8aaef3713c9f420599f25fc8fd271b6, type: 2}
+  - {fileID: 2100000, guid: b946423e57fd94f46809ffd41186e16c, type: 2}
+  - {fileID: 2100000, guid: e5d602a317caf4d219d8c14a5fe7ebb0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -25494,7 +25574,6 @@ Transform:
   - {fileID: 1946571021}
   - {fileID: 1857893836}
   - {fileID: 186229483}
-  - {fileID: 1529054403}
   - {fileID: 1740651585}
   - {fileID: 1852830618}
   - {fileID: 1732678239}
@@ -28643,7 +28722,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1863465553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 99.6599503, z: -12.375}
+  m_LocalPosition: {x: 0, y: 210.938202, z: -12.375}
   m_LocalScale: {x: .510368645, y: .510368705, z: .510368705}
   m_Children:
   - {fileID: 207082223}
@@ -29350,7 +29429,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1946571020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -613.828125, y: 0, z: 0}
+  m_LocalPosition: {x: -613.587891, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122550546}
@@ -30160,7 +30239,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2001979301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -216.189209, z: 0}
+  m_LocalPosition: {x: -.931640625, y: -84.3280869, z: 0}
   m_LocalScale: {x: .999935985, y: .999935985, z: .999935985}
   m_Children: []
   m_Father: {fileID: 1175052789}

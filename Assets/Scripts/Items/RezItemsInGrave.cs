@@ -5,7 +5,7 @@ public class RezItemsInGrave : Item {
 
 	public override IEnumerator Activate ()
 	{
-		string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+		string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		InputManager.m_inputManager.cardsMoving = true;
@@ -30,9 +30,9 @@ public class RezItemsInGrave : Item {
 				gs.item = null;
 				gs.type = GameManager.GraveSlot.ObjectType.None;
 
-				newString = rezzedItem.m_name + " is removed from The Grave";
+				newString = "\\8" + rezzedItem.m_name + "\\0 is removed from The Grave";
 				UIManager.m_uiManager.UpdateActions (newString);
-				newString = rezzedItem.m_name + " is added to " + GameManager.m_gameManager.currentFollower.m_nameText + "'s Hand";
+				newString = "\\8" + rezzedItem.m_name + "\\0 is added to \\1" + GameManager.m_gameManager.currentFollower.m_nameText + "'s\\0 Hand";
 				UIManager.m_uiManager.UpdateActions (newString);
 			}
 		}

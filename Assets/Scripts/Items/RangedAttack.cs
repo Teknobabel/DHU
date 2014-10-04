@@ -40,7 +40,7 @@ public class RangedAttack : Item {
 			{
 				if (GameManager.m_gameManager.selectedCard.enemy != null)
 				{
-					string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name + " on " + GameManager.m_gameManager.selectedCard.enemy.m_displayName;
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name + "\\0 on \\3" + GameManager.m_gameManager.selectedCard.enemy.m_displayName;
 					UIManager.m_uiManager.UpdateActions (newString);
 
 					Enemy thisEnemy = GameManager.m_gameManager.selectedCard.enemy;

@@ -26,7 +26,7 @@ public class FlipInRange : Item {
 		}
 
 		if (hidden.Count > 0) {
-			string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+			string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 			UIManager.m_uiManager.UpdateActions (newString);
 
 			foreach (Card thisCard in hidden)

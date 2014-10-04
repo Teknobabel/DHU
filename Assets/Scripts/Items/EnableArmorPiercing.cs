@@ -5,7 +5,7 @@ public class EnableArmorPiercing : Item {
 
 	public override IEnumerator Activate ()
 	{
-		string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+		string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		InputManager.m_inputManager.cardsMoving = true;
@@ -14,7 +14,7 @@ public class EnableArmorPiercing : Item {
 		Player.m_player.doArmorPierce = true;
 		UIManager.m_uiManager.SpawnAbilityName("+Armor Pierce", Player.m_player.transform);
 
-		newString = GameManager.m_gameManager.currentFollower.m_nameText + " gains Armor Piercing";
+		newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains Armor Piercing";
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		//Update Effect Stack

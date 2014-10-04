@@ -8,7 +8,7 @@ public class ArmorDiceBuff : Item {
 	
 	public override IEnumerator Activate ()
 	{
-		string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+		string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		InputManager.m_inputManager.cardsMoving = true;
@@ -38,9 +38,12 @@ public class ArmorDiceBuff : Item {
 		}
 		
 		int diceRoll = Random.Range(1, numSides+1);
+
+		newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 rolls a " + diceRoll.ToString();
+		UIManager.m_uiManager.UpdateActions (newString);
 		
-		int armor = Player.m_player.turnArmor;
-		armor += diceRoll;
+		Player.m_player.turnArmor += diceRoll;
+		//armor += diceRoll;
 		
 		//Update Effect Stack
 		EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
@@ -52,7 +55,7 @@ public class ArmorDiceBuff : Item {
 		newEffect.m_affectedItem = this;
 		EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 		
-		Player.m_player.turnArmor = armor;
+		//Player.m_player.turnArmor = armor;
 		UIManager.m_uiManager.SpawnFloatingText("+" + diceRoll.ToString(), UIManager.Icon.Armor, Player.m_player.m_playerMesh.transform);
 
 		yield return StartCoroutine( PayForCard());

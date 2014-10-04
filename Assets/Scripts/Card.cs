@@ -704,7 +704,7 @@ public class Card : MonoBehaviour {
 			animation.Play("CardFlip02");
 			if (m_enemy != null) //turn on enemy visuals
 			{
-				string newString = m_enemy.m_displayName + " appears!";
+				string newString = "\\4" + m_enemy.m_displayName + "\\0 appears!";
 				UIManager.m_uiManager.UpdateActions (newString);
 
 				AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.EnemyReveal);
@@ -740,7 +740,7 @@ public class Card : MonoBehaviour {
 			
 			if (m_doFlipTrap)
 			{
-				string newString = "Flipper Tile activates";
+				string newString = "\\9Flipper Tile\\0 activates";
 				UIManager.m_uiManager.UpdateActions (newString);
 
 				//m_flipTrapMesh.enabled = true;

@@ -6,7 +6,7 @@ public class RemoveWounds : Item {
 
 	public override IEnumerator Activate ()
 	{
-		string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+		string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		InputManager.m_inputManager.cardsMoving = true;
@@ -23,7 +23,7 @@ public class RemoveWounds : Item {
 
 		if (wounds.Count > 0)
 		{
-			newString = GameManager.m_gameManager.currentFollower.m_nameText + " loses all Wounds";
+			newString ="\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 loses all Wounds";
 			UIManager.m_uiManager.UpdateActions (newString);
 
 			foreach (EffectsPanel.Effect e in wounds)

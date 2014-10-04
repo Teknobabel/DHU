@@ -228,7 +228,16 @@
 		 <Enemy>Skeleton</Enemy>
 	</Bank>
 	
-	
+	<Bank level="25">
+		 <Enemy>Death Cap</Enemy>
+		 <Enemy>Giant Bat</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Giant Rat</Enemy>
+		 <Enemy>Skeleton</Enemy>
+		 <Enemy>Skeleton</Enemy>
+		 <Enemy>Lagomorph03</Enemy>
+		 <Enemy>Skeleton</Enemy>
+	</Bank>
 	
 	
 	

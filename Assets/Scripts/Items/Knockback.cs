@@ -43,7 +43,7 @@ public class Knockback : Item {
 			{
 				if (GameManager.m_gameManager.selectedCard.enemy != null)
 				{
-					string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name;
+					string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 					UIManager.m_uiManager.UpdateActions (newString);
 
 					Card c = GameManager.m_gameManager.selectedCard;
@@ -65,7 +65,7 @@ public class Knockback : Item {
 
 					if (GameManager.m_gameManager.selectedCard.enemy.CanBeKnockedBack(dir))
 					{
-						newString = GameManager.m_gameManager.selectedCard.enemy.m_displayName + " is knocked back";
+						newString = "\\3" + GameManager.m_gameManager.selectedCard.enemy.m_displayName + "\\0 is knocked back";
 						UIManager.m_uiManager.UpdateActions (newString);
 						yield return StartCoroutine(GameManager.m_gameManager.selectedCard.enemy.DoKnockback(dir));
 					}

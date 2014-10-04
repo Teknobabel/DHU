@@ -33,7 +33,7 @@ public class DamageInRange : Item {
 		if (enemies.Count > 0) {
 			foreach (Enemy e in enemies)
 			{
-				string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name + " on " + e.m_displayName;
+				string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name + "\\0 on \\3" + e.m_displayName;
 				UIManager.m_uiManager.UpdateActions (newString);
 
 				yield return StartCoroutine(e.TakeDamage(m_damage));

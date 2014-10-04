@@ -1169,7 +1169,7 @@ public class GameManager : MonoBehaviour {
 	{
 		Debug.Log ("SWAPPING LEADER");
 
-		string newString = f.m_nameText + " is now the Leader";
+		string newString = "\\1" + f.m_nameText + "\\0 is now the Leader";
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		Follower lastFollower = m_currentFollower;

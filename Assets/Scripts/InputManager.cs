@@ -522,7 +522,7 @@ public class InputManager : MonoBehaviour {
 //									yield return new WaitForSeconds(0.5f);
 //								}
 
-								string newString = GameManager.m_gameManager.currentFollower.m_nameText + " sends " + oldItem.m_name + " to The Grave";
+								string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 sends \\8" + oldItem.m_name + "\\0 to \\7The Grave";
 								UIManager.m_uiManager.UpdateActions (newString);
 
 								// move card to grave
@@ -640,7 +640,7 @@ public class InputManager : MonoBehaviour {
 					if (hit.transform.gameObject.tag == "DrawDeck" && GameManager.m_gameManager.inventory.Count < GameManager.m_gameManager.maxBP && 
 					    GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.currentEnergy >= GameManager.m_gameManager.drawCost )
 					{
-						string newString = GameManager.m_gameManager.currentFollower.m_nameText + "'s Hand is refilled";
+						string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "'s\\0 Hand is refilled";
 						UIManager.m_uiManager.UpdateActions (newString);
 
 						Player.m_player.GainEnergy(GameManager.m_gameManager.drawCost * -1);

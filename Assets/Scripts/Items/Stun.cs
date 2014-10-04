@@ -47,13 +47,13 @@ public class Stun : Item {
 					Enemy thisEnemy = GameManager.m_gameManager.selectedCard.enemy;
 					thisEnemy.stunDuration += m_duration;
 
-					string newString = GameManager.m_gameManager.currentFollower.m_nameText + " uses " + m_name + " on " + thisEnemy.m_displayName;
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name + "\\0 on \\4" + thisEnemy.m_displayName;
 					UIManager.m_uiManager.UpdateActions (newString);
 
 					UIManager.m_uiManager.SpawnAbilityName("Stun +" + m_duration.ToString(), thisEnemy.transform);
 					yield return new WaitForSeconds(0.5f);
 
-					newString = thisEnemy.m_displayName + " is Stunned for " + m_duration.ToString() + " Turns";
+					newString = "\\4" + thisEnemy.m_displayName + "\\0 is Stunned for " + m_duration.ToString() + " Turns";
 					UIManager.m_uiManager.UpdateActions (newString);
 				}
 				GameManager.m_gameManager.selectedCard = null;
