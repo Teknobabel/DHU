@@ -14,8 +14,9 @@ public class DamageBuff : Item {
 		InputManager.m_inputManager.cardsMoving = true;
 		yield return StartCoroutine (CenterCard ());
 
-		int damage = Player.m_player.turnDamage;
-		damage += m_attackBonus;
+		Player.m_player.GainTurnDamage (m_attackBonus);
+		//Player.m_player.turnDamage += m_attackBonus;
+		//damage += m_attackBonus;
 
 //		newString = GameManager.m_gameManager.currentFollower.m_nameText + " gains +" + m_attackBonus.ToString() + " Damage";
 //		UIManager.m_uiManager.UpdateActions (newString);
@@ -30,7 +31,7 @@ public class DamageBuff : Item {
 		newEffect.m_affectedItem = this;
 		EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 
-		Player.m_player.turnDamage = damage;
+		//Player.m_player.turnDamage = damage;
 		UIManager.m_uiManager.SpawnFloatingText("+" + m_attackBonus.ToString(), UIManager.Icon.MeleeDamage, Player.m_player.m_playerMesh.transform);
 
 		yield return StartCoroutine( PayForCard());

@@ -2930,6 +2930,7 @@ public class MapManager : MonoBehaviour {
 //		yield return new WaitForSeconds(2);
 
 		yield return new WaitForSeconds(0.5f);
+		//AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (true);
 		float time = 0.0f;
 		while (time < 1.5f)
 		{
@@ -2940,7 +2941,9 @@ public class MapManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_uiSprites[0].color = c;
 			yield return null;
 		}
-		AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.one * 100000;
+		AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (false);
+		AssetManager.m_assetManager.m_uiSprites[0].color = Color.white;
+		//AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.one * 100000;
 		
 		yield return StartCoroutine( GameManager.m_gameManager.FillHand());
 		GameManager.m_gameManager.acceptInput = true;

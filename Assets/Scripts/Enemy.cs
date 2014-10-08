@@ -431,7 +431,7 @@ public class Enemy : MonoBehaviour {
 					yield return new WaitForSeconds(0.5f);
 					UIManager.m_uiManager.SpawnAbilityName(m_abilityType.ToString(), this.transform);
 
-					string newString = "\\4" + m_displayName + "\\0 uses \\3Knockback \\0on " + "\\1" + GameManager.m_gameManager.currentFollower.m_nameText;
+					string newString = "\\4" + m_displayName + "\\0 uses \\8Knockback \\0on " + "\\1" + GameManager.m_gameManager.currentFollower.m_nameText;
 					UIManager.m_uiManager.UpdateActions (newString);
 
 					yield return new WaitForSeconds(1.0f);
@@ -653,7 +653,7 @@ public class Enemy : MonoBehaviour {
 						{
 							if (!lc.isOccupied && lc.cardState == Card.CardState.Normal && lc.distanceToPlayer == 1)
 							{
-								string newString = "\\4" + m_displayName + "\\0 uses \\3" + m_abilityType.ToString();
+								string newString = "\\4" + m_displayName + "\\0 uses \\8" + m_abilityType.ToString();
 								UIManager.m_uiManager.UpdateActions (newString);
 
 								UpdateTurnIcon ();
@@ -989,7 +989,7 @@ public class Enemy : MonoBehaviour {
 
 			if (m_stunDuration == 0)
 			{
-				string newString = "\\4" + m_displayName + "\\0 is no longer \\3Stunned";
+				string newString = "\\4" + m_displayName + "\\0 is no longer Stunned";
 				UIManager.m_uiManager.UpdateActions (newString);
 			}
 		}
@@ -1687,7 +1687,7 @@ public class Enemy : MonoBehaviour {
 
 			if (m_abilityType == AbilityType.EnergySyphon && Player.m_player.currentEnergy > 0)
 			{
-				string newString = "\\4" + m_displayName + "\\0 uses Energy \\3Syphon";
+				string newString = "\\4" + m_displayName + "\\0 uses \\8Energy Syphon";
 				UIManager.m_uiManager.UpdateActions (newString);
 
 				yield return new WaitForSeconds(0.5f);
@@ -1812,9 +1812,9 @@ public class Enemy : MonoBehaviour {
 		
 		damage = Mathf.Clamp(damage - effectiveArmor, 0, 100);
 
-		string newString = "\\4" + m_displayName + "\\0 takes \\6" + damage.ToString () + " damage!";
+		string newString = "\\4" + m_displayName + "\\0 takes \\5" + damage.ToString () + " damage!";
 		if (effectiveArmor > 0) {
-			newString += " (" + effectiveArmor.ToString() + " Armor)";
+			newString += " (\\3" + effectiveArmor.ToString() + " Armor\\0)";
 		}
 		UIManager.m_uiManager.UpdateActions (newString);
 

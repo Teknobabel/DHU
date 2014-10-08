@@ -41,8 +41,9 @@ public class ArmorDiceBuff : Item {
 
 		newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 rolls a " + diceRoll.ToString();
 		UIManager.m_uiManager.UpdateActions (newString);
-		
-		Player.m_player.turnArmor += diceRoll;
+
+		Player.m_player.GainTurnArmor (diceRoll);
+		//Player.m_player.turnArmor += diceRoll;
 		//armor += diceRoll;
 		
 		//Update Effect Stack

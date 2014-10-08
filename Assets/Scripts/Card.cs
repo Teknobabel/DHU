@@ -693,6 +693,8 @@ public class Card : MonoBehaviour {
 
 				SetColor(Color.yellow);
 				m_highlightMesh.material.color = Color.yellow;
+				m_meshes[1].SetActive(true);
+
 			} else if (m_type != CardType.Normal && m_type != CardType.Entrance)
 			{
 				Color p = new Color(1,0,1);
@@ -852,7 +854,7 @@ public class Card : MonoBehaviour {
 
 		if (m_enemy != null) {
 
-			string newString = m_enemy.m_displayName + " uses Ambush";
+			string newString = "\\4" + m_enemy.m_displayName + " uses \\8Ambush";
 			UIManager.m_uiManager.UpdateActions (newString);
 
 		}

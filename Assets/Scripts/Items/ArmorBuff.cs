@@ -8,14 +8,15 @@ public class ArmorBuff : Item {
 	
 	public override IEnumerator Activate ()
 	{
-		string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
+		string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		InputManager.m_inputManager.cardsMoving = true;
 		yield return StartCoroutine (CenterCard ());
-		
-		int armor = Player.m_player.turnArmor;
-		armor += m_armorBonus;
+
+		Player.m_player.GainTurnArmor (m_armorBonus);
+//		int armor = Player.m_player.turnArmor;
+//		armor += m_armorBonus;
 
 //		newString = GameManager.m_gameManager.currentFollower.m_nameText + " gains +" + m_armorBonus.ToString() + " Armor";
 //		UIManager.m_uiManager.UpdateActions (newString);
@@ -30,7 +31,7 @@ public class ArmorBuff : Item {
 		newEffect.m_affectedItem = this;
 		EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 		
-		Player.m_player.turnArmor = armor;
+		//Player.m_player.turnArmor = armor;
 		UIManager.m_uiManager.SpawnFloatingText("+" + m_armorBonus.ToString(), UIManager.Icon.Armor, Player.m_player.m_playerMesh.transform);
 
 		yield return StartCoroutine( PayForCard());

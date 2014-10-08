@@ -14,7 +14,8 @@ public class MainMenu : MonoBehaviour {
 //		m_exitApp = false;
 
 	public GameObject[]
-		m_menus;
+		m_menus,
+		m_chapters;
 //		m_storeBadges;
 
 	public StoreBadge[]
@@ -26,8 +27,8 @@ public class MainMenu : MonoBehaviour {
 		m_labels;
 
 	public TypogenicText[]
-		m_typogenicText,
-		m_chapters;
+		m_typogenicText;
+		
 
 	public MainMenuButton[]
 		m_buttons;
@@ -153,15 +154,15 @@ public class MainMenu : MonoBehaviour {
 		m_typogenicText[0].Text = SettingsManager.m_settingsManager.xp.ToString ("D4");
 
 		//initialize trial buttons
-		foreach (TrialButton tb in m_trialButtons)
-		{
-			int state = SettingsManager.m_settingsManager.trialStates[tb.m_TrialNum];
-			if (state == 1)
-			{
-				tb.m_prizeText.color = Color.red;
-				tb.m_prizeText.text = "COMPLETED";
-			}
-		}
+//		foreach (TrialButton tb in m_trialButtons)
+//		{
+//			int state = SettingsManager.m_settingsManager.trialStates[tb.m_TrialNum];
+//			if (state == 1)
+//			{
+//				tb.m_prizeText.color = Color.red;
+//				tb.m_prizeText.text = "COMPLETED";
+//			}
+//		}
 
 		//initialize shop badges
 		for (int i=0; i < SettingsManager.m_settingsManager.badgeStates.Count; i++)
@@ -349,7 +350,7 @@ public class MainMenu : MonoBehaviour {
 					} else {
 						Application.LoadLevel("PartySelect01");
 					}
-				} else if (hit.transform.gameObject.tag == "BackButton" && m_menuMode == UIManager.MenuMode.BadgeStore)
+				} else if (hit.transform.gameObject.tag == "BackButton" && (m_menuMode == UIManager.MenuMode.BadgeStore || m_menuMode == UIManager.MenuMode.ChapterSelect))
 				{
 					ChangeMenu(UIManager.MenuMode.MainMenu);
 				}
@@ -417,6 +418,7 @@ public class MainMenu : MonoBehaviour {
 			m_menus[2].SetActive(false);
 			m_menus[1].SetActive(false);
 			m_menus[3].SetActive(false);
+			m_menus[4].SetActive(false);
 			break;
 		case UIManager.MenuMode.Trials:
 			if (oldMode == newMode)
@@ -446,6 +448,7 @@ public class MainMenu : MonoBehaviour {
 				m_menus[4].SetActive(true);
 				m_menus[1].SetActive(false);
 				m_menus[2].SetActive(false);
+				m_menus[0].SetActive(false);
 //				m_buttons[0].ChangeState(false);
 //				m_buttons[1].ChangeState(false);
 //				m_buttons[2].ChangeState(false);
@@ -456,7 +459,7 @@ public class MainMenu : MonoBehaviour {
 				{
 					if (SettingsManager.m_settingsManager.shortcutStates[i] == 0)
 					{
-						TypogenicText t = (TypogenicText) m_chapters[i];
+						GameObject t = (GameObject) m_chapters[i];
 						t.gameObject.SetActive(false);
 //						Color c = new Color(0.1f, 0.1f, 0.1f, 1.0f);
 //						t.ColorTopLeft = c;

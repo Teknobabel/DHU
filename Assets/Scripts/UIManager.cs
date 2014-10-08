@@ -1728,7 +1728,7 @@ public class UIManager : MonoBehaviour {
 			yield return StartCoroutine(InputManager.m_inputManager.GetMouseSelection(validCards));	
 
 			if (m_leaveDungeon)
-			{
+			{   
 				bool t = false;
 				if (cList.Count > 0){t=true;}
 				foreach (UICard c in cList)
@@ -1855,9 +1855,10 @@ public class UIManager : MonoBehaviour {
 				}
 			}
 
-//			AssetManager.m_assetManager.m_uiSprites[0].gameObject.SetActive (true);
-			AssetManager.m_assetManager.m_uiSprites[0].color = Color.white;
-			AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.zero;
+			AssetManager.m_assetManager.m_uiSprites[0].gameObject.SetActive (true);
+			yield return new WaitForSeconds(0.1f);
+//			AssetManager.m_assetManager.m_uiSprites[0].color = Color.white;
+//			AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.zero;
 
 //			foreach (UICard charCard in m_charUnlockSlots)
 //			{

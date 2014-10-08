@@ -387,9 +387,11 @@ public class Player : MonoBehaviour {
 			ChangeFacing(dir);
 			if (nextCard.cardState == Card.CardState.Hidden)
 			{
-
-				string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 flips a Tile";
-				UIManager.m_uiManager.UpdateActions (newString);
+				if (GameManager.m_gameManager.showDetailedActions)
+				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 flips a Tile";
+					UIManager.m_uiManager.UpdateActions (newString);
+				}
 
 				m_canContinuousMove = false;
 				List<GameManager.Direction> flipDir = new List<GameManager.Direction>();
@@ -641,8 +643,10 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator DoMove (Card nextCard)
 	{
-		string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 moves";
-		UIManager.m_uiManager.UpdateActions (newString);
+		if (GameManager.m_gameManager.showDetailedActions) {
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 moves";
+			UIManager.m_uiManager.UpdateActions (newString);
+		}
 
 		if (m_doingSiteCard) {
 			m_doingSiteCard = false;
@@ -829,6 +833,7 @@ public class Player : MonoBehaviour {
 				
 				
 				//GameManager.m_gameManager.acceptInput = true;
+				animation ["PlayerJump01"].time = animation["PlayerJump01"].length;
 				transform.position = m_moveEnd;
 				animation.Play("PlayerIdle01");
 
@@ -917,15 +922,19 @@ public class Player : MonoBehaviour {
 //		}
 
 		animation["PlayerJump01"].speed = 1.5f;
+		animation ["PlayerJump01"].time = 0;
 		animation.Play("PlayerJump01");
 		yield return new WaitForSeconds (0.1f);
+
+		StartCoroutine (ShakeCamera (0));
+
+		yield return StartCoroutine(thisEnemy.TakeDamage(damage));
+
 //		while (animation.IsPlaying("PlayerJump01"))
 //		{
 //			yield return null;
 //		}
-		StartCoroutine (ShakeCamera (0));
 
-		yield return StartCoroutine(thisEnemy.TakeDamage(damage));
 		//if (thisEnemy == null && m_doFencer)
 		if (thisEnemy.enemyState == Enemy.EnemyState.Dead)
 		{
@@ -1002,6 +1011,7 @@ public class Player : MonoBehaviour {
 		EffectsPanel.m_effectsPanel.UpdateEffects(EffectsPanel.Effect.Duration.NextPlayerAttack);
 		
 		GameManager.m_gameManager.acceptInput = true;
+		animation ["PlayerJump01"].time = animation["PlayerJump01"].length;
 		animation.Play ("PlayerIdle01");
 	}
 
@@ -1353,7 +1363,7 @@ public class Player : MonoBehaviour {
 	public void GainEnergy (int amount)
 	{
 		if (amount > 0) {
-			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 regains " + amount.ToString() + " Energy";
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 regains \\8" + amount.ToString() + " Energy";
 			UIManager.m_uiManager.UpdateActions (newString);
 		}
 
@@ -1364,7 +1374,7 @@ public class Player : MonoBehaviour {
 	public void GainHealth (int amount)
 	{
 		if (amount > 0) {
-			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 regains " + amount.ToString() + " Health";
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 regains \\5" + amount.ToString() + " Health";
 			UIManager.m_uiManager.UpdateActions (newString);
 		}
 
@@ -1450,7 +1460,7 @@ public class Player : MonoBehaviour {
 		m_moveTimer = 0;
 		m_moveTime = animation["PlayerJump01"].length;
 		m_moveStart = m_currentCard.transform.position;
-		m_moveEnd = nextCard.transform.position;
+		m_moveEnd = nextCard.m_actorBase.position;
 		
 		//Debug.Log(m_currentCard.row.ToString() + "," + m_currentCard.column.ToString() + " / " + nextCard.row.ToString() + "," + nextCard.column.ToString());
 		
@@ -1746,15 +1756,30 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void GainTurnDamage (int amount)
+	{
+		m_turnDamage += amount;
+		string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains \\6" + amount.ToString() + " Attack";
+		UIManager.m_uiManager.UpdateActions(newString);
+		StartCoroutine(UIManager.m_uiManager.UpdateDamage(Player.m_player.damage + Player.m_player.turnDamage + Player.m_player.tempDamage + m_permDamage + m_currentCard.siteDamageBonus ));
+	}
+	public void GainTurnArmor (int amount)
+	{
+		m_turnArmor += amount;
+		string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains \\3" + amount.ToString() + " Armor";
+		UIManager.m_uiManager.UpdateActions(newString);
+		StartCoroutine(UIManager.m_uiManager.UpdateArmor(Player.m_player.currentArmor + Player.m_player.turnArmor + Player.m_player.tempArmor + m_permArmor + m_currentCard.siteArmorBonus ));
+	}
+
 	public int tempArmor {get{return m_tempArmor;}set{m_tempArmor = value;}}
 	public int turnArmor {get{return m_turnArmor;}set{
 			m_turnArmor = value;
-			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains " + value.ToString() + " Armor";
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains \\3" + value.ToString() + " Armor";
 			UIManager.m_uiManager.UpdateActions(newString);
 			StartCoroutine(UIManager.m_uiManager.UpdateArmor(Player.m_player.currentArmor + Player.m_player.turnArmor + Player.m_player.tempArmor + m_permArmor + m_currentCard.siteArmorBonus ));}}
 	public int turnDamage {get{return m_turnDamage;}set{
 			m_turnDamage = value; 
-			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains " + value.ToString() + " Attack";
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 gains \\6" + value.ToString() + " Attack";
 			UIManager.m_uiManager.UpdateActions(newString);
 			StartCoroutine(UIManager.m_uiManager.UpdateDamage(Player.m_player.damage + Player.m_player.turnDamage + Player.m_player.tempDamage + m_permDamage + m_currentCard.siteDamageBonus ));}}
 	public bool berserkerActive {get{return m_berserkerActive;}set{m_berserkerActive = value;}}

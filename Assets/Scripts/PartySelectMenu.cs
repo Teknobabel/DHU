@@ -86,7 +86,10 @@ public class PartySelectMenu: MonoBehaviour {
 		m_currentBadges = 0;
 	
 	private Color 
-		spentPortraitColor = new Color(0.4f, 0.4f, 0.4f, 1);
+		spentPortraitColor = new Color(0.4f, 0.4f, 0.4f, 1),
+		m_enabledTextTop = Color.blue,
+		m_enabledTextBottom = Color.blue,
+		m_disabledTextColor = new Color(0.2f, 0.2f, 0.2f, 1);
 
 	void Awake () {
 
@@ -401,7 +404,21 @@ public class PartySelectMenu: MonoBehaviour {
 			m_partySlots.Add(ps);
 		}
 
-		
+
+
+		//disable start and reset text
+		m_enabledTextTop = AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft;
+		m_enabledTextBottom = AssetManager.m_assetManager.m_typogenicText [10].ColorBottomLeft;
+
+		AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft = m_disabledTextColor;
+		AssetManager.m_assetManager.m_typogenicText [10].ColorTopRight = m_disabledTextColor;
+		AssetManager.m_assetManager.m_typogenicText [10].ColorBottomLeft = m_disabledTextColor;
+		AssetManager.m_assetManager.m_typogenicText [10].ColorBottomRight = m_disabledTextColor;
+
+		AssetManager.m_assetManager.m_typogenicText [11].ColorTopLeft = m_disabledTextColor;
+		AssetManager.m_assetManager.m_typogenicText [11].ColorTopRight = m_disabledTextColor;
+		AssetManager.m_assetManager.m_typogenicText [11].ColorBottomLeft = m_disabledTextColor;
+		AssetManager.m_assetManager.m_typogenicText [11].ColorBottomRight = m_disabledTextColor;
 	}
 
 
@@ -583,6 +600,19 @@ public class PartySelectMenu: MonoBehaviour {
 							m_highlight.gameObject.SetActive(false);
 						}
 //					}
+
+					if (m_followers.Count == 1)
+					{
+						AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft = m_enabledTextTop;
+						AssetManager.m_assetManager.m_typogenicText [10].ColorTopRight = m_enabledTextTop;
+						AssetManager.m_assetManager.m_typogenicText [10].ColorBottomLeft = m_enabledTextBottom;
+						AssetManager.m_assetManager.m_typogenicText [10].ColorBottomRight = m_enabledTextBottom;
+						
+						AssetManager.m_assetManager.m_typogenicText [11].ColorTopLeft = m_enabledTextTop;
+						AssetManager.m_assetManager.m_typogenicText [11].ColorTopRight = m_enabledTextTop;
+						AssetManager.m_assetManager.m_typogenicText [11].ColorBottomLeft = m_enabledTextBottom;
+						AssetManager.m_assetManager.m_typogenicText [11].ColorBottomRight = m_enabledTextBottom;
+					}
 				} 
 			}
 				cardTouchRay = m_UICam.ScreenPointToRay(Input.mousePosition);
@@ -673,6 +703,17 @@ public class PartySelectMenu: MonoBehaviour {
 						}
 					}
 
+					// disable button text color
+					AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft = m_disabledTextColor;
+					AssetManager.m_assetManager.m_typogenicText [10].ColorTopRight = m_disabledTextColor;
+					AssetManager.m_assetManager.m_typogenicText [10].ColorBottomLeft = m_disabledTextColor;
+					AssetManager.m_assetManager.m_typogenicText [10].ColorBottomRight = m_disabledTextColor;
+					
+					AssetManager.m_assetManager.m_typogenicText [11].ColorTopLeft = m_disabledTextColor;
+					AssetManager.m_assetManager.m_typogenicText [11].ColorTopRight = m_disabledTextColor;
+					AssetManager.m_assetManager.m_typogenicText [11].ColorBottomLeft = m_disabledTextColor;
+					AssetManager.m_assetManager.m_typogenicText [11].ColorBottomRight = m_disabledTextColor;
+
 					} 
 					else if (hit.transform.gameObject.tag == "CraftButton" && m_followers.Count > 0)
 					{
@@ -717,28 +758,28 @@ public class PartySelectMenu: MonoBehaviour {
 	{
 		// play deck building anim
 
-		AssetManager.m_assetManager.m_props [2].SetActive (true);
-		AssetManager.m_assetManager.m_props [3].SetActive (false);
-
-		foreach (List<GameObject> l in m_deck) {
-			foreach (GameObject go in l)
-			{
-				UICard c = (UICard)go.GetComponent("UICard");
-				c.m_abilityUI.gameObject.SetActive(false);
-				c.m_nameUI.gameObject.SetActive(false);
-				c.m_miscOBJ[0].gameObject.SetActive(false);
-				c.m_rankUI.gameObject.SetActive(false);
-				foreach (UISprite s in c.m_miscSprite)
-				{
-					s.gameObject.SetActive(false);
-				}
-				c.m_portrait.spriteName = "Card_Back03";
-				StartCoroutine(MoveCardToGrave(go));
-				yield return new WaitForSeconds(0.05f);
-			}
-		}
-
-		yield return new WaitForSeconds(1.0f);
+//		AssetManager.m_assetManager.m_props [2].SetActive (true);
+//		AssetManager.m_assetManager.m_props [3].SetActive (false);
+//
+//		foreach (List<GameObject> l in m_deck) {
+//			foreach (GameObject go in l)
+//			{
+//				UICard c = (UICard)go.GetComponent("UICard");
+//				c.m_abilityUI.gameObject.SetActive(false);
+//				c.m_nameUI.gameObject.SetActive(false);
+//				c.m_miscOBJ[0].gameObject.SetActive(false);
+//				c.m_rankUI.gameObject.SetActive(false);
+//				foreach (UISprite s in c.m_miscSprite)
+//				{
+//					s.gameObject.SetActive(false);
+//				}
+//				c.m_portrait.spriteName = "Card_Back03";
+//				StartCoroutine(MoveCardToGrave(go));
+//				yield return new WaitForSeconds(0.05f);
+//			}
+//		}
+//
+//		yield return new WaitForSeconds(1.0f);
 
 		// player fade out anim
 		Color clr = Color.white;

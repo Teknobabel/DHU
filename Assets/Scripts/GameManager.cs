@@ -135,7 +135,8 @@ public class GameManager : MonoBehaviour {
 		m_doShopPortal = false,
 		m_doStorageChest = false,
 		m_doHeartBeat = false,
-		m_doStatBar = true;
+		m_doStatBar = true,
+		m_showDetailedActions = false;
 
 	private int
 		m_healthRecover = 0,
@@ -591,9 +592,12 @@ public class GameManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_uiSprites[0].color = c;
 			yield return null;
 		}
-		//AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (false);
-		AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.one * 100000;
-		AssetManager.m_assetManager.m_uiSprites [0].color = Color.white;
+		AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (false);
+		AssetManager.m_assetManager.m_uiSprites[0].color = Color.white;
+
+
+//		AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.one * 100000;
+//		AssetManager.m_assetManager.m_uiSprites [0].color = Color.white;
 
 		yield return new WaitForSeconds(0.25f);
 //		while (FollowCamera.m_followCamera.zoomDist > 0.5f)
@@ -2150,6 +2154,7 @@ public class GameManager : MonoBehaviour {
 	public int numTiles { get { return m_numTiles; } set { m_numTiles = value; } }
 	public int numTilesFlipped { get { return m_numTilesFlipped; } set { m_numTilesFlipped = value; } }
 	public int initiative {get{m_initiative ++; return m_initiative;} set{m_initiative = value;}}
+	public bool showDetailedActions {get{return m_showDetailedActions;}}
 	public int numStunned {
 		get
 		{

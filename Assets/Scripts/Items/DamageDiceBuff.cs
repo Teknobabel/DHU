@@ -42,7 +42,8 @@ public class DamageDiceBuff : Item {
 		newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 rolls a " + diceRoll.ToString();
 		UIManager.m_uiManager.UpdateActions (newString);
 
-		Player.m_player.turnDamage += diceRoll;
+		Player.m_player.GainTurnDamage (diceRoll);
+		//Player.m_player.turnDamage += diceRoll;
 		//damage += diceRoll;
 		
 		//Update Effect Stack
