@@ -1845,7 +1845,7 @@ public class MapManager : MonoBehaviour {
 		int chunkXSize = 5;
 		int chunkYSize = 5;
 		int lootLevel = 0;
-		bool doGate = true;
+		bool doGate = false;
 		
 		//set generation variables based on difficulty
 		int adjustedDiff = difficulty+1;
@@ -3235,7 +3235,7 @@ public class MapManager : MonoBehaviour {
 		}  else if (type == ChunkType.Single)
 		{
 			// 5x5 chunks
-//			chunkArray.Add( new int[] {0,0,3,0,0,0,9,4,2,0,3,5,2,3,4,0,4,4,4,0,0,0,8,0,0});
+//			chunkArray.Add( new int[] {0,0,3,0,0,0,9,1,2,0,3,5,2,3,1,0,1,1,4,0,0,0,8,0,0});
 			chunkArray.Add( new int[] {0,0,3,0,0,0,9,1,2,0,3,5,2,3,1,0,2,3,1,0,0,0,8,0,0});
 			chunkArray.Add( new int[] {8,5,3,0,0,1,2,1,0,0,5,1,2,5,1,3,1,9,0,0,1,5,7,0,0});
 			chunkArray.Add( new int[] {0,0,1,2,1,0,3,1,9,2,1,1,1,1,1,0,2,3,0,1,0,0,8,0,3});

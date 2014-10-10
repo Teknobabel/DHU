@@ -115,33 +115,43 @@ public class InputManager : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyUp(KeyCode.Return) && Player.m_player.currentCard.type == Card.CardType.Exit && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.playerState == Player.PlayerState.Idle && UIManager.m_uiManager.menuMode == UIManager.MenuMode.None  )
+		if (Input.GetKeyUp(KeyCode.Return) && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.playerState == Player.PlayerState.Idle && UIManager.m_uiManager.menuMode == UIManager.MenuMode.None  )
 		{
-			Debug.Log("DESCEND BUTTON CLICKED");
-			UIManager.m_uiManager.m_exitButton.SetActive(false);
-			
-			foreach (Follower thisFollower in GameManager.m_gameManager.followers)
+			if (Player.m_player.currentCard.type == Card.CardType.Exit)
 			{
-				if (thisFollower.followerState == Follower.FollowerState.Spent)
+				Debug.Log("DESCEND BUTTON CLICKED");
+				UIManager.m_uiManager.m_exitButton.SetActive(false);
+				
+				foreach (Follower thisFollower in GameManager.m_gameManager.followers)
 				{
-					yield return StartCoroutine(thisFollower.ChangeState(Follower.FollowerState.Normal));	
+					if (thisFollower.followerState == Follower.FollowerState.Spent)
+					{
+						yield return StartCoroutine(thisFollower.ChangeState(Follower.FollowerState.Normal));	
+					}
 				}
-			}
-			//GameManager.m_gameManager.acceptInput = true;
-			GameManager.m_gameManager.acceptInput = false;
-			
-			if (SettingsManager.m_settingsManager.difficultyLevel < 0)
-			{
-				if (Input.GetKey(KeyCode.P))
+				//GameManager.m_gameManager.acceptInput = true;
+				GameManager.m_gameManager.acceptInput = false;
+				
+				if (SettingsManager.m_settingsManager.difficultyLevel < 0)
 				{
-					yield return StartCoroutine(MapManager.m_mapManager.NextLevel(GameManager.m_gameManager.currentMap.m_difficulty * -1));
+					if (Input.GetKey(KeyCode.P))
+					{
+						yield return StartCoroutine(MapManager.m_mapManager.NextLevel(GameManager.m_gameManager.currentMap.m_difficulty * -1));
+					} else {
+						yield return StartCoroutine(MapManager.m_mapManager.NextLevel(1));
+					}
 				} else {
-					yield return StartCoroutine(MapManager.m_mapManager.NextLevel(1));
+					yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.EndLevel));
 				}
-			} else {
-				yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.EndLevel));
+				yield break;
+			} else if (Player.m_player.currentCard.type == Card.CardType.Gate && Player.m_player.numKeys > 0)
+			{
+				//unlock gate
+				yield return StartCoroutine(GameManager.m_gameManager.UnlockGate());
+				
+				Player.m_player.UseActionPoint();
+				yield break;
 			}
-			yield break;
 		}
 
 		if (Player.m_player.playerState == Player.PlayerState.Idle && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && !Player.m_player.cardsFlipping && GameManager.m_gameManager.acceptInput)
@@ -490,118 +500,121 @@ public class InputManager : MonoBehaviour {
 						Item thisItem = (Item)card.m_itemData;
 						if (thisItem != null)
 						{
-							// Delete Inventory item
-							HudItemClicked = true;
-							Debug.Log("DELETE ITEM");
-							
-							List<Item> items = GameManager.m_gameManager.inventory;
-							Item oldItem = null;
-							for (int i=0; i < items.Count; i++)
+							if (thisItem.m_canDiscard)
 							{
-								Item invItem = items[i];
-								if (invItem == thisItem)
+								// Delete Inventory item
+								HudItemClicked = true;
+								Debug.Log("DELETE ITEM");
+								
+								List<Item> items = GameManager.m_gameManager.inventory;
+								Item oldItem = null;
+								for (int i=0; i < items.Count; i++)
 								{
-									items.RemoveAt(i);
-									oldItem = invItem;
-									//card.Deactivate();
-									card.m_itemData = null;
-									
-
-									i=99;
-								}
-							}
-							if (oldItem != null)
-							{
-								//Destroy(oldItem);
-
-//								if (oldItem.m_graveBomb)
-//								{
-//									yield return new WaitForSeconds(0.25f);
-//									yield return StartCoroutine(Player.m_player.TakeDirectDamage(1));
-//									UIManager.m_uiManager.SpawnFloatingText("-1", UIManager.Icon.Health, Player.m_player.m_playerMesh.transform);
-//									yield return new WaitForSeconds(0.5f);
-//								}
-
-								string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 sends \\8" + oldItem.m_name + "\\0 to \\7The Grave";
-								UIManager.m_uiManager.UpdateActions (newString);
-
-								// move card to grave
-								float t = 0;
-								float time = 0.5f;
-								Vector3 startPos = card.transform.position;
-								Vector3 startScale = card.transform.localScale;
-								m_cardsMoving = true;
-								while (t < time)
-								{
-									t += Time.deltaTime;;
-									Vector3 nPos = Vector3.Lerp(startPos, UIManager.m_uiManager.m_backpackButton.transform.position , t / time);
-									Vector3 newScale = Vector3.Lerp(startScale, Vector3.one * 0.25f, t / time);
-									card.transform.position = nPos;
-									card.transform.localScale = newScale;
-									yield return null;
-								}
-								m_cardsMoving = false;
-								card.transform.position = startPos;
-								card.transform.localScale = startScale;
-
-								//GameManager.m_gameManager.AddLimboCard(oldItem);
-								GameManager.m_gameManager.numDiscardedThisTurn += 1;
-								GameManager.m_gameManager.SendToGrave(oldItem);
-
-								// activate any stat bonuses
-								foreach (Item.GraveBonus gb in oldItem.m_graveBonus)
-								{
-									if (gb == Item.GraveBonus.Attack)
+									Item invItem = items[i];
+									if (invItem == thisItem)
 									{
-										Player.m_player.turnDamage += 1;	
-										StartCoroutine(UIManager.m_uiManager.UpdateDamage(Player.m_player.damage + Player.m_player.turnDamage + Player.m_player.tempDamage + Player.m_player.permDamage + Player.m_player.currentCard.siteDamageBonus));
-									} else if (gb == Item.GraveBonus.Health && Player.m_player.currentHealth < Player.m_player.maxHealth)
-									{
-										Player.m_player.GainHealth(1);
-									} else if (gb == Item.GraveBonus.Energy && Player.m_player.currentEnergy < Player.m_player.maxEnergy)
-									{
-										Player.m_player.GainEnergy(1);
-									} else if (gb == Item.GraveBonus.Armor)
-									{
-										int armor = Player.m_player.turnArmor;
-										armor += 1;
-										Player.m_player.turnArmor = armor;
-										StartCoroutine(UIManager.m_uiManager.UpdateArmor(Player.m_player.currentArmor + Player.m_player.turnArmor + Player.m_player.tempArmor + Player.m_player.permArmor + Player.m_player.currentCard.siteArmorBonus ));
-									} else if (gb == Item.GraveBonus.Actions)
-									{
-										Player.m_player.GainActionPoints(1);
+										items.RemoveAt(i);
+										oldItem = invItem;
+										//card.Deactivate();
+										card.m_itemData = null;
+										
+
+										i=99;
 									}
 								}
-							}
+								if (oldItem != null)
+								{
+									//Destroy(oldItem);
 
-							if (UIManager.m_uiManager.invHoveredCard != null)
-							{
-								UIManager.m_uiManager.ClearInvSelection();	
-							}
-							
-							UIManager.m_uiManager.RefreshInventoryMenu();
+	//								if (oldItem.m_graveBomb)
+	//								{
+	//									yield return new WaitForSeconds(0.25f);
+	//									yield return StartCoroutine(Player.m_player.TakeDirectDamage(1));
+	//									UIManager.m_uiManager.SpawnFloatingText("-1", UIManager.Icon.Health, Player.m_player.m_playerMesh.transform);
+	//									yield return new WaitForSeconds(0.5f);
+	//								}
 
-							// check for held keys
-//							if (Input.GetKey(KeyCode.Z))
-//							{
-//								Player.m_player.turnDamage += 1;	
-//								StartCoroutine(UIManager.m_uiManager.UpdateDamage(Player.m_player.damage + Player.m_player.turnDamage + Player.m_player.tempDamage));
-//							} else if (Input.GetKey(KeyCode.X) && Player.m_player.currentHealth < Player.m_player.maxHealth)
-//							{
-//								Player.m_player.GainHealth(1);
-//							} else if (Input.GetKey(KeyCode.C) && Player.m_player.currentEnergy < Player.m_player.maxEnergy)
-//							{
-//								Player.m_player.GainEnergy(1);
-//							} else if (Input.GetKey(KeyCode.V))
-//							{
-//								int armor = Player.m_player.turnArmor;
-//								armor += 1;
-//								Player.m_player.turnArmor = armor;
-//								StartCoroutine(UIManager.m_uiManager.UpdateArmor(Player.m_player.currentArmor + Player.m_player.turnArmor + Player.m_player.tempArmor));f);
-//							} else if (Input.GetKey(KeyCode.B))
-//							{
-//								Player.m_player.GainActionPoints(1);
-//							}
+									string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 sends \\8" + oldItem.m_name + "\\0 to \\7The Grave";
+									UIManager.m_uiManager.UpdateActions (newString);
+
+									// move card to grave
+									float t = 0;
+									float time = 0.5f;
+									Vector3 startPos = card.transform.position;
+									Vector3 startScale = card.transform.localScale;
+									m_cardsMoving = true;
+									while (t < time)
+									{
+										t += Time.deltaTime;;
+										Vector3 nPos = Vector3.Lerp(startPos, UIManager.m_uiManager.m_backpackButton.transform.position , t / time);
+										Vector3 newScale = Vector3.Lerp(startScale, Vector3.one * 0.25f, t / time);
+										card.transform.position = nPos;
+										card.transform.localScale = newScale;
+										yield return null;
+									}
+									m_cardsMoving = false;
+									card.transform.position = startPos;
+									card.transform.localScale = startScale;
+
+									//GameManager.m_gameManager.AddLimboCard(oldItem);
+									GameManager.m_gameManager.numDiscardedThisTurn += 1;
+									GameManager.m_gameManager.SendToGrave(oldItem);
+
+									// activate any stat bonuses
+									foreach (Item.GraveBonus gb in oldItem.m_graveBonus)
+									{
+										if (gb == Item.GraveBonus.Attack)
+										{
+											Player.m_player.turnDamage += 1;	
+											StartCoroutine(UIManager.m_uiManager.UpdateDamage(Player.m_player.damage + Player.m_player.turnDamage + Player.m_player.tempDamage + Player.m_player.permDamage + Player.m_player.currentCard.siteDamageBonus));
+										} else if (gb == Item.GraveBonus.Health && Player.m_player.currentHealth < Player.m_player.maxHealth)
+										{
+											Player.m_player.GainHealth(1);
+										} else if (gb == Item.GraveBonus.Energy && Player.m_player.currentEnergy < Player.m_player.maxEnergy)
+										{
+											Player.m_player.GainEnergy(1);
+										} else if (gb == Item.GraveBonus.Armor)
+										{
+											int armor = Player.m_player.turnArmor;
+											armor += 1;
+											Player.m_player.turnArmor = armor;
+											StartCoroutine(UIManager.m_uiManager.UpdateArmor(Player.m_player.currentArmor + Player.m_player.turnArmor + Player.m_player.tempArmor + Player.m_player.permArmor + Player.m_player.currentCard.siteArmorBonus ));
+										} else if (gb == Item.GraveBonus.Actions)
+										{
+											Player.m_player.GainActionPoints(1);
+										}
+									}
+								}
+
+								if (UIManager.m_uiManager.invHoveredCard != null)
+								{
+									UIManager.m_uiManager.ClearInvSelection();	
+								}
+								
+								UIManager.m_uiManager.RefreshInventoryMenu();
+
+								// check for held keys
+	//							if (Input.GetKey(KeyCode.Z))
+	//							{
+	//								Player.m_player.turnDamage += 1;	
+	//								StartCoroutine(UIManager.m_uiManager.UpdateDamage(Player.m_player.damage + Player.m_player.turnDamage + Player.m_player.tempDamage));
+	//							} else if (Input.GetKey(KeyCode.X) && Player.m_player.currentHealth < Player.m_player.maxHealth)
+	//							{
+	//								Player.m_player.GainHealth(1);
+	//							} else if (Input.GetKey(KeyCode.C) && Player.m_player.currentEnergy < Player.m_player.maxEnergy)
+	//							{
+	//								Player.m_player.GainEnergy(1);
+	//							} else if (Input.GetKey(KeyCode.V))
+	//							{
+	//								int armor = Player.m_player.turnArmor;
+	//								armor += 1;
+	//								Player.m_player.turnArmor = armor;
+	//								StartCoroutine(UIManager.m_uiManager.UpdateArmor(Player.m_player.currentArmor + Player.m_player.turnArmor + Player.m_player.tempArmor));f);
+	//							} else if (Input.GetKey(KeyCode.B))
+	//							{
+	//								Player.m_player.GainActionPoints(1);
+	//							}
+							}
 						}
 
 					} else if (hit.transform.gameObject.tag == "SkillCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.None && GameManager.m_gameManager.inventory.Count < GameManager.m_gameManager.maxBP )
@@ -875,31 +888,40 @@ public class InputManager : MonoBehaviour {
 						}
 					} else if (hit.transform.gameObject.tag == "DescendButton" && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.playerState == Player.PlayerState.Idle)
 					{
-						Debug.Log("DESCEND BUTTON CLICKED");
-						UIManager.m_uiManager.m_exitButton.SetActive(false);
-						
-						foreach (Follower thisFollower in GameManager.m_gameManager.followers)
+						if (Player.m_player.currentCard.type == Card.CardType.Exit)
 						{
-							if (thisFollower.followerState == Follower.FollowerState.Spent)
+							Debug.Log("DESCEND BUTTON CLICKED");
+							UIManager.m_uiManager.m_exitButton.SetActive(false);
+							
+							foreach (Follower thisFollower in GameManager.m_gameManager.followers)
 							{
-								yield return StartCoroutine(thisFollower.ChangeState(Follower.FollowerState.Normal));	
+								if (thisFollower.followerState == Follower.FollowerState.Spent)
+								{
+									yield return StartCoroutine(thisFollower.ChangeState(Follower.FollowerState.Normal));	
+								}
 							}
-						}
-						//GameManager.m_gameManager.acceptInput = true;
-						GameManager.m_gameManager.acceptInput = false;
+							//GameManager.m_gameManager.acceptInput = true;
+							GameManager.m_gameManager.acceptInput = false;
 
-						if (SettingsManager.m_settingsManager.difficultyLevel < 0)
-						{
-							if (Input.GetKey(KeyCode.P))
+							if (SettingsManager.m_settingsManager.difficultyLevel < 0)
 							{
-								yield return StartCoroutine(MapManager.m_mapManager.NextLevel(GameManager.m_gameManager.currentMap.m_difficulty * -1));
+								if (Input.GetKey(KeyCode.P))
+								{
+									yield return StartCoroutine(MapManager.m_mapManager.NextLevel(GameManager.m_gameManager.currentMap.m_difficulty * -1));
+								} else {
+									yield return StartCoroutine(MapManager.m_mapManager.NextLevel(1));
+								}
 							} else {
-								yield return StartCoroutine(MapManager.m_mapManager.NextLevel(1));
+								yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.EndLevel));
 							}
-						} else {
-							yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.EndLevel));
+							yield break;
+						} else if (Player.m_player.currentCard.type == Card.CardType.Gate && Player.m_player.numKeys > 0)
+						{
+							yield return StartCoroutine(GameManager.m_gameManager.UnlockGate());
+
+							Player.m_player.UseActionPoint();
 						}
-						yield break;
+
 					} 
 					else if (hit.transform.gameObject.tag == "PauseButton")
 					{
@@ -1251,51 +1273,51 @@ public class InputManager : MonoBehaviour {
 			
 			//right clicking is generally used for removing items
 			
-			if (Input.GetMouseButtonUp(1))
-			{
-				Camera inputCam = Camera.mainCamera;
-				if (UIManager.m_uiManager.menuMode != UIManager.MenuMode.None)
-				{
-					inputCam = UIManager.m_uiManager.m_uiCamera.camera;
-				}
-				Ray worldTouchRay = inputCam.ScreenPointToRay(Input.mousePosition);
-				RaycastHit hitInfo;
-				if(Physics.Raycast(worldTouchRay, out hitInfo))
-				{
-					if (hitInfo.transform.gameObject.tag == "UICard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.Inventory)
-					{
-						//delete touched item
-						Debug.Log("REMOVING ITEM");	
-						UICard card = (UICard)hitInfo.transform.GetComponent("UICard");
-						Item thisItem = (Item)card.m_itemData;
-						
-						List<Item> items = GameManager.m_gameManager.inventory;
-						GameObject oldItem = null;
-						for (int i=0; i < items.Count; i++)
-						{
-							Item invItem = items[i];
-							if (invItem == thisItem)
-							{
-								items.RemoveAt(i);
-								oldItem = invItem.gameObject;
-								card.Deactivate();
-								card.m_itemData = null;
-								
-								if (UIManager.m_uiManager.invHoveredCard != null)
-								{
-									UIManager.m_uiManager.ClearInvSelection();	
-								}
-								i=99;
-							}
-						}
-						if (oldItem != null)
-						{
-							Destroy(oldItem);
-						}
-						
-						UIManager.m_uiManager.RefreshInventoryMenu();
-						
-					} 
+//			if (Input.GetMouseButtonUp(1))
+//			{
+//				Camera inputCam = Camera.mainCamera;
+//				if (UIManager.m_uiManager.menuMode != UIManager.MenuMode.None)
+//				{
+//					inputCam = UIManager.m_uiManager.m_uiCamera.camera;
+//				}
+//				Ray worldTouchRay = inputCam.ScreenPointToRay(Input.mousePosition);
+//				RaycastHit hitInfo;
+//				if(Physics.Raycast(worldTouchRay, out hitInfo))
+//				{
+//					if (hitInfo.transform.gameObject.tag == "UICard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.Inventory)
+//					{
+//						//delete touched item
+//						Debug.Log("REMOVING ITEM");	
+//						UICard card = (UICard)hitInfo.transform.GetComponent("UICard");
+//						Item thisItem = (Item)card.m_itemData;
+//						
+//						List<Item> items = GameManager.m_gameManager.inventory;
+//						GameObject oldItem = null;
+//						for (int i=0; i < items.Count; i++)
+//						{
+//							Item invItem = items[i];
+//							if (invItem == thisItem)
+//							{
+//								items.RemoveAt(i);
+//								oldItem = invItem.gameObject;
+//								card.Deactivate();
+//								card.m_itemData = null;
+//								
+//								if (UIManager.m_uiManager.invHoveredCard != null)
+//								{
+//									UIManager.m_uiManager.ClearInvSelection();	
+//								}
+//								i=99;
+//							}
+//						}
+//						if (oldItem != null)
+//						{
+//							Destroy(oldItem);
+//						}
+//						
+//						UIManager.m_uiManager.RefreshInventoryMenu();
+//						
+//					} 
 //					else if (hitInfo.transform.gameObject.tag == "InvCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.Shop)
 //					{
 //						// destroy item and increase gold
@@ -1334,17 +1356,17 @@ public class InputManager : MonoBehaviour {
 //						SettingsManager.m_settingsManager.gold += 2;
 //						UIManager.m_uiManager.UpdateGoldUI();
 //					}
-					else if (hitInfo.transform.gameObject.tag == "FollowerCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.Inventory)
-					{
-						
-						//delete touched follower
-						UICard followerCard = (UICard)hitInfo.transform.GetComponent("UICard");	
-						
-						if (followerCard.m_followerData != null)
-						{
-							PartyCards.m_partyCards.RemoveFollower(followerCard.m_followerData);
-						}
-						
+//					else if (hitInfo.transform.gameObject.tag == "FollowerCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.Inventory)
+//					{
+//						
+//						//delete touched follower
+//						UICard followerCard = (UICard)hitInfo.transform.GetComponent("UICard");	
+//						
+//						if (followerCard.m_followerData != null)
+//						{
+//							PartyCards.m_partyCards.RemoveFollower(followerCard.m_followerData);
+//						}
+//						
 						
 						
 						
@@ -1376,7 +1398,7 @@ public class InputManager : MonoBehaviour {
 //						
 //						//refresh follower cards
 //						UIManager.m_uiManager.SetFollowers(GameManager.m_gameManager.followers);
-					} 
+//					} 
 //					else if (hitInfo.transform.gameObject.tag == "EquipCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.Inventory && GameManager.m_gameManager.inventory.Count < 10)
 //					{
 //						//return equipped item to inventory					
@@ -1430,60 +1452,60 @@ public class InputManager : MonoBehaviour {
 //							}
 //						}
 //					} 
-					else if (hitInfo.transform.gameObject.tag == "FollowerCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.CharSelect)
-					{
-						UICard thisCard = (UICard)hitInfo.transform.GetComponent("UICard");
-						if (thisCard.m_nameUI.text != "Name")
-						{
-							thisCard.Deactivate();	
-							List<Follower> pFollowers = new List<Follower>();
-							//resort cards
-							foreach (UICard pCard in UIManager.m_uiManager.m_charSelectSlots)
-							{
-								if (pCard.m_nameUI.text != "Name")
-								{
-									pFollowers.Add(pCard.m_followerData);
-									pCard.Deactivate();
-								}
-							}
-							
-							foreach (GameObject cardGO in UIManager.m_uiManager.cardList)
-							{
-								UICard listCard = (UICard)cardGO.GetComponent("UICard");
-								if (listCard.m_followerData != null)
-								{
-									if (listCard.m_portrait.spriteName == "Card_Back03" && listCard.m_followerData.m_followerType == thisCard.m_followerData.m_followerType)
-									{
-										listCard.m_portrait.spriteName = listCard.m_followerData.m_portraitSpriteName;
-										listCard.m_nameUI.text = listCard.m_followerData.m_nameText;
-										listCard.m_nameUI.gameObject.SetActive(true);
-										listCard.m_abilityUI.text = listCard.m_followerData.m_abilityText;
-										listCard.m_abilityUI.gameObject.SetActive(true);
-										break;
-									}
-								}
-							}
-							
-							if (pFollowers.Count > 0)
-							{
-								for (int i=0; i < pFollowers.Count; i++)
-								{
-									Follower thisF = (Follower)pFollowers[i];
-									UICard fSlot = (UICard)UIManager.m_uiManager.m_charSelectSlots[i];
-									
-									fSlot.m_nameUI.gameObject.SetActive(true);
-									fSlot.m_nameUI.text = thisF.m_nameText;
-									fSlot.m_abilityUI.gameObject.SetActive(true);
-									fSlot.m_abilityUI.text = thisF.m_abilityText;
-									fSlot.m_portrait.spriteName = thisF.m_portraitSpriteName;
-									fSlot.m_followerData = thisF;
-								}
-								pFollowers.Clear();
-							}
-						}
-					}
-				}
-			}
+//					else if (hitInfo.transform.gameObject.tag == "FollowerCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.CharSelect)
+//					{
+//						UICard thisCard = (UICard)hitInfo.transform.GetComponent("UICard");
+//						if (thisCard.m_nameUI.text != "Name")
+//						{
+//							thisCard.Deactivate();	
+//							List<Follower> pFollowers = new List<Follower>();
+//							//resort cards
+//							foreach (UICard pCard in UIManager.m_uiManager.m_charSelectSlots)
+//							{
+//								if (pCard.m_nameUI.text != "Name")
+//								{
+//									pFollowers.Add(pCard.m_followerData);
+//									pCard.Deactivate();
+//								}
+//							}
+//							
+//							foreach (GameObject cardGO in UIManager.m_uiManager.cardList)
+//							{
+//								UICard listCard = (UICard)cardGO.GetComponent("UICard");
+//								if (listCard.m_followerData != null)
+//								{
+//									if (listCard.m_portrait.spriteName == "Card_Back03" && listCard.m_followerData.m_followerType == thisCard.m_followerData.m_followerType)
+//									{
+//										listCard.m_portrait.spriteName = listCard.m_followerData.m_portraitSpriteName;
+//										listCard.m_nameUI.text = listCard.m_followerData.m_nameText;
+//										listCard.m_nameUI.gameObject.SetActive(true);
+//										listCard.m_abilityUI.text = listCard.m_followerData.m_abilityText;
+//										listCard.m_abilityUI.gameObject.SetActive(true);
+//										break;
+//									}
+//								}
+//							}
+//							
+//							if (pFollowers.Count > 0)
+//							{
+//								for (int i=0; i < pFollowers.Count; i++)
+//								{
+//									Follower thisF = (Follower)pFollowers[i];
+//									UICard fSlot = (UICard)UIManager.m_uiManager.m_charSelectSlots[i];
+//									
+//									fSlot.m_nameUI.gameObject.SetActive(true);
+//									fSlot.m_nameUI.text = thisF.m_nameText;
+//									fSlot.m_abilityUI.gameObject.SetActive(true);
+//									fSlot.m_abilityUI.text = thisF.m_abilityText;
+//									fSlot.m_portrait.spriteName = thisF.m_portraitSpriteName;
+//									fSlot.m_followerData = thisF;
+//								}
+//								pFollowers.Clear();
+//							}
+//						}
+//					}
+//				}
+//			}
 			
 			
 			

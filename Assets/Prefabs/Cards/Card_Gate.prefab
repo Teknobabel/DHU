@@ -229,8 +229,8 @@ MonoBehaviour:
   m_highlightMesh: {fileID: 0}
   m_flipTrapMesh: {fileID: 0}
   m_fx01: {fileID: 0}
-  m_displayName: Gate
-  m_abilityText: A Key is required
+  m_displayName: Lock
+  m_abilityText: Find a Key to unlock.
   m_portraitSpriteName: Card_Portrait_Item02
   m_spawn: {fileID: 0}
   m_actorBase: {fileID: 0}

@@ -278,6 +278,9 @@ public class Card : MonoBehaviour {
 						Card linkedCard = m_linkedCards[i];
 						if (linkedCard.player != null)
 						{
+							string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + Player.m_player.currentCard.m_displayName;
+							UIManager.m_uiManager.UpdateActions (newString);
+
 							FollowCamera.m_followCamera.SetTarget(linkedCard.gameObject);
 							yield return new WaitForSeconds(0.5f);	
 							UIManager.m_uiManager.SpawnAbilityName("Magma Mine", linkedCard.player.m_playerMesh.transform);
@@ -286,18 +289,21 @@ public class Card : MonoBehaviour {
 							yield return new WaitForSeconds(0.25f);	
 						} else if (linkedCard.enemy != null)
 						{
+							string newString = "\\4" + m_enemy.m_displayName + "\\0 is affected by \\9" + m_enemy.currentCard.m_displayName;
+							UIManager.m_uiManager.UpdateActions (newString);
+
 							UIManager.m_uiManager.SpawnAbilityName("Magma Mine", linkedCard.enemy.transform);
 							yield return new WaitForSeconds(0.5f);
 							yield return StartCoroutine(linkedCard.enemy.TakeDamage(3));	
 							yield return new WaitForSeconds(0.25f);	
 						} else if (linkedCard.follower != null)
 						{
-							UIManager.m_uiManager.SpawnAbilityName("Magma Mine", linkedCard.follower.transform);
-							yield return new WaitForSeconds(0.5f);
-							Follower thisF = (Follower)linkedCard.follower.GetComponent("Follower");
-							thisF.TakeDamage(3);
-							UIManager.m_uiManager.SpawnDamageNumber(5, thisF.transform);
-							yield return new WaitForSeconds(0.25f);	
+//							UIManager.m_uiManager.SpawnAbilityName("Magma Mine", linkedCard.follower.transform);
+//							yield return new WaitForSeconds(0.5f);
+//							Follower thisF = (Follower)linkedCard.follower.GetComponent("Follower");
+//							thisF.TakeDamage(3);
+//							UIManager.m_uiManager.SpawnDamageNumber(5, thisF.transform);
+//							yield return new WaitForSeconds(0.25f);	
 						}
 					}
 				}
@@ -307,6 +313,9 @@ public class Card : MonoBehaviour {
 		{
 			if (m_player != null)
 			{
+				string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + Player.m_player.currentCard.m_displayName;
+				UIManager.m_uiManager.UpdateActions (newString);
+
 				FollowCamera.m_followCamera.SetTarget(this.gameObject);
 				yield return new WaitForSeconds(0.5f);
 				UIManager.m_uiManager.SpawnAbilityName("Magma", m_player.m_playerMesh.transform);
@@ -315,18 +324,21 @@ public class Card : MonoBehaviour {
 				yield return new WaitForSeconds(0.25f);		
 			} else if (m_enemy != null)
 			{
+				string newString = "\\4" + m_enemy.m_displayName + "\\0 is affected by \\9" + m_enemy.currentCard.m_displayName;
+				UIManager.m_uiManager.UpdateActions (newString);
+
 				UIManager.m_uiManager.SpawnAbilityName("Magma", m_enemy.transform);
 				yield return new WaitForSeconds(0.5f);
 				yield return StartCoroutine(m_enemy.TakeDamage(3));	
 				yield return new WaitForSeconds(0.25f);		
 			} else if (m_follower != null)
 			{
-				Follower thisF = (Follower)m_follower.GetComponent("Follower");
-				UIManager.m_uiManager.SpawnAbilityName("Magma", m_follower.transform);
-				yield return new WaitForSeconds(0.5f);
-				thisF.TakeDamage(3);
-				UIManager.m_uiManager.SpawnDamageNumber(3, thisF.transform);
-				yield return new WaitForSeconds(0.25f);	
+//				Follower thisF = (Follower)m_follower.GetComponent("Follower");
+//				UIManager.m_uiManager.SpawnAbilityName("Magma", m_follower.transform);
+//				yield return new WaitForSeconds(0.5f);
+//				thisF.TakeDamage(3);
+//				UIManager.m_uiManager.SpawnDamageNumber(3, thisF.transform);
+//				yield return new WaitForSeconds(0.25f);	
 			}
 		}
 		else if (m_type == CardType.Spikes && m_isOccupied && m_chest == null)
@@ -357,6 +369,9 @@ public class Card : MonoBehaviour {
 			{
 				if (m_player != null)
 				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + Player.m_player.currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					FollowCamera.m_followCamera.SetTarget(this.gameObject);
 					yield return new WaitForSeconds(0.5f);
 					UIManager.m_uiManager.SpawnAbilityName("Spikes", m_player.m_playerMesh.transform);
@@ -365,18 +380,21 @@ public class Card : MonoBehaviour {
 					yield return new WaitForSeconds(0.25f);		
 				} else if (m_enemy != null)
 				{
+					string newString = "\\4" + m_enemy.m_displayName + "\\0 is affected by \\9" + m_enemy.currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					UIManager.m_uiManager.SpawnAbilityName("Spikes", m_enemy.transform);
-				yield return new WaitForSeconds(0.5f);
+					yield return new WaitForSeconds(0.5f);
 					yield return StartCoroutine(m_enemy.TakeDamage(damage));	
 					yield return new WaitForSeconds(0.25f);		
 				} else if (m_follower != null)
 				{
-					UIManager.m_uiManager.SpawnAbilityName("Spikes", m_follower.transform);
-					yield return new WaitForSeconds(0.5f);
-					Follower thisF = (Follower)m_follower.GetComponent("Follower");
-					thisF.TakeDamage(damage);
-					UIManager.m_uiManager.SpawnDamageNumber(1, thisF.transform);
-					yield return new WaitForSeconds(0.25f);	
+//					UIManager.m_uiManager.SpawnAbilityName("Spikes", m_follower.transform);
+//					yield return new WaitForSeconds(0.5f);
+//					Follower thisF = (Follower)m_follower.GetComponent("Follower");
+//					thisF.TakeDamage(damage);
+//					UIManager.m_uiManager.SpawnDamageNumber(1, thisF.transform);
+//					yield return new WaitForSeconds(0.25f);	
 				}
 			}
 		}
@@ -400,18 +418,21 @@ public class Card : MonoBehaviour {
 							yield return new WaitForSeconds(0.25f);	
 						} else if (linkedCard.m_enemy != null)
 						{
+							string newString = "\\4" + m_enemy.m_displayName + "\\0 is affected by \\9" + m_enemy.currentCard.m_displayName;
+							UIManager.m_uiManager.UpdateActions (newString);
+
 							UIManager.m_uiManager.SpawnAbilityName("Spore", linkedCard.m_enemy.transform);
 							yield return new WaitForSeconds(0.5f);
 							yield return StartCoroutine (linkedCard.enemy.TakeDirectDamage(1));	
 							yield return new WaitForSeconds(0.25f);	
 						} else if (linkedCard.m_follower != null)
 						{
-							Follower thisF = (Follower)linkedCard.follower.GetComponent("Follower");
-							UIManager.m_uiManager.SpawnAbilityName("Spore", linkedCard.m_follower.transform);
-							yield return new WaitForSeconds(0.5f);
-							thisF.TakeDamage(1);
-							UIManager.m_uiManager.SpawnDamageNumber(1, thisF.transform);
-							yield return new WaitForSeconds(0.25f);	
+//							Follower thisF = (Follower)linkedCard.follower.GetComponent("Follower");
+//							UIManager.m_uiManager.SpawnAbilityName("Spore", linkedCard.m_follower.transform);
+//							yield return new WaitForSeconds(0.5f);
+//							thisF.TakeDamage(1);
+//							UIManager.m_uiManager.SpawnDamageNumber(1, thisF.transform);
+//							yield return new WaitForSeconds(0.25f);	
 						}
 					}
 				}
@@ -424,6 +445,9 @@ public class Card : MonoBehaviour {
 			yield return new WaitForSeconds(0.5f);	
 			if (m_player != null)
 			{
+				string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + Player.m_player.currentCard.m_displayName;
+				UIManager.m_uiManager.UpdateActions (newString);
+
 				FollowCamera.m_followCamera.SetTarget(this.gameObject);
 				yield return new WaitForSeconds(0.5f);
 				UIManager.m_uiManager.SpawnAbilityName("Razorvine", m_player.m_playerMesh.transform);
@@ -432,6 +456,9 @@ public class Card : MonoBehaviour {
 				yield return new WaitForSeconds(0.5f);
 			} else if (m_enemy != null)
 			{
+				string newString = "\\4" + m_enemy.m_displayName + "\\0 is affected by \\9" + m_enemy.currentCard.m_displayName;
+				UIManager.m_uiManager.UpdateActions (newString);
+
 				Debug.Log("DAMAGING ENEMY");
 				UIManager.m_uiManager.SpawnAbilityName("Razorvine", m_enemy.transform);
 				yield return new WaitForSeconds(0.5f);
@@ -447,6 +474,9 @@ public class Card : MonoBehaviour {
 			
 		} else if (m_type == CardType.Quicksand && m_player != null)
 		{
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + Player.m_player.currentCard.m_displayName;
+			UIManager.m_uiManager.UpdateActions (newString);
+
 			FollowCamera.m_followCamera.SetTarget(this.gameObject);
 			yield return new WaitForSeconds(0.5f);
 			UIManager.m_uiManager.SpawnAbilityName("Web", m_player.m_playerMesh.transform);

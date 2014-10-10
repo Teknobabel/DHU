@@ -41,6 +41,9 @@ public class AssetManager : MonoBehaviour {
 	public TypogenicText[]
 		m_typogenicText,
 		m_oldActions;
+
+	public Card[]
+		m_uniqueCards;
 	
 	public static AssetManager
 		m_assetManager;

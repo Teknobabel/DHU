@@ -72,7 +72,8 @@ public class Item : MonoBehaviour {
 //		m_levelsSkipped = 0,
 //		m_stunDuration = 0;
 //	
-//	public bool
+	public bool
+		m_canDiscard = true;	
 //		m_refreshParty = false,
 //		m_rangedAttack = false,
 //		m_curePoison = false,

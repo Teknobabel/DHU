@@ -70,15 +70,6 @@ public class Chest : MonoBehaviour {
 		{
 			m_lootValue = lootValue;
 			m_level = lootValue;
-			
-//			float rand = Random.Range(0, 1.0f);
-//			if (rand > 0.5f)
-//			{
-//				m_treasure = TreasureType.Health;
-//			} else
-//			{
-//				m_treasure = TreasureType.Energy;
-//			}
 		}
 		
 		BoxCollider bc = (BoxCollider) transform.GetComponent("BoxCollider");
@@ -115,59 +106,9 @@ public class Chest : MonoBehaviour {
 		m_lootValue = lootValue;
 		m_bossChest = true;
 	}
-		
-	
-//	public void ActivateChest02 ()
-//	{
-//		if (m_lootValue >= GameManager.m_gameManager.m_lootTable.Length)
-//		{
-//			m_lootValue = GameManager.m_gameManager.m_lootTable.Length-1;
-//		}
-//			
-//		GameObject[] table = GameManager.m_gameManager.m_lootTable[m_lootValue].m_lootTable;
-//		GameObject randItem = table[Random.Range(0, table.Length)];
-//	}
-	
+
 	public IEnumerator ActivateChest ()
 	{
-
-//		if (m_treasure == TreasureType.Key)
-//		{
-//			int numKeys = Player.m_player.numKeys;
-//			numKeys = Mathf.Clamp(numKeys+1, 0, 3);
-//			Player.m_player.numKeys = numKeys;
-//			//UIManager.m_uiManager.UpdateKey(true);
-//			
-//			GameObject randItem = (GameObject)Instantiate(GameManager.m_gameManager.m_key, Vector3.zero, Quaternion.identity);
-//			Item thisItem = (Item)randItem.GetComponent("Item");
-//			GameObject fCard = (GameObject)Instantiate(UIManager.m_uiManager.m_itemCard, UIManager.m_uiManager.m_itemCard.transform.position, UIManager.m_uiManager.m_itemCard.transform.rotation);	
-//			UICard cardUI = (UICard)fCard.GetComponent("UICard");
-//			fCard.name = thisItem.m_name;
-//			cardUI.m_nameUI.text = thisItem.m_name;
-//			cardUI.m_abilityUI.text = thisItem.m_description;
-//			cardUI.m_portrait.spriteName = thisItem.m_portraitSpriteName;
-//			cardUI.itemData = thisItem;
-//			
-//			Transform cardParent = UIManager.m_uiManager.m_chestUI.transform.Find("InventoryPanel");
-//			cardUI.transform.parent = cardParent;
-//			cardUI.transform.localPosition = Vector3.zero;
-//			
-//			UIGrid grid = (UIGrid) UIManager.m_uiManager.m_chestUI.transform.Find("InventoryPanel").GetComponent("UIGrid");
-//			grid.Reposition();
-//			
-//			yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.Chest));
-//			
-//			if (cardUI.m_itemData == null)
-//			{
-//				m_itemTaken = true;	
-//			} else {
-//				m_savedItem = thisItem;	
-//			}
-//			
-//			Destroy(fCard.gameObject);
-//
-//		} else 
-
 		if (m_treasure == TreasureType.Enemy) 
 		{
 			m_itemTaken = true;
@@ -225,31 +166,6 @@ public class Chest : MonoBehaviour {
 //				Item thisItem = (Item)randItem.GetComponent("Item");
 
 				Item thisItem = null;
-//				if (Random.Range(0.0f, 1.0f) >= 0.0f)
-//				{
-//					//spawn limbo card
-//					if (GameManager.m_gameManager.currentMap.m_difficulty < 10)
-//					{
-//						GameObject go = (GameObject)GameManager.m_gameManager.m_itemBank[0];
-//						GameObject item = (GameObject)Instantiate(go, Vector3.zero, Quaternion.identity);
-//						thisItem = (Item) item.GetComponent("Item");
-//					} else if (GameManager.m_gameManager.currentMap.m_difficulty < 20)
-//					{
-//						GameObject go = (GameObject)GameManager.m_gameManager.m_itemBank[1];
-//						GameObject item = (GameObject)Instantiate(go, Vector3.zero, Quaternion.identity);
-//						thisItem = (Item) item.GetComponent("Item");
-//					} else if (GameManager.m_gameManager.currentMap.m_difficulty < 30)
-//					{
-//						GameObject go = (GameObject)GameManager.m_gameManager.m_itemBank[2];
-//						GameObject item = (GameObject)Instantiate(go, Vector3.zero, Quaternion.identity);
-//						thisItem = (Item) item.GetComponent("Item");
-//					} else
-//					{
-//						GameObject go = (GameObject)GameManager.m_gameManager.m_itemBank[3];
-//						GameObject item = (GameObject)Instantiate(go, Vector3.zero, Quaternion.identity);
-//						thisItem = (Item) item.GetComponent("Item");	
-//					}
-//				}
 
 				if (m_treasure == TreasureType.Key)
 				{
@@ -259,6 +175,10 @@ public class Chest : MonoBehaviour {
 				} else {
 					thisItem = (Item)GameManager.m_gameManager.GetItemFromChest();
 				}
+
+				
+				string newString = "\\8" + thisItem.m_name + "\\0 added to \\1" + GameManager.m_gameManager.currentFollower.m_nameText + " \\0's Hand";
+				UIManager.m_uiManager.UpdateActions (newString);
 
 				GameObject fCard = (GameObject)Instantiate(UIManager.m_uiManager.m_itemCard, UIManager.m_uiManager.m_itemCard.transform.position, UIManager.m_uiManager.m_itemCard.transform.rotation);	
 				UICard cardUI = (UICard)fCard.GetComponent("UICard");
@@ -283,7 +203,6 @@ public class Chest : MonoBehaviour {
 				while (t < time)
 				{
 					t += Time.deltaTime;
-					//Vector3 newPos = Vector3.Lerp(startPos, UIManager.m_uiManager.m_backpackButton.transform.position, t / time);
 					Vector3 newPos = Vector3.Lerp(startPos, AssetManager.m_assetManager.m_props[7].transform.position , t / time);
 					Vector3 newScale = Vector3.Lerp(startScale, Vector3.one * 0.25f, t / time);
 					cardUI.transform.position = newPos;

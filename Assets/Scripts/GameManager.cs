@@ -62,7 +62,8 @@ public class GameManager : MonoBehaviour {
 		m_unlockHeroes = false,
 		m_doCustomParty = false,
 		m_doStartItems = false,
-		m_doTrial = false;
+		m_doTrial = false,
+		m_quickStart = false;
 
 	public int 
 		m_startLevel = 0;
@@ -82,7 +83,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject[]
 		m_followerBank,
 		m_itemBank,
-		m_chestBank;
+		m_chestBank,
+		m_heroCardsStart,
+		m_heroCardsEnd;
 	
 	public GameObject
 		m_camera,
@@ -235,8 +238,9 @@ public class GameManager : MonoBehaviour {
 			EffectsPanel.m_effectsPanel.SetAnchor(1);
 		}
 
-
-		AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (true);
+		if (!m_quickStart) {
+			AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (true);
+		}
 		m_gameState = SettingsManager.m_settingsManager.gameState;
 		
 		if (m_deleteSave)
@@ -546,24 +550,7 @@ public class GameManager : MonoBehaviour {
 		
 		DHeart.m_dHeart.SetLevel(SettingsManager.m_settingsManager.difficultyLevel);
 
-//		UIManager.m_uiManager.SpawnInventoryCards(AssetManager.m_assetManager.m_props[6].transform, true, 200);
-//		AssetManager.m_assetManager.m_labels[1].text = SettingsManager.m_settingsManager.gold.ToString();
-//		PartyCards.m_partyCards.Initialize ();
-		
-//		if (m_camera != null)
-//		{
-//			DepthOfFieldScatter DOF = (DepthOfFieldScatter) m_camera.GetComponent("DepthOfFieldScatter");	
-//			DOF.focalTransform = Player.m_player.gameObject.transform;
-//		}
-		
-//		StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.CharSelect));
 		FollowCamera.m_followCamera.SetTarget(Player.m_player.m_cameraTarget);
-		
-		//Don't start until card drop animation is done
-		//yield return new WaitForSeconds(2);
-
-
-		//GUIFollow.m_guiFollow.SetTarget (Player.m_player.gameObject);
 
 		// Initialize Grave
 		for (int i=0; i <4; i++)
@@ -574,47 +561,89 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// play chapter name fly in
-		AssetManager.m_assetManager.m_props [25].gameObject.SetActive (true);
-		AssetManager.m_assetManager.m_props [25].animation.Play ();
-		yield return new WaitForSeconds(3.0f);
-		AssetManager.m_assetManager.m_props [25].gameObject.SetActive (false);
+		if (!m_quickStart) {
+			AssetManager.m_assetManager.m_props [25].gameObject.SetActive (true);
 
-		FollowCamera.m_followCamera.ChangeZoomDistance (1.0f);
+			float time = 0.0f;
+			while (time < 2.0f) {
+				time += Time.deltaTime;
+				float a = Mathf.Lerp (0.0f, 1.0f, time / 2.0f);
+				Color c = AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft;
+				c.a = a;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorBottomLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorTopRight = c;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorBottomRight = c;
+			
+				AssetManager.m_assetManager.m_typogenicText [11].ColorTopLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [11].ColorBottomLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [11].ColorTopRight = c;
+				AssetManager.m_assetManager.m_typogenicText [11].ColorBottomRight = c;
 
-		yield return new WaitForSeconds(0.5f);
-		float time = 0.0f;
-		while (time < 1.5f)
-		{
-			time += Time.deltaTime;
-			float a = Mathf.Lerp(1.0f, 0.0f, time / 1.0f);
-			Color c = AssetManager.m_assetManager.m_uiSprites[0].color;
-			c.a = a;
-			AssetManager.m_assetManager.m_uiSprites[0].color = c;
-			yield return null;
-		}
-		AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (false);
-		AssetManager.m_assetManager.m_uiSprites[0].color = Color.white;
+				c = AssetManager.m_assetManager.m_props [33].renderer.material.color;
+				c.a = a;
+				AssetManager.m_assetManager.m_props [33].renderer.material.color = c;
+			
+				yield return null;
+			}
+			yield return new WaitForSeconds (3.0f);
+
+			time = 0.0f;
+			while (time < 2.0f) {
+				time += Time.deltaTime;
+				float a = Mathf.Lerp (1.0f, 0.0f, time / 2.0f);
+				Color c = AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft;
+				c.a = a;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorTopLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorBottomLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorTopRight = c;
+				AssetManager.m_assetManager.m_typogenicText [10].ColorBottomRight = c;
+
+				AssetManager.m_assetManager.m_typogenicText [11].ColorTopLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [11].ColorBottomLeft = c;
+				AssetManager.m_assetManager.m_typogenicText [11].ColorTopRight = c;
+				AssetManager.m_assetManager.m_typogenicText [11].ColorBottomRight = c;
+
+				c = AssetManager.m_assetManager.m_props [33].renderer.material.color;
+				c.a = a;
+				AssetManager.m_assetManager.m_props [33].renderer.material.color = c;
+
+				yield return null;
+			}
+
+			AssetManager.m_assetManager.m_props [25].gameObject.SetActive (false);
 
 
-//		AssetManager.m_assetManager.m_uiSprites [0].transform.localPosition = Vector3.one * 100000;
-//		AssetManager.m_assetManager.m_uiSprites [0].color = Color.white;
+			FollowCamera.m_followCamera.ChangeZoomDistance (1.0f);
 
-		yield return new WaitForSeconds(0.25f);
-//		while (FollowCamera.m_followCamera.zoomDist > 0.5f)
-//		{
-//			FollowCamera.m_followCamera.ChangeZoomDistance(-Time.deltaTime * 0.35f);
-//			yield return null;
-//		}
+			SpawnHeroCards (m_followers);
 
-		time = 0.0f;
-		while (time < 2.0f)
-		{
-			time += Time.deltaTime;
+			yield return new WaitForSeconds (0.5f);
+			time = 0.0f;
+			while (time < 1.5f) {
+				time += Time.deltaTime;
+				float a = Mathf.Lerp (1.0f, 0.0f, time / 1.0f);
+				Color c = AssetManager.m_assetManager.m_uiSprites [0].color;
+				c.a = a;
+				AssetManager.m_assetManager.m_uiSprites [0].color = c;
+				yield return null;
+			}
+			AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (false);
+			AssetManager.m_assetManager.m_uiSprites [0].color = Color.white;
 
-			float change = Mathf.SmoothStep(1.0f, 0.5f, time / 2.0f);
-			//Debug.Log(change);
-			FollowCamera.m_followCamera.SetZoomDistance(change);
-			yield return null;
+			yield return new WaitForSeconds (0.25f);
+
+			time = 0.0f;
+			while (time < 2.0f) {
+				time += Time.deltaTime;
+
+				float change = Mathf.SmoothStep (1.0f, 0.5f, time / 2.0f);
+				//Debug.Log(change);
+				FollowCamera.m_followCamera.SetZoomDistance (change);
+				yield return null;
+			}
+
+			yield return StartCoroutine (ShuffleCards ());
 		}
 
 		if (m_doStartItems)
@@ -625,11 +654,7 @@ public class GameManager : MonoBehaviour {
 				m_inventory.Add(itemRef);
 			}
 		} else {
-			//			for (int i=0; i < maxBP; i++)
-			//			{
 			yield return StartCoroutine(FillHand());		
-			//			}
-			//UIManager.m_uiManager.RefreshInventoryMenu();
 		}
 
 		yield return new WaitForSeconds(0.5f);
@@ -701,6 +726,90 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	private List<GameObject> heroCards = new List<GameObject>();
+	public void SpawnHeroCards (List<Follower> party)
+	{
+		for (int i=0; i < party.Count; i++)
+		{
+			Follower f = party[i];
+			Follower.Deck[] d = f.m_deck;
+			int numCards = 0;
+
+			//determine number of card backs needed
+			for (int j=0; j < d.Length; j++)
+			{
+				if (j < f.currentLevel && j < d.Length)
+				{
+					if (d[j].m_levelCards.Length > 0)
+					{
+						foreach (GameObject g in d[j].m_levelCards)
+						{
+							numCards ++;
+						}
+					}
+				}
+			}
+
+			//spawn card backs
+			Vector3 startPos = m_heroCardsStart[i].transform.position;
+			Vector3 endPos = m_heroCardsEnd[i].transform.position;
+			int numC = Mathf.Clamp( numCards-1, 1, 99);
+			for (int j=0; j < numCards; j++)
+			{
+				Vector3 cardPos = Vector3.Lerp(startPos, endPos, ((float)j) / ((float)numC));
+				Vector3 cardRot = new Vector3(0,0,20);
+				GameObject fCard = (GameObject)Instantiate(UIManager.m_uiManager.m_cardSmall, cardPos, UIManager.m_uiManager.m_cardSmall.transform.rotation);
+				fCard.transform.parent = UIManager.m_uiManager.m_craftingUI.transform;
+				heroCards.Add(fCard);
+				UICard cardUI = (UICard)fCard.GetComponent("UICard");
+				cardUI.m_portrait.spriteName = "Card_Back03";
+				fCard.transform.localScale = UIManager.m_uiManager.miniScale;
+			}
+
+		}
+	}
+
+	public IEnumerator ShuffleCards ()
+	{
+		yield return new WaitForSeconds(1.0f);
+//		foreach (List<GameObject> l in heroCards) {
+		foreach (GameObject go in heroCards)
+		{
+			StartCoroutine(MoveCardToGrave(go));
+			yield return new WaitForSeconds(0.07f);
+		}
+//		}
+
+		yield return new WaitForSeconds(1.0f);
+
+		yield return null;
+	}
+
+	private IEnumerator MoveCardToGrave (GameObject go)
+	{
+		float t = 0;
+		float time = 0.5f;
+		Vector3 startPos = go.transform.position;
+		Vector3 endPos = AssetManager.m_assetManager.m_props [34].transform.position;
+		Vector3 startScale = go.transform.localScale;
+		Vector3 endScale = startScale * 1.2f;
+		
+		while (t < time)
+		{
+			t += Time.deltaTime;;
+			Vector3 nPos = Vector3.Lerp(startPos, endPos , t / time);
+			Vector3 newScale = Vector3.Lerp(startScale, endScale, t / time);
+			go.transform.position = nPos;
+			go.transform.localScale = newScale;
+			yield return null;
+			
+		}
+
+		Destroy (go);
+	}
+
+
+
 	public IEnumerator FillHand ()
 	{
 		Debug.Log ("Fill Hand");
@@ -713,7 +822,7 @@ public class GameManager : MonoBehaviour {
 			inventory.Add(item);
 
 			// animate face down card moving to deck
-			Vector3 cardStartPos = AssetManager.m_assetManager.m_typogenicText[1].transform.position;
+			Vector3 cardStartPos = AssetManager.m_assetManager.m_props [34].transform.position;
 			GameObject fCard = (GameObject)Instantiate(UIManager.m_uiManager.m_cardSmall, cardStartPos, UIManager.m_uiManager.m_cardSmall.transform.rotation);
 			UICard card = (UICard)fCard.GetComponent("UICard");
 			card.m_portrait.spriteName = "Card_Back03";
@@ -1930,6 +2039,59 @@ public class GameManager : MonoBehaviour {
 			}
 			gs = null;
 		}
+	}
+
+	public IEnumerator UnlockGate ()
+	{
+		// find key and center it
+		Item thisItem = null;
+		List<Item> inventory = m_inventory;
+		for (int i=0; i< inventory.Count; i++)
+		{
+			thisItem = (Item)inventory[i];
+			if (thisItem.HasKeyword(Item.Keyword.Key))
+			{
+				string newString = "\\1" + m_currentFollower.m_nameText + "\\0 uses \\8" + thisItem.m_name + " \\0on \\9" + Player.m_player.currentCard.m_displayName.ToString();
+				UIManager.m_uiManager.UpdateActions (newString);
+				
+				yield return StartCoroutine (thisItem.CenterCard ());
+				yield return new WaitForSeconds(0.5f);	
+				//yield return StartCoroutine (thisItem.SendToGrave ());
+				i = 99;
+			}
+		}
+		
+		//turn gate into exit
+		Player.m_player.numKeys --;
+		Card c = Player.m_player.currentCard;
+		StartCoroutine( c.ChangeCardType(AssetManager.m_assetManager.m_uniqueCards[0]));
+		c.type = Card.CardType.Exit;
+		c.SetColor(Color.yellow);
+		c.m_highlightMesh.material.color = Color.yellow;
+
+		string newString2 = "The Exit appears";
+		UIManager.m_uiManager.UpdateActions (newString2);
+		
+		// remove key item and card
+		
+		for (int i=0; i < m_inventory.Count; i++)
+		{
+			Item inv = (Item)m_inventory[i];
+			if (inv == thisItem)
+			{
+				m_inventory.RemoveAt(i);
+				i=99;
+			}
+		}
+		
+		Destroy(thisItem);
+		UIManager.m_uiManager.RefreshInventoryMenu();
+		
+		//update action button
+		AssetManager.m_assetManager.m_typogenicText[15].Text = "EXIT";
+		StartCoroutine( UIManager.m_uiManager.DisplayTargetCard(Player.m_player.currentCard, UIManager.m_uiManager.m_followerCards[5]));
+
+		yield return null;
 	}
 
 	private void LoadBadges ()

@@ -301,60 +301,50 @@ public class MainMenu : MonoBehaviour {
 		if (Input.GetMouseButtonUp (0)) {
 
 			// check for chapter click
-			Ray cardTouchRay = m_uiCamera.ScreenPointToRay(Input.mousePosition);
+			Ray cardTouchRay = m_uiCamera.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(cardTouchRay, out hit))
-			{
-				if (hit.transform.gameObject.tag == "Chapter1" && m_menuMode == UIManager.MenuMode.ChapterSelect)
-				{
+			if (Physics.Raycast (cardTouchRay, out hit)) {
+				if (hit.transform.gameObject.tag == "Chapter1" && m_menuMode == UIManager.MenuMode.ChapterSelect) {
 					SettingsManager.m_settingsManager.startChapter = 1;
-					if (SettingsManager.m_settingsManager.demo)
-					{
-						Application.LoadLevel("GameScene01");
+					if (SettingsManager.m_settingsManager.demo) {
+						Application.LoadLevel ("GameScene01");
 					} else {
-						Application.LoadLevel("PartySelect01");
+						Application.LoadLevel ("PartySelect01");
 					}
-				} else if (hit.transform.gameObject.tag == "Chapter2" && m_menuMode == UIManager.MenuMode.ChapterSelect)
-				{
-					SettingsManager.m_settingsManager.startChapter = 2;
-					if (SettingsManager.m_settingsManager.demo)
-					{
-						Application.LoadLevel("GameScene01");
-					} else {
-						Application.LoadLevel("PartySelect01");
-					}
-				}else if (hit.transform.gameObject.tag == "Chapter3" && m_menuMode == UIManager.MenuMode.ChapterSelect)
-				{
-					SettingsManager.m_settingsManager.startChapter = 3;
-					if (SettingsManager.m_settingsManager.demo)
-					{
-						Application.LoadLevel("GameScene01");
-					} else {
-						Application.LoadLevel("PartySelect01");
-					}
-				}else if (hit.transform.gameObject.tag == "Chapter4" && m_menuMode == UIManager.MenuMode.ChapterSelect)
-				{
-					SettingsManager.m_settingsManager.startChapter = 4;
-					if (SettingsManager.m_settingsManager.demo)
-					{
-						Application.LoadLevel("GameScene01");
-					} else {
-						Application.LoadLevel("PartySelect01");
-					}
-				}else if (hit.transform.gameObject.tag == "Chapter5" && m_menuMode == UIManager.MenuMode.ChapterSelect)
-				{
-					SettingsManager.m_settingsManager.startChapter = 5;
-					if (SettingsManager.m_settingsManager.demo)
-					{
-						Application.LoadLevel("GameScene01");
-					} else {
-						Application.LoadLevel("PartySelect01");
-					}
-				} else if (hit.transform.gameObject.tag == "BackButton" && (m_menuMode == UIManager.MenuMode.BadgeStore || m_menuMode == UIManager.MenuMode.ChapterSelect))
-				{
-					ChangeMenu(UIManager.MenuMode.MainMenu);
-				}
+				} else if (hit.transform.gameObject.tag == "Chapter2" && m_menuMode == UIManager.MenuMode.ChapterSelect) {
+						SettingsManager.m_settingsManager.startChapter = 2;
+						if (SettingsManager.m_settingsManager.demo) {
+							Application.LoadLevel ("GameScene01");
+						} else {
+							Application.LoadLevel ("PartySelect01");
+						}
+					} else if (hit.transform.gameObject.tag == "Chapter3" && m_menuMode == UIManager.MenuMode.ChapterSelect) {
+							SettingsManager.m_settingsManager.startChapter = 3;
+							if (SettingsManager.m_settingsManager.demo) {
+								Application.LoadLevel ("GameScene01");
+							} else {
+								Application.LoadLevel ("PartySelect01");
+							}
+						} else if (hit.transform.gameObject.tag == "Chapter4" && m_menuMode == UIManager.MenuMode.ChapterSelect) {
+								SettingsManager.m_settingsManager.startChapter = 4;
+								if (SettingsManager.m_settingsManager.demo) {
+									Application.LoadLevel ("GameScene01");
+								} else {
+									Application.LoadLevel ("PartySelect01");
+								}
+							} else if (hit.transform.gameObject.tag == "Chapter5" && m_menuMode == UIManager.MenuMode.ChapterSelect) {
+									SettingsManager.m_settingsManager.startChapter = 5;
+									if (SettingsManager.m_settingsManager.demo) {
+										Application.LoadLevel ("GameScene01");
+									} else {
+										Application.LoadLevel ("PartySelect01");
+									}
+								} else if (hit.transform.gameObject.tag == "BackButton" && (m_menuMode == UIManager.MenuMode.BadgeStore || m_menuMode == UIManager.MenuMode.ChapterSelect)) {
+										ChangeMenu (UIManager.MenuMode.MainMenu);
+									}
 			}
+		} else if (Input.GetKeyUp (KeyCode.Escape) && m_menuMode != UIManager.MenuMode.MainMenu) {
+			ChangeMenu (UIManager.MenuMode.MainMenu);
 		}
 	}
 

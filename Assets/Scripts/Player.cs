@@ -432,43 +432,32 @@ public class Player : MonoBehaviour {
 				UseActionPoint();
 				
 			}
-			else if (nextCard.type == Card.CardType.Gate && m_numKeys > 0)
-			{
-				m_canContinuousMove = false;
-				m_numKeys --;
-				//UIManager.m_uiManager.UpdateKey(false);
-				
-				//remove key from itemlist
-				List<Item> inventory = GameManager.m_gameManager.inventory;
-				for (int i=0; i< inventory.Count; i++)
-				{
-					Item thisItem = (Item)inventory[i];
-					if (thisItem.HasKeyword(Item.Keyword.Key))
-					{
-						yield return StartCoroutine (thisItem.CenterCard ());
-						yield return new WaitForSeconds(0.5f);	
-						yield return StartCoroutine (thisItem.SendToGrave ());
-//						inventory.RemoveAt(i);
-//						GameManager.m_gameManager.inventory = inventory;
-//						Destroy(thisItem.gameObject);
-						i = 99;
-					}
-				}
-				
-				nextCard.type = Card.CardType.Exit;
-				nextCard.m_cardMesh.material = ((Card)MapManager.m_mapManager.m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-				nextCard.SetColor(Color.yellow);
-				nextCard.m_highlightMesh.material.color = Color.yellow;
-
-//				if (GameManager.m_gameManager.currentMap.m_mapType == MapManager.Map.MapType.Plains)
+//			else if (nextCard.type == Card.CardType.Gate && m_numKeys > 0)
+//			{
+//				m_canContinuousMove = false;
+//				m_numKeys --;
+//				
+//				//remove key from itemlist
+//				List<Item> inventory = GameManager.m_gameManager.inventory;
+//				for (int i=0; i< inventory.Count; i++)
 //				{
-//					nextCard.m_cardMesh.material = ((Card)MapManager.m_mapManager.m_cardTypes[0].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-//				} else if (GameManager.m_gameManager.currentMap.m_mapType == MapManager.Map.MapType.Dungeon)
-//				{
-//					nextCard.m_cardMesh.material = ((Card)MapManager.m_mapManager.m_cardTypes[4].transform.GetComponent("Card")).cardMesh.sharedMaterial;
+//					Item thisItem = (Item)inventory[i];
+//					if (thisItem.HasKeyword(Item.Keyword.Key))
+//					{
+//						yield return StartCoroutine (thisItem.CenterCard ());
+//						yield return new WaitForSeconds(0.5f);	
+//						yield return StartCoroutine (thisItem.SendToGrave ());
+//						i = 99;
+//					}
 //				}
-				UseActionPoint();
-			}
+//				
+//				nextCard.type = Card.CardType.Exit;
+//				nextCard.m_cardMesh.material = ((Card)MapManager.m_mapManager.m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
+//				nextCard.SetColor(Color.yellow);
+//				nextCard.m_highlightMesh.material.color = Color.yellow;
+
+//				UseActionPoint();
+//			}
 			else if (nextCard.enemy != null)
 			{
 				m_canContinuousMove = false;
@@ -510,6 +499,9 @@ public class Player : MonoBehaviour {
 				m_canContinuousMove = false;
 //				if  (GameManager.m_gameManager.inventory.Count < GameManager.m_gameManager.maxBP || nextCard.chest.m_doStorage)
 //				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 opens \\8Chest";
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					yield return StartCoroutine(nextCard.chest.ActivateChest());	
 					UseActionPoint();
 //				} else 
@@ -653,7 +645,7 @@ public class Player : MonoBehaviour {
 			StartCoroutine( UIManager.m_uiManager.TurnOffSiteCard());
 		}
 
-		if (m_currentCard.type == Card.CardType.Exit)
+		if (m_currentCard.type == Card.CardType.Exit || m_currentCard.type == Card.CardType.Gate)
 		{
 			UIManager.m_uiManager.m_exitButton.SetActive(false);
 		}
@@ -702,6 +694,9 @@ public class Player : MonoBehaviour {
 				
 				if (m_currentCard.type == Card.CardType.Darkness)
 				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + m_currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					//Update Effect Stack
 					EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
 					newEffect.m_effectType = EffectsPanel.Effect.EffectType.Dark;
@@ -713,6 +708,9 @@ public class Player : MonoBehaviour {
 					EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 				} else if (m_currentCard.type == Card.CardType.HighGround)
 				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + m_currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					//Update Effect Stack
 					EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
 					newEffect.m_effectType = EffectsPanel.Effect.EffectType.HighGround;
@@ -724,6 +722,9 @@ public class Player : MonoBehaviour {
 					EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 				} else if (m_currentCard.type == Card.CardType.Fort)
 				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + m_currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					//Update Effect Stack
 					EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
 					newEffect.m_effectType = EffectsPanel.Effect.EffectType.Fort;
@@ -739,18 +740,21 @@ public class Player : MonoBehaviour {
 					EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
 					newEffect.m_effectType = EffectsPanel.Effect.EffectType.RazorVine;
 					newEffect.m_effectDuration = EffectsPanel.Effect.Duration.WhilePresent;
-					string desc = "Razorvine: Lose 2& every turn while present";
+					string desc = "Razorvine: Lose 1& every turn while present";
 					newEffect.m_description = desc;
 					newEffect.m_stackable = false;
 					newEffect.m_spriteName = "Effect_RazorVine";
 					EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 				} else if (m_currentCard.type == Card.CardType.Stalactite)
 				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + m_currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					//Update Effect Stack
 					EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
 					newEffect.m_effectType = EffectsPanel.Effect.EffectType.Stalactites;
 					newEffect.m_effectDuration = EffectsPanel.Effect.Duration.WhilePresent;
-					string desc = "Stalactites: Lose 1& each time a Skill is used";
+					string desc = "Stalactites: Lose 1& each time a Card is used";
 					newEffect.m_description = desc;
 					newEffect.m_stackable = false;
 					newEffect.m_spriteName = "Effect_Stalactites";
@@ -768,6 +772,9 @@ public class Player : MonoBehaviour {
 					EffectsPanel.m_effectsPanel.AddEffect(newEffect);
 				} else if (m_currentCard.type == Card.CardType.Tower)
 				{
+					string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 is affected by \\9" + m_currentCard.m_displayName;
+					UIManager.m_uiManager.UpdateActions (newString);
+
 					//Update Effect Stack
 					EffectsPanel.Effect newEffect = new EffectsPanel.Effect();
 					newEffect.m_effectType = EffectsPanel.Effect.EffectType.Tower;
@@ -807,21 +814,7 @@ public class Player : MonoBehaviour {
 					GameManager.m_gameManager.acceptInput = true;
 				}
 				
-				if (m_currentCard.type == Card.CardType.Exit && !UIManager.m_uiManager.m_exitButton.activeSelf)
-				{
-					UIManager.m_uiManager.m_exitButton.SetActive(true);
-					
-					//							foreach (Follower thisFollower in GameManager.m_gameManager.followers)
-					//							{
-					//								if (thisFollower.followerState == Follower.FollowerState.Spent)
-					//								{
-					//									yield return StartCoroutine(thisFollower.ChangeState(Follower.FollowerState.Normal));	
-					//								}
-					//							}
-					//							GameManager.m_gameManager.acceptInput = true;
-					//							yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.EndLevel));
-					//							yield break;
-				}
+
 				//						else {
 				//						}
 				
@@ -864,6 +857,34 @@ public class Player : MonoBehaviour {
 		if (currentCard.type != Card.CardType.Normal && currentCard.type != Card.CardType.Entrance && !m_doingSiteCard) {
 			m_doingSiteCard = true;
 			StartCoroutine( UIManager.m_uiManager.DisplayTargetCard(currentCard, UIManager.m_uiManager.m_followerCards[5]));
+		}
+
+		if (m_currentCard.type == Card.CardType.Exit && !UIManager.m_uiManager.m_exitButton.activeSelf)
+		{
+			UIManager.m_uiManager.m_exitButton.SetActive(true);
+		
+		} else if (m_currentCard.type == Card.CardType.Gate && !UIManager.m_uiManager.m_exitButton.activeSelf)
+		{
+			AssetManager.m_assetManager.m_typogenicText[15].Text = "UNLOCK";
+
+			if (m_numKeys == 0)
+			{
+				//switch to disabled text color
+				Color disabledTextColor = new Color(0.2f, 0.2f, 0.2f, 1);
+				AssetManager.m_assetManager.m_typogenicText [15].ColorTopLeft = disabledTextColor;
+				AssetManager.m_assetManager.m_typogenicText [15].ColorTopRight = disabledTextColor;
+				AssetManager.m_assetManager.m_typogenicText [15].ColorBottomLeft = disabledTextColor;
+				AssetManager.m_assetManager.m_typogenicText [15].ColorBottomRight = disabledTextColor;
+			} else {
+				Color upperTextColor = new Color(1.0f, 0.682f, 0.0f, 1);
+				Color lowerTextColor = new Color(1.0f, 0.0f, 0.0f, 1);
+				AssetManager.m_assetManager.m_typogenicText [15].ColorTopLeft = upperTextColor;
+				AssetManager.m_assetManager.m_typogenicText [15].ColorTopRight = upperTextColor;
+				AssetManager.m_assetManager.m_typogenicText [15].ColorBottomLeft = lowerTextColor;
+				AssetManager.m_assetManager.m_typogenicText [15].ColorBottomRight = lowerTextColor;
+			}
+
+			UIManager.m_uiManager.m_exitButton.SetActive(true);
 		}
 
 		yield return null;
