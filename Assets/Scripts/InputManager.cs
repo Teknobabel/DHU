@@ -1079,8 +1079,21 @@ public class InputManager : MonoBehaviour {
 							objectTouched = true;
 							if (m_selectedObject != hitInfo.transform.gameObject)
 							{
-								m_selectedObject = hitInfo.transform.gameObject;
-								yield return StartCoroutine( UIManager.m_uiManager.DisplayTargetCard(thisCard, UIManager.m_uiManager.m_followerCards[4]));
+								bool alreadyHovered = false;
+
+								if (Player.m_player.doingSiteCard)
+								{
+									if (hitInfo.transform.gameObject == Player.m_player.currentCard.gameObject)
+									{
+										alreadyHovered = true;
+									}
+								}
+
+								if (!alreadyHovered)
+								{
+									m_selectedObject = hitInfo.transform.gameObject;
+									yield return StartCoroutine( UIManager.m_uiManager.DisplayTargetCard(thisCard, UIManager.m_uiManager.m_followerCards[4]));
+								}
 							}
 						}
 					}

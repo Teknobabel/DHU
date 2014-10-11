@@ -978,8 +978,11 @@ public class GameManager : MonoBehaviour {
 			//yield return StartCoroutine(UIManager.m_uiManager.DisplayTargetEnemy(activeEnemy));
 			activeEnemies.RemoveAt(0);
 			//UIManager.m_uiManager.DisplayTargetCard(activeEnemy);
-			yield return StartCoroutine(activeEnemy.DoTurn());
-			yield return StartCoroutine(activeEnemy.EndTurn());
+			if (UIManager.m_uiManager.menuMode != UIManager.MenuMode.GameOver)
+			{
+				yield return StartCoroutine(activeEnemy.DoTurn());
+				yield return StartCoroutine(activeEnemy.EndTurn());
+			}
 			//UIManager.m_uiManager.TurnOffTargetCard();
 			//StartCoroutine(UIManager.m_uiManager.TurnOffTargetCard());
 			yield return null;
@@ -1039,10 +1042,12 @@ public class GameManager : MonoBehaviour {
 				//CurrentTurnIcon.m_currentTurnIcon.ChangeTurn (newTurn);
 				yield return StartCoroutine(EnemyTurn(activeEnemies));
 			} 
-			OrderEnemies();
 
-			//yield return StartCoroutine(Changeturn(Turn.Environment));
-			yield return StartCoroutine(Changeturn(Turn.Player));
+			if (UIManager.m_uiManager.menuMode != UIManager.MenuMode.GameOver)
+			{
+				OrderEnemies();
+				yield return StartCoroutine(Changeturn(Turn.Player));
+			}
 			yield break;
 		} else if (newTurn == Turn.Player)
 		{

@@ -1844,5 +1844,5 @@ public class Player : MonoBehaviour {
 	public int stunDuration {get{return m_stunDuration;}set{m_stunDuration = value;}}
 	public bool doPermArmorPierce {get{return m_doPermArmorPierce;}set{m_doPermArmorPierce = value;}}
 	public bool doPermCounterAttack {get{return m_doPermCounterAttack;}set{m_doPermCounterAttack = value;}}
-//	public bool doingSiteCard {get{return m_doingSiteCard;}}
+	public bool doingSiteCard {get{return m_doingSiteCard;}}
 }

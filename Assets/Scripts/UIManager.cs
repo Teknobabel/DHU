@@ -880,6 +880,7 @@ public class UIManager : MonoBehaviour {
 			PartyCards.m_partyCards.gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[16].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[19].SetActive(false);
 
 			yield return new WaitForSeconds(0.01f);
 			Time.timeScale = 0;
@@ -895,6 +896,7 @@ public class UIManager : MonoBehaviour {
 			PartyCards.m_partyCards.gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[16].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(true);
+			AssetManager.m_assetManager.m_props[19].SetActive(true);
 			m_currentMenuMode = MenuMode.None;
 		}
 		else if (newMode == MenuMode.SelectHero)
@@ -1366,6 +1368,7 @@ public class UIManager : MonoBehaviour {
 				}
 			} else {
 				m_levelEndHeader[0].text = "Game Over";
+				AssetManager.m_assetManager.m_typogenicText[16].Text = "MENU";
 				AssetManager.m_assetManager.m_UIelements[2].SetActive(false);
 				AssetManager.m_assetManager.m_props[32].SetActive(true);
 			}

@@ -176,6 +176,15 @@ public class Chest : MonoBehaviour {
 					thisItem = (Item)GameManager.m_gameManager.GetItemFromChest();
 				}
 
+				// turn off target card if it is this chest
+				if (UIManager.m_uiManager.targetDisplayed)
+				{
+					if (UIManager.m_uiManager.targetCard == this.gameObject)
+					{
+						StartCoroutine( UIManager.m_uiManager.TurnOffTargetCard());
+					}
+				}
+
 				
 				string newString = "\\8" + thisItem.m_name + "\\0 added to \\1" + GameManager.m_gameManager.currentFollower.m_nameText + " \\0's Hand";
 				UIManager.m_uiManager.UpdateActions (newString);
