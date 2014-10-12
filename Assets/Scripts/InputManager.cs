@@ -62,6 +62,19 @@ public class InputManager : MonoBehaviour {
 //			GameManager.m_gameManager.accruedXP += 100;
 //			UIManager.m_uiManager.UpdateXP(GameManager.m_gameManager.accruedXP);
 
+			// Debug
+//			foreach (Follower f in GameManager.m_gameManager.followers)
+//			{
+//				f.currentXP = 99;	
+//			}
+
+//			Player.m_player.GainActionPoints(99);
+
+
+//			StartCoroutine(Player.m_player.ShakeCamera(2));
+
+
+
 			string newString = GameManager.m_gameManager.currentFollower.m_nameText + " passes ";
 			UIManager.m_uiManager.UpdateActions (newString);
 
@@ -70,13 +83,7 @@ public class InputManager : MonoBehaviour {
 
 
 			
-			// Debug
-//			foreach (Follower f in GameManager.m_gameManager.followers)
-//			{
-//				f.currentXP = 99;	
-//			}
-			
-//			Player.m_player.GainActionPoints(99);
+
 		}
 		
 //		if (Input.GetKeyUp(KeyCode.Q))
@@ -245,7 +252,7 @@ public class InputManager : MonoBehaviour {
 				Player.m_player.GainEnergy(GameManager.m_gameManager.drawCost * -1);
 				yield return StartCoroutine( GameManager.m_gameManager.FillHand());
 				
-				Player.m_player.UseActionPoint();
+
 			}
 
 
@@ -663,7 +670,7 @@ public class InputManager : MonoBehaviour {
 						Player.m_player.GainEnergy(GameManager.m_gameManager.drawCost * -1);
 						yield return StartCoroutine( GameManager.m_gameManager.FillHand());
 
-						Player.m_player.UseActionPoint();
+
 
 //						UIManager.m_uiManager.RefreshInventoryMenu();
 					}

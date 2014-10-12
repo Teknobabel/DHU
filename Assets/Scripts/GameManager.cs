@@ -1304,12 +1304,22 @@ public class GameManager : MonoBehaviour {
 		// update selector
 		foreach (UICard c in PartyCards.m_partyCards.m_party)
 		{
-			if (c.m_followerData != null)
+			if (c.m_followerData != null && m_followers.Count > 1)
 			{
 				if (c.m_followerData == f)
 				{
-					AssetManager.m_assetManager.m_props[18].transform.position = c.m_portrait.transform.position;
-					break;
+//					AssetManager.m_assetManager.m_props[18].transform.position = c.m_portrait.transform.position;
+//					break;
+
+					c.m_miscOBJ[3].gameObject.SetActive(true);
+					Vector3 newPos = c.transform.localPosition;
+					newPos.x = -218.5371f;
+					c.transform.localPosition = newPos;
+				} else {
+					c.m_miscOBJ[3].gameObject.SetActive(false);
+					Vector3 newPos = c.transform.localPosition;
+					newPos.x = -85.44141f;
+					c.transform.localPosition = newPos;
 				}
 			}
 		}

@@ -1061,7 +1061,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 79354222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -683.607422, y: 0, z: 0}
+  m_LocalPosition: {x: -683.707031, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1529054403}
@@ -7806,7 +7806,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 540508327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -383.056519, z: 0}
+  m_LocalPosition: {x: 0, y: -384, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1046859175}
@@ -8277,6 +8277,7 @@ GameObject:
   - 65: {fileID: 562164036}
   - 54: {fileID: 562164037}
   - 114: {fileID: 562164038}
+  - 114: {fileID: 562164039}
   m_Layer: 0
   m_Name: Hero01
   m_TagString: LeaderCard
@@ -8334,6 +8335,7 @@ MonoBehaviour:
   - {fileID: 2103707250}
   - {fileID: 603788550}
   - {fileID: 37191121}
+  - {fileID: 1299114107}
   m_keywords: []
   m_followerData: {fileID: 0}
   m_enemyData: {fileID: 0}
@@ -8352,7 +8354,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 243.699997, y: 311.299988, z: 10}
+  m_Size: {x: 209.899994, y: 273, z: 10}
   m_Center: {x: -2.4000001, y: 134, z: 0}
 --- !u!54 &562164037
 Rigidbody:
@@ -8381,6 +8383,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shaking: 0
+--- !u!114 &562164039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 562164033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00ac5920fdaa438b9bcf919c3f394cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &565774351
 GameObject:
   m_ObjectHideFlags: 0
@@ -11026,6 +11039,7 @@ GameObject:
   - 54: {fileID: 754194364}
   - 114: {fileID: 754194365}
   - 114: {fileID: 754194366}
+  - 114: {fileID: 754194367}
   m_Layer: 0
   m_Name: Hero04
   m_TagString: FollowerCard
@@ -11059,7 +11073,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 243.699997, y: 311.299988, z: 10}
+  m_Size: {x: 209.899994, y: 273, z: 10}
   m_Center: {x: -2.4000001, y: 134, z: 0}
 --- !u!54 &754194364
 Rigidbody:
@@ -11110,6 +11124,7 @@ MonoBehaviour:
   - {fileID: 548095589}
   - {fileID: 1604480113}
   - {fileID: 1839202098}
+  - {fileID: 1549600919}
   m_keywords: []
   m_followerData: {fileID: 0}
   m_enemyData: {fileID: 0}
@@ -11130,6 +11145,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shaking: 0
+--- !u!114 &754194367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 754194361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00ac5920fdaa438b9bcf919c3f394cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &756630198
 GameObject:
   m_ObjectHideFlags: 0
@@ -14061,6 +14087,7 @@ GameObject:
   - 114: {fileID: 985749745}
   - 65: {fileID: 985749743}
   - 114: {fileID: 985749746}
+  - 114: {fileID: 985749747}
   m_Layer: 0
   m_Name: Hero02
   m_TagString: FollowerCard
@@ -14094,7 +14121,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 243.699997, y: 311.299988, z: 10}
+  m_Size: {x: 209.899994, y: 273, z: 10}
   m_Center: {x: -2.4000001, y: 134, z: 0}
 --- !u!54 &985749744
 Rigidbody:
@@ -14142,8 +14169,10 @@ MonoBehaviour:
   m_healthIcon: {fileID: 0}
   m_energyIcon: {fileID: 0}
   m_miscOBJ:
-  - {fileID: 1248763050}
+  - {fileID: 35344644}
   - {fileID: 1988316914}
+  - {fileID: 1248763050}
+  - {fileID: 1124869521}
   m_keywords: []
   m_followerData: {fileID: 0}
   m_enemyData: {fileID: 0}
@@ -14164,6 +14193,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shaking: 0
+--- !u!114 &985749747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 985749741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00ac5920fdaa438b9bcf919c3f394cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &988549950
 GameObject:
   m_ObjectHideFlags: 0
@@ -14232,7 +14272,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 993760596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 384.943481, z: 0}
+  m_LocalPosition: {x: 0, y: 384, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2034211140}
@@ -18983,7 +19023,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1298308724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 681.720703, y: 0, z: 0}
+  m_LocalPosition: {x: 681.621094, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1781051216}
@@ -21970,7 +22010,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437060584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -683.607422, y: -383.056519, z: 0}
+  m_LocalPosition: {x: -683.707031, y: -384, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1120687460}
@@ -25179,7 +25219,7 @@ MonoBehaviour:
   m_doStartItems: 0
   m_doTrial: 0
   m_quickStart: 1
-  m_startLevel: 6
+  m_startLevel: 0
   m_customParty:
   - {fileID: 100004, guid: b00953e86600446cb8bc4bd5130316ca, type: 2}
   - {fileID: 100004, guid: 42f0dfd5a06a24dfcac24db73c91a3ae, type: 2}
@@ -27923,7 +27963,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704643772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .943359375, y: -.943496704, z: 0}
+  m_LocalPosition: {x: 1.04296875, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 540508328}
@@ -30661,6 +30701,7 @@ GameObject:
   - 54: {fileID: 1847626648}
   - 114: {fileID: 1847626649}
   - 114: {fileID: 1847626650}
+  - 114: {fileID: 1847626651}
   m_Layer: 0
   m_Name: Hero03
   m_TagString: FollowerCard
@@ -30694,7 +30735,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 243.699997, y: 311.299988, z: 10}
+  m_Size: {x: 209.899994, y: 273, z: 10}
   m_Center: {x: -2.4000001, y: 134, z: 0}
 --- !u!54 &1847626648
 Rigidbody:
@@ -30745,6 +30786,7 @@ MonoBehaviour:
   - {fileID: 1539146450}
   - {fileID: 2034288594}
   - {fileID: 1948211766}
+  - {fileID: 501661565}
   m_keywords: []
   m_followerData: {fileID: 0}
   m_enemyData: {fileID: 0}
@@ -30765,6 +30807,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shaking: 0
+--- !u!114 &1847626651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847626645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00ac5920fdaa438b9bcf919c3f394cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1850293969
 GameObject:
   m_ObjectHideFlags: 0
@@ -32056,7 +32109,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1946571020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -615.626953, y: 0, z: 0}
+  m_LocalPosition: {x: -614.923828, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122550546}

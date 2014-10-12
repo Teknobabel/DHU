@@ -7,7 +7,9 @@ public class ShakeCamera : MonoBehaviour {
 	private float ShakeDecay; 
 	private float ShakeIntensity;
 
-	private Vector3 OriginalPos;
+	private Vector3 
+		OriginalPos,
+		OriginalLocalPos;
 	private Quaternion OriginalRot;
 	
 	void Start()
@@ -31,15 +33,28 @@ public class ShakeCamera : MonoBehaviour {
 		}
 		else if (Shaking)
 		{
+			transform.localPosition = OriginalLocalPos;
+			transform.rotation = OriginalRot;
+//			if (gameObject.name == "Main Camera") {
+//				Debug.Log(gameObject.transform.localPosition);
+//			}
 			Shaking = false;    
 		}
 	}
 	
 	public void DoShake(float shakeIntensity, float shakeDecay)
 	{
-		OriginalPos = transform.position;
-		OriginalRot = transform.rotation;
+//		if (gameObject.name == "Main Camera") {
+//			Debug.Log(gameObject.transform.localPosition);
+//		}
+		if (!Shaking) {
+			OriginalPos = transform.position;
+			OriginalLocalPos = transform.localPosition;
+			OriginalRot = transform.rotation;
 		
+
+		}
+
 		ShakeIntensity = shakeIntensity;
 		ShakeDecay = shakeDecay;
 		Shaking = true;
