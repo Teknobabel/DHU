@@ -169,6 +169,9 @@ public class Card : MonoBehaviour {
 	private HighlightState
 		m_highlightState = HighlightState.NotHighlighted;
 
+	private Color
+		m_highlightColor = Color.white;
+
 	void Awake ()
 	{
 		neutralColor = m_highlightMesh.material.color;
@@ -690,6 +693,12 @@ public class Card : MonoBehaviour {
 	{
 		if (m_cardState == CardState.Normal) {
 			Color highlightColor = neutralColor * 1.5f;
+
+			if (m_highlightState == HighlightState.Highlighted)
+			{
+				highlightColor = m_highlightColor * 0.25f;
+			}
+			
 			m_highlightMesh.material.color = highlightColor;
 		}
 	}
@@ -697,7 +706,12 @@ public class Card : MonoBehaviour {
 	void OnMouseExit ()
 	{
 		if (m_cardState == CardState.Normal) {
-			m_highlightMesh.material.color = neutralColor;
+			if (m_highlightState == HighlightState.NotHighlighted)
+			{
+				m_highlightMesh.material.color = neutralColor;
+			} else {
+				m_highlightMesh.material.color = m_highlightColor;
+			}
 		}
 	}
 	
@@ -928,7 +942,7 @@ public class Card : MonoBehaviour {
 			m_highlightState = HighlightState.Highlighted;
 			//m_highlightMesh.enabled = true;
 			previousColor = m_highlightMesh.material.color;
-			m_highlightMesh.material.color = Color.white;
+			m_highlightMesh.material.color = m_highlightColor;
 		} else
 		{
 			m_highlightState = HighlightState.NotHighlighted;	

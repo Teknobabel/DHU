@@ -237,11 +237,15 @@ public class InputManager : MonoBehaviour {
 	    	}
 
 			if (Input.GetKeyUp(KeyCode.Alpha0) && GameManager.m_gameManager.inventory.Count < GameManager.m_gameManager.maxBP && 
-			    GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.currentEnergy >= GameManager.m_gameManager.drawCost )
+			    GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.currentEnergy >= GameManager.m_gameManager.drawCost && Player.m_player.playerState == Player.PlayerState.Idle )
 			{
+				string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "'s\\0 Hand is refilled";
+				UIManager.m_uiManager.UpdateActions (newString);
+				
 				Player.m_player.GainEnergy(GameManager.m_gameManager.drawCost * -1);
 				yield return StartCoroutine( GameManager.m_gameManager.FillHand());
-//				UIManager.m_uiManager.RefreshInventoryMenu();
+				
+				Player.m_player.UseActionPoint();
 			}
 
 
@@ -651,13 +655,16 @@ public class InputManager : MonoBehaviour {
 				if(Physics.Raycast(cardTouchRay, out hit))
 				{
 					if (hit.transform.gameObject.tag == "DrawDeck" && GameManager.m_gameManager.inventory.Count < GameManager.m_gameManager.maxBP && 
-					    GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.currentEnergy >= GameManager.m_gameManager.drawCost )
+					    GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.currentEnergy >= GameManager.m_gameManager.drawCost  && Player.m_player.playerState == Player.PlayerState.Idle)
 					{
 						string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "'s\\0 Hand is refilled";
 						UIManager.m_uiManager.UpdateActions (newString);
 
 						Player.m_player.GainEnergy(GameManager.m_gameManager.drawCost * -1);
 						yield return StartCoroutine( GameManager.m_gameManager.FillHand());
+
+						Player.m_player.UseActionPoint();
+
 //						UIManager.m_uiManager.RefreshInventoryMenu();
 					}
 					else if (hit.transform.gameObject.tag == "InvCard" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.None)
