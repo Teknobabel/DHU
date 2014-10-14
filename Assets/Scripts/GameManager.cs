@@ -965,7 +965,7 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator EnemyTurn(List<Enemy> activeEnemies)
 	{
 			
-		if (activeEnemies.Count > 0 && UIManager.m_uiManager.targetCard != null)
+		if (UIManager.m_uiManager.targetDisplayed)
 		{
 			StartCoroutine(UIManager.m_uiManager.TurnOffTargetCard());
 		}
@@ -1045,6 +1045,13 @@ public class GameManager : MonoBehaviour {
 
 			if (UIManager.m_uiManager.menuMode != UIManager.MenuMode.GameOver)
 			{
+				foreach (Enemy e in m_currentMap.m_enemies)
+				{
+					if (e.activatedThisTurn)
+					{
+						e.activatedThisTurn = false;
+					}
+				}
 				OrderEnemies();
 				yield return StartCoroutine(Changeturn(Turn.Player));
 			}

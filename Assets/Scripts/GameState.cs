@@ -585,8 +585,8 @@ public class GameState {
 		serializer.SaveInt (Trial09State, 0);
 		serializer.SaveInt (Trial10State, 0);
 
-		serializer.SaveInt (Shortcut01, 1);
-		serializer.SaveInt (Shortcut02, 1);
+		serializer.SaveInt (Shortcut01, 0);
+		serializer.SaveInt (Shortcut02, 0);
 		serializer.SaveInt (Shortcut03, 0);
 		serializer.SaveInt (Shortcut04, 0);
 		serializer.SaveInt (Shortcut05, 0);

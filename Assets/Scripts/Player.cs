@@ -953,6 +953,7 @@ public class Player : MonoBehaviour {
 
 //		while (animation.IsPlaying("PlayerJump01"))
 //		{
+//
 //			yield return null;
 //		}
 
@@ -1030,10 +1031,10 @@ public class Player : MonoBehaviour {
 
 		
 		EffectsPanel.m_effectsPanel.UpdateEffects(EffectsPanel.Effect.Duration.NextPlayerAttack);
-		
-		GameManager.m_gameManager.acceptInput = true;
-		animation ["PlayerJump01"].time = animation["PlayerJump01"].length;
+
+		//animation ["PlayerJump01"].time = animation["PlayerJump01"].length;
 		animation.Play ("PlayerIdle01");
+		GameManager.m_gameManager.acceptInput = true;
 	}
 
 	

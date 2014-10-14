@@ -230,7 +230,7 @@ MonoBehaviour:
   m_flipTrapMesh: {fileID: 0}
   m_fx01: {fileID: 0}
   m_displayName: High Ground
-  m_abilityText: Gain 2$ while present.
+  m_abilityText: Gain 1$ while present.
   m_portraitSpriteName: Card_Portrait_Item02
   m_spawn: {fileID: 0}
   m_actorBase: {fileID: 0}

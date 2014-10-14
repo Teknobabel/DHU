@@ -197,10 +197,10 @@ public class Enemy : MonoBehaviour {
 			StartCoroutine(ChangeState(EnemyState.Active));
 		}
 
-		if (m_activatedThisTurn)
-		{
-			m_activatedThisTurn = false;
-		}
+//		if (m_activatedThisTurn)
+//		{
+//			m_activatedThisTurn = false;
+//		}
 	}
 	private bool CanAct ()
 	{
@@ -253,7 +253,11 @@ public class Enemy : MonoBehaviour {
 		m_inFocus = true;
 
 		FollowCamera.m_followCamera.SetTarget(this.gameObject);
-		
+
+		if (UIManager.m_uiManager.targetDisplayed) {
+			yield return StartCoroutine(UIManager.m_uiManager.TurnOffTargetCard());
+		}
+
 		yield return StartCoroutine(UIManager.m_uiManager.DisplayTargetEnemy(this));
 		
 		yield return new WaitForSeconds(1.0f);
@@ -1250,6 +1254,8 @@ public class Enemy : MonoBehaviour {
 
 		if (newState == EnemyState.Active)
 		{
+//			yield return StartCoroutine( PlayAlert());
+
 			if (m_initiative == 0)
 			{
 				m_initiative = GameManager.m_gameManager.initiative;
@@ -1283,37 +1289,37 @@ public class Enemy : MonoBehaviour {
 		} else if (newState == EnemyState.Idle && oldState == EnemyState.Inactive)
 		{
 
-			if (m_initiative == 0)
-			{
-				m_initiative = GameManager.m_gameManager.initiative;
-				StartCoroutine( UIManager.m_uiManager.UpdateStack());
-			}
+//			if (m_initiative == 0)
+//			{
+//				m_initiative = GameManager.m_gameManager.initiative;
+//				StartCoroutine( UIManager.m_uiManager.UpdateStack());
+//			}
 
-			foreach (MeshRenderer thisMesh in m_enemyMesh)
-			{
-				thisMesh.renderer.enabled = true;
-			}
-			m_activatedThisTurn = true;
+//			foreach (MeshRenderer thisMesh in m_enemyMesh)
+//			{
+//				thisMesh.renderer.enabled = true;
+//			}
+//			m_activatedThisTurn = true;
 
-			if (m_statBar != null)
-			{
-				m_statBar.gameObject.SetActive(true);
-			} else {
-				//create new stat bar
-				GameObject go = (GameObject)(Instantiate(AssetManager.m_assetManager.m_UIelements[0], Vector3.zero, AssetManager.m_assetManager.m_UIelements[0].transform.rotation ));
-				go.transform.parent = UIManager.m_uiManager.m_HUD.transform;
-				go.transform.localScale = Vector3.one;
-				GUIFollow f = (GUIFollow)go.GetComponent("GUIFollow");
-				f.SetTarget(this.gameObject);
-				m_statBar = (UICard)go.GetComponent("UICard");
-				UpdateStatBar();
-				ToggleStatBar(m_doStatBar);
-			}
+//			if (m_statBar != null)
+//			{
+//				m_statBar.gameObject.SetActive(true);
+//			} else {
+//				//create new stat bar
+//				GameObject go = (GameObject)(Instantiate(AssetManager.m_assetManager.m_UIelements[0], Vector3.zero, AssetManager.m_assetManager.m_UIelements[0].transform.rotation ));
+//				go.transform.parent = UIManager.m_uiManager.m_HUD.transform;
+//				go.transform.localScale = Vector3.one;
+//				GUIFollow f = (GUIFollow)go.GetComponent("GUIFollow");
+//				f.SetTarget(this.gameObject);
+//				m_statBar = (UICard)go.GetComponent("UICard");
+//				UpdateStatBar();
+//				ToggleStatBar(m_doStatBar);
+//			}
 
-			if (currentCard.distanceToPlayer <= m_chaseDistance)
-			{
-				yield return StartCoroutine( PlayAlert());
-			}
+//			if (currentCard.distanceToPlayer <= m_chaseDistance)
+//			{
+//				yield return StartCoroutine( PlayAlert());
+//			}
 		} else if (newState == EnemyState.Dead)
 		{
 			animation.Stop();
@@ -1794,6 +1800,44 @@ public class Enemy : MonoBehaviour {
 		//yield return new WaitForSeconds (0.5f);
 		yield return true;
 	}
+
+	public IEnumerator WakeUp ()
+	{
+		if (m_initiative == 0)
+		{
+			m_initiative = GameManager.m_gameManager.initiative;
+			StartCoroutine( UIManager.m_uiManager.UpdateStack());
+		}
+		
+		foreach (MeshRenderer thisMesh in m_enemyMesh)
+		{
+			thisMesh.renderer.enabled = true;
+		}
+		m_activatedThisTurn = true;
+		
+		if (m_statBar != null)
+		{
+			m_statBar.gameObject.SetActive(true);
+		} else {
+			//create new stat bar
+			GameObject go = (GameObject)(Instantiate(AssetManager.m_assetManager.m_UIelements[0], Vector3.zero, AssetManager.m_assetManager.m_UIelements[0].transform.rotation ));
+			go.transform.parent = UIManager.m_uiManager.m_HUD.transform;
+			go.transform.localScale = Vector3.one;
+			GUIFollow f = (GUIFollow)go.GetComponent("GUIFollow");
+			f.SetTarget(this.gameObject);
+			m_statBar = (UICard)go.GetComponent("UICard");
+			UpdateStatBar();
+			ToggleStatBar(m_doStatBar);
+		}
+
+		if (m_currentCard.distanceToPlayer > m_chaseDistance) {
+			StartCoroutine (ChangeState (EnemyState.Idle));
+		} else {
+			yield return new WaitForSeconds(0.6f);
+			StartCoroutine (ChangeState (Enemy.EnemyState.Active));	
+		}
+		yield return null;
+	}
 	
 	public IEnumerator TakeDamage (int damage)
 	{
@@ -2024,4 +2068,5 @@ public class Enemy : MonoBehaviour {
 	public int stunDuration {get{return m_stunDuration;} set{m_stunDuration = value;}}
 	public int graveDamageBonus {get{return m_graveDamageBonus;} set{m_graveDamageBonus = value; if (m_statBar != null){ UpdateStatBar();}}}
 	public int initiative {get{return m_initiative;}}
+	public bool activatedThisTurn {get{return m_activatedThisTurn;} set{m_activatedThisTurn = value;}}
 }

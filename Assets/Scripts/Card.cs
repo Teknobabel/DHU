@@ -754,7 +754,7 @@ public class Card : MonoBehaviour {
 				UIManager.m_uiManager.UpdateActions (newString);
 
 				AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.EnemyReveal);
-				StartCoroutine(m_enemy.ChangeState(Enemy.EnemyState.Idle));	
+				StartCoroutine(m_enemy.WakeUp());	
 				BoxCollider bc = (BoxCollider) m_enemy.transform.GetComponent("BoxCollider");
 				bc.enabled = true;
 			} else if (m_chest != null)
@@ -971,13 +971,13 @@ public class Card : MonoBehaviour {
 			}
 			if (m_type == CardType.Fort)
 			{
-				m_siteArmorBonus = 3;	
+				m_siteArmorBonus = 1;	
 			} else if (m_type == CardType.Tower)
 			{
 				m_siteRangeBonus += 1;
 			} else if (m_type == CardType.HighGround)
 			{
-				m_siteDamageBonus += 2;	
+				m_siteDamageBonus += 1;	
 			} else if (m_type == CardType.ClawingHands)
 			{
 				m_siteArmorBonus = -3;

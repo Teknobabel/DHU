@@ -183,7 +183,7 @@ public class HeroMenu : MonoBehaviour {
 				int price = -1;
 				if (hit.transform.gameObject.tag == "Chapter2")
 				{
-					price = 20;
+					price = 25;
 				} else if (hit.transform.gameObject.tag == "Chapter3")
 				{
 					price = 50;

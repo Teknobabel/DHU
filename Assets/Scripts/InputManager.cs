@@ -1064,7 +1064,7 @@ public class InputManager : MonoBehaviour {
 					if (hitInfo.transform.gameObject.tag == "Enemy")
 					{
 						objectTouched = true;
-						if (m_selectedObject != hitInfo.transform.gameObject)
+						if (!UIManager.m_uiManager.targetDisplayed && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player)
 						{
 							m_selectedObject = hitInfo.transform.gameObject;
 							Enemy thisEnemy = (Enemy)hitInfo.transform.GetComponent("Enemy");
@@ -2488,10 +2488,10 @@ public class InputManager : MonoBehaviour {
 				if(Physics.Raycast(worldTouchRay, out hitInfo))
 				{
 
-					if (hitInfo.transform.gameObject.tag == "Enemy" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.None)
+					if (hitInfo.transform.gameObject.tag == "Enemy" && UIManager.m_uiManager.menuMode == UIManager.MenuMode.None && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player)
 					{
 						objectTouched = true;
-						if (m_selectedObject != hitInfo.transform.gameObject)
+						if (!UIManager.m_uiManager.targetDisplayed)
 						{
 							m_selectedObject = hitInfo.transform.gameObject;
 							Enemy thisEnemy = (Enemy)hitInfo.transform.GetComponent("Enemy");
