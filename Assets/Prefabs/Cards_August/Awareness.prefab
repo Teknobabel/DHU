@@ -39,14 +39,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_name: Awareness
-  m_description: Regain 1# for each adjacent enemy.
+  m_description: Regain 2# for each adjacent enemy.
   m_portraitSpriteName: Card_Portrait_Item02
   m_energyCost: 1
   m_healthCost: 0
+  m_canDiscard: 1
   m_class: 7
   m_keywords: 
   m_graveBonus: 
-  m_energyBonus: 1
+  m_energyBonus: 2
   m_range: 1
 --- !u!1001 &100100000
 Prefab:

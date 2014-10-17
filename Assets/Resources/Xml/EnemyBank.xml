@@ -44,8 +44,9 @@
 		<Enemy>Skweek</Enemy>	
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Giant Rat</Enemy>
-		<Enemy>Silverfish</Enemy>
+		<Enemy>Trilobit01</Enemy>
 		<Enemy>Lagomorph02</Enemy>
+		
 	</Bank>
     <Bank level="5">
 		<Enemy>Lagomorph</Enemy>
@@ -57,8 +58,8 @@
 		<Enemy>Skweek</Enemy>
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Giant Rat</Enemy>
-		<Enemy>Silverfish</Enemy>
-		<Enemy>Silverfish</Enemy>
+		<Enemy>Trilobit01</Enemy>
+		<Enemy>Trilobit01</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 	</Bank>
     <Bank level="6">
@@ -71,8 +72,8 @@
 		<Enemy>Skweek</Enemy>
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Giant Rat</Enemy>
-		<Enemy>Silverfish</Enemy>
-		<Enemy>Silverfish</Enemy>
+		<Enemy>Trilobit01</Enemy>
+		<Enemy>Trilobit01</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Lagomorph02</Enemy>
@@ -89,7 +90,8 @@
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Silverfish</Enemy>
-		<Enemy>Silverfish</Enemy>
+		<Enemy>Trilobit01</Enemy>
+		<Enemy>Trilobit01</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Lagomorph02</Enemy>
@@ -106,7 +108,8 @@
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Giant Rat</Enemy>
 		<Enemy>Silverfish</Enemy>
-		<Enemy>Silverfish</Enemy>
+		<Enemy>Trilobit01</Enemy>
+		<Enemy>Trilobit01</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Spectre</Enemy>
@@ -128,6 +131,7 @@
 		<Enemy>DarkElf01</Enemy>
 		<Enemy>Lagomorph02</Enemy>
 		<Enemy>Lagomorph02</Enemy>
+		<Enemy>Silverfish</Enemy>
 	</Bank>
     <Bank level="11">
    		 <Enemy>DarkElf01</Enemy>
@@ -149,6 +153,7 @@
  		<Enemy>Skweek02</Enemy>
  		<Enemy>Skweek</Enemy>
  		<Enemy>Skweek</Enemy>
+ 		<Enemy>Silverfish</Enemy>
 	</Bank>
 	<Bank level="13">
 		 <Enemy>Slime</Enemy>
@@ -172,6 +177,8 @@
 		 <Enemy>Rex</Enemy>
 		 <Enemy>Skweek</Enemy>
 		 <Enemy>Skweek</Enemy>
+		 <Enemy>Silverfish</Enemy>
+		 <Enemy>Silverfish</Enemy>
 	</Bank>
 	<Bank level="15">
 		 <Enemy>Silverfish</Enemy>
@@ -181,6 +188,7 @@
 		 <Enemy>Skweek03</Enemy>
 		 <Enemy>Skweek03</Enemy>
 		 <Enemy>DarkElf01</Enemy>
+		 <Enemy>Silverfish</Enemy>
 	</Bank>
 	<Bank level="16">
 		 <Enemy>Slime</Enemy>
@@ -194,6 +202,8 @@
 		 <Enemy>Skweek03</Enemy>
 		 <Enemy>Skweek03</Enemy>
 		 <Enemy>Grok</Enemy>
+		 <Enemy>Silverfish</Enemy>
+		 <Enemy>Silverfish</Enemy>
 	</Bank>
 	<Bank level="17">
 		 <Enemy>Skweek03</Enemy>
@@ -216,6 +226,7 @@
 		 <Enemy>Skweek02</Enemy>
 		 <Enemy>Giant Rat</Enemy>
 		 <Enemy>Skeleton</Enemy>
+		 <Enemy>Silverfish</Enemy>
 	</Bank>
 	<Bank level="19">
 		 <Enemy>Spectre</Enemy>
@@ -226,6 +237,7 @@
 		 <Enemy>Skweek03</Enemy>
 		 <Enemy>Lagomorph02</Enemy>
 		 <Enemy>Skeleton</Enemy>
+		 <Enemy>Silverfish</Enemy>
 	</Bank>
 	
 	<Bank level="25">

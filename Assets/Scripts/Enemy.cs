@@ -106,6 +106,9 @@ public class Enemy : MonoBehaviour {
 		m_abilityText = "Ability Text",
 		m_portraitSpriteName = "Card_Portrait_Skel",
 		m_stackPortraitName = "Portrait_Enemy";
+
+	public Transform
+		m_topAnchor;
 	
 	private GameManager.Direction
 		m_facing = GameManager.Direction.North;
@@ -134,6 +137,9 @@ public class Enemy : MonoBehaviour {
 
 	private UICard
 		m_statBar = null;
+
+	private GameObject
+		m_stunAlert = null;
 	
 	private GameManager.StatusEffect
 		m_currentEffect = GameManager.StatusEffect.None;
@@ -995,6 +1001,11 @@ public class Enemy : MonoBehaviour {
 			{
 				string newString = "\\4" + m_displayName + "\\0 is no longer Stunned";
 				UIManager.m_uiManager.UpdateActions (newString);
+
+				if (m_stunAlert != null)
+				{
+					Destroy (m_stunAlert.gameObject);
+				}
 			}
 		}
 		
@@ -2065,7 +2076,16 @@ public class Enemy : MonoBehaviour {
 	public int turnDamage {get{return m_turnDamage;} set{m_turnDamage = value;}}
 	public GameManager.StatusEffect currentEffect {get{return m_currentEffect;}}
 	public int effectDuration {get{return m_effectDuration;}}
-	public int stunDuration {get{return m_stunDuration;} set{m_stunDuration = value;}}
+	public int stunDuration {get{return m_stunDuration;} 
+		set{
+			if (m_stunDuration == 0 && m_topAnchor != null)
+			{
+				Vector3 pos = this.transform.position;
+				GameObject go = AssetManager.m_assetManager.m_props [35];
+				m_stunAlert = (GameObject) Instantiate (go, pos, go.transform.rotation);
+				m_stunAlert.transform.parent = m_topAnchor;
+			}
+			m_stunDuration = value;}}
 	public int graveDamageBonus {get{return m_graveDamageBonus;} set{m_graveDamageBonus = value; if (m_statBar != null){ UpdateStatBar();}}}
 	public int initiative {get{return m_initiative;}}
 	public bool activatedThisTurn {get{return m_activatedThisTurn;} set{m_activatedThisTurn = value;}}

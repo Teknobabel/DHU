@@ -544,7 +544,7 @@ public class GameManager : MonoBehaviour {
 
 		Player.m_player.RefillHealth();
 		Player.m_player.RefillEnergy();
-		GameManager.m_gameManager.ShowFollower (Player.m_player.playerFollower, false);
+		StartCoroutine( GameManager.m_gameManager.ShowFollower (Player.m_player.playerFollower, false));
 		UIManager.m_uiManager.UpdateXP(m_accruedXP);
 		drawCost = m_drawCost + m_drawCostMod;
 		
@@ -1290,7 +1290,7 @@ public class GameManager : MonoBehaviour {
 		return false;
 	}
 
-	public void ShowFollower (Follower f, bool useAction)
+	public IEnumerator ShowFollower (Follower f, bool useAction)
 	{
 		Debug.Log ("SWAPPING LEADER");
 
@@ -1351,12 +1351,19 @@ public class GameManager : MonoBehaviour {
 		
 
 		UIManager.m_uiManager.RefreshInventoryMenu ();
-		if (useAction)
-		{
-			Instantiate (AssetManager.m_assetManager.m_particleFX [0], f.m_followerMesh.transform.position, AssetManager.m_assetManager.m_particleFX [0].transform.rotation);
 
+
+
+
+		if (useAction) {
+			Instantiate (AssetManager.m_assetManager.m_particleFX [0], f.m_followerMesh.transform.position, AssetManager.m_assetManager.m_particleFX [0].transform.rotation);
+			yield return new WaitForSeconds (1.0f);
 			Player.m_player.UseActionPoint ();
+		} else {
+			yield return new WaitForSeconds (1.0f);
 		}
+
+		yield return null;
 	}
 	
 	public IEnumerator ActivateFollower (Follower thisF)
@@ -1376,7 +1383,7 @@ public class GameManager : MonoBehaviour {
 		case Follower.FollowerType.August:
 			if (currentEnergy >= thisF.abilityCost && thisF.followerState == Follower.FollowerState.Normal)
 			{
-//				ShowFollower(thisF);
+//				yield return StartCoroutine( ShowFollower(thisF));
 				yield return new WaitForSeconds(0.5f);
 				AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.SkillUsed);
 				yield return StartCoroutine(thisF.ChangeState(Follower.FollowerState.Spent));
@@ -1391,7 +1398,7 @@ public class GameManager : MonoBehaviour {
 		case Follower.FollowerType.Jin:
 			if (currentEnergy >= thisF.abilityCost && thisF.followerState == Follower.FollowerState.Normal)
 			{
-//				ShowFollower(thisF);
+//				yield return StartCoroutine( ShowFollower(thisF));
 				yield return new WaitForSeconds(0.5f);
 				AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.SkillUsed);
 				Player.m_player.GainActionPoints(thisF.abilityEffect);
@@ -1415,7 +1422,7 @@ public class GameManager : MonoBehaviour {
 		case Follower.FollowerType.Telina:
 			if (currentEnergy >= thisF.abilityCost && thisF.followerState == Follower.FollowerState.Normal)
 			{
-//				ShowFollower(thisF);
+//				yield return StartCoroutine( ShowFollower(thisF));
 				AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.SkillUsed);
 				List<GameManager.Direction> directions = new List<Direction>();
 				directions.Add(Direction.North);
@@ -1660,7 +1667,7 @@ public class GameManager : MonoBehaviour {
 		case Follower.FollowerType.Brand:
 			if (currentEnergy >= thisF.abilityCost && thisF.followerState == Follower.FollowerState.Normal)
 			{
-//				ShowFollower(thisF);
+//				yield return StartCoroutine( ShowFollower(thisF));
 				yield return new WaitForSeconds(0.5f);
 
 				AssetManager.m_assetManager.PlaySFX(AssetManager.SFXType.SkillUsed);
@@ -2110,7 +2117,7 @@ public class GameManager : MonoBehaviour {
 		UIManager.m_uiManager.RefreshInventoryMenu();
 		
 		//update action button
-		AssetManager.m_assetManager.m_typogenicText[15].Text = "EXIT";
+		AssetManager.m_assetManager.m_typogenicText[15].Text = "DESCEND";
 		StartCoroutine( UIManager.m_uiManager.DisplayTargetCard(Player.m_player.currentCard, UIManager.m_uiManager.m_followerCards[5]));
 
 		yield return null;

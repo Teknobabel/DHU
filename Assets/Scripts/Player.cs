@@ -403,7 +403,7 @@ public class Player : MonoBehaviour {
 				{
 					if (thisCard.cardState == Card.CardState.Hidden)
 					{
-						if (m_currentEnergy < m_maxEnergy)
+						if (Player.m_player.currentEnergy < Player.m_player.maxEnergy)
 						{
 							GainEnergy(thisCard.GetEnergyValue());
 						}
@@ -422,7 +422,8 @@ public class Player : MonoBehaviour {
 								Instantiate(pFX, thisCard.transform.position, pFX.transform.rotation);
 							}
 						}
-						//GameManager.m_gameManager.acceptInput = false;
+						GameManager.m_gameManager.acceptInput_KeepIcon = false;
+						Debug.Log ("FLIPPING CARD");
 						yield return StartCoroutine(thisCard.ChangeCardState(Card.CardState.Normal));
 						//GameManager.m_gameManager.acceptInput = true;
 					}
@@ -621,11 +622,6 @@ public class Player : MonoBehaviour {
 				yield return StartCoroutine(DoMove(nextCard));
 				yield return StartCoroutine (FinishMove ());
 				UseActionPoint();
-				if (Player.m_player.m_currentActionPoints > 0)
-				{
-					GameManager.m_gameManager.acceptInput_KeepIcon = true;
-				}
-
 			}
 		}
 
@@ -635,6 +631,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator DoMove (Card nextCard)
 	{
+		Debug.Log ("EXECUTING MOVE");
 		if (GameManager.m_gameManager.showDetailedActions) {
 			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 moves";
 			UIManager.m_uiManager.UpdateActions (newString);
@@ -894,13 +891,15 @@ public class Player : MonoBehaviour {
 	{
 		currentActionPoints --;
 		UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
-		if (m_currentActionPoints <= 0)
-		{
+		if (m_currentActionPoints <= 0) {
 			//UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
 //			currentActionPoints = m_maxActionPoints;	
-			StartCoroutine(GameManager.m_gameManager.Changeturn(GameManager.Turn.Enemy));
+			StartCoroutine (GameManager.m_gameManager.Changeturn (GameManager.Turn.Enemy));
+		} else {
+	
+			GameManager.m_gameManager.acceptInput_KeepIcon = true;
+
 		}
-//		UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
 	}
 	
 	public void GainActionPoints (int amt)

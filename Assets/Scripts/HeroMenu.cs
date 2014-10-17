@@ -47,6 +47,9 @@ public class HeroMenu : MonoBehaviour {
 	private List<GameObject>
 		m_cardList = new List<GameObject>();
 
+	private List<Follower>
+		m_followers = new List<Follower>();
+
 	private MenuState
 		m_menuState = MenuState.Heroes;
 
@@ -86,12 +89,14 @@ public class HeroMenu : MonoBehaviour {
 			}
 			if (!charProgress.m_isLocked)
 			{
+
 				//place model
 				if (i < m_miniPlacement.Length)
 				{
 					GameObject miniPlace = m_miniPlacement[i];
 					GameObject go = (GameObject)(Instantiate (f.gameObject, miniPlace.transform.position, miniPlace.transform.rotation));
 					Follower fol = (Follower)go.GetComponent("Follower");
+					m_followers.Add(fol);
 					fol.currentXP = charProgress.m_XP;
 					fol.currentLevel = charProgress.m_level;
 					//fol.currentLevel = 4;
@@ -178,6 +183,38 @@ public class HeroMenu : MonoBehaviour {
 					} else {
 						Application.LoadLevel("MainMenu01");
 					}
+				} else if (hit.transform.gameObject.tag == "SkipButton" )
+				{
+					//load next hero, wrap back to first if currently at last
+					Follower nextFollower = null;
+					if (m_followers.Count > 1 && m_selectedFollower != null)
+					{
+						for (int i=0; i < m_followers.Count; i++)
+						{
+							Follower f = (Follower)m_followers[i];
+							//Debug.Log( f + " / " + m_selectedFollower);
+							if ( f == m_selectedFollower)
+							{
+								Debug.Log(i.ToString() + " al;ksdf;lskjdf");
+								if (i+1 < m_followers.Count)
+								{
+									nextFollower = m_followers[i+1];
+								} else {
+									nextFollower = m_followers[0];
+								}
+							}
+						}
+					}
+
+					ClearMenu();
+
+					if (nextFollower != null)
+					{
+						Hover(nextFollower);
+					}
+
+
+
 				}
 
 				int price = -1;
@@ -189,16 +226,16 @@ public class HeroMenu : MonoBehaviour {
 					price = 50;
 				} else if (hit.transform.gameObject.tag == "Chapter4")
 				{
-					price = 75;
+					price = 100;
 				} else if (hit.transform.gameObject.tag == "Chapter5")
 				{
-					price = 100;
+					price = 200;
 				} else if (hit.transform.gameObject.tag == "Chapter6")
 				{
-					price = 100;
+					price = 300;
 				} else if (hit.transform.gameObject.tag == "Chapter7")
 				{
-					price = 100;
+					price = 400;
 				}
 
 				if (price > 0 && SettingsManager.m_settingsManager.xp >= price)

@@ -68,7 +68,7 @@ public class InputManager : MonoBehaviour {
 //				f.currentXP = 99;	
 //			}
 
-//			Player.m_player.GainActionPoints(99);
+//			Player.m_player.GainActionPoints(3);
 
 
 //			StartCoroutine(Player.m_player.ShakeCamera(2));
@@ -263,7 +263,7 @@ public class InputManager : MonoBehaviour {
 
 				if (thisF != GameManager.m_gameManager.currentFollower)
 				{
-					GameManager.m_gameManager.ShowFollower(thisF, true);
+					yield return StartCoroutine( GameManager.m_gameManager.ShowFollower(thisF, true));
 
 //					UICard fCard = (UICard) UIManager.m_uiManager.m_followerCards[0].GetComponent("UICard");
 //				 	yield return StartCoroutine(GameManager.m_gameManager.ActivateFollower(fCard.m_followerData));
@@ -276,7 +276,7 @@ public class InputManager : MonoBehaviour {
 				if (thisF != GameManager.m_gameManager.currentFollower)
 				{
 					
-					GameManager.m_gameManager.ShowFollower(thisF, true);
+					yield return StartCoroutine( GameManager.m_gameManager.ShowFollower(thisF, true));
 
 //					UICard fCard = (UICard) UIManager.m_uiManager.m_followerCards[1].GetComponent("UICard");
 //					yield return StartCoroutine(GameManager.m_gameManager.ActivateFollower(fCard.m_followerData));
@@ -289,7 +289,7 @@ public class InputManager : MonoBehaviour {
 				if (thisF != GameManager.m_gameManager.currentFollower)
 				{
 					
-					GameManager.m_gameManager.ShowFollower(thisF, true);
+					yield return StartCoroutine( GameManager.m_gameManager.ShowFollower(thisF, true));
 //					UICard fCard = (UICard) UIManager.m_uiManager.m_followerCards[2].GetComponent("UICard");
 //					yield return StartCoroutine(GameManager.m_gameManager.ActivateFollower(fCard.m_followerData));
 				}
@@ -302,7 +302,7 @@ public class InputManager : MonoBehaviour {
 				if (thisF != GameManager.m_gameManager.currentFollower)
 				{
 					
-					GameManager.m_gameManager.ShowFollower(thisF, true);
+					yield return StartCoroutine( GameManager.m_gameManager.ShowFollower(thisF, true));
 
 //					UICard fCard = (UICard) UIManager.m_uiManager.m_followerCards[3].GetComponent("UICard");
 //					yield return StartCoroutine(GameManager.m_gameManager.ActivateFollower(fCard.m_followerData));
@@ -847,7 +847,7 @@ public class InputManager : MonoBehaviour {
 							Follower thisF = fCard.m_followerData;
 							if (thisF.followerState == Follower.FollowerState.Normal && GameManager.m_gameManager.currentFollower != thisF)
 							{
-								GameManager.m_gameManager.ShowFollower(thisF, true);
+								yield return StartCoroutine( GameManager.m_gameManager.ShowFollower(thisF, true));
 					 			//yield return StartCoroutine(GameManager.m_gameManager.ActivateFollower(fCard.m_followerData));
 							}
 						}
@@ -2610,6 +2610,16 @@ public class InputManager : MonoBehaviour {
 				StackObject so = (StackObject) hit.transform.gameObject.GetComponent("StackObject");
 				if ( FollowCamera.m_followCamera.target != so.m_target.gameObject)
 				{
+					if (m_hoveredStackObject != null)
+					{
+						StackObject s = (StackObject)m_hoveredStackObject.GetComponent("StackObject");
+						Enemy e1 = (Enemy)s.m_target.GetComponent("Enemy");
+						e1.currentCard.ChangeHighlightState(false);
+					}
+
+					Enemy e = (Enemy)so.m_target.GetComponent("Enemy");
+					e.currentCard.ChangeHighlightState(true);
+
 					m_hoveredStackObject = so.gameObject;
 					FollowCamera.m_followCamera.SetTarget(so.m_target.gameObject);
 				}
@@ -2700,6 +2710,10 @@ public class InputManager : MonoBehaviour {
 
 			if (m_hoveredStackObject != null)
 			{
+				StackObject so = (StackObject)m_hoveredStackObject.GetComponent("StackObject");
+				Enemy e = (Enemy)so.m_target.GetComponent("Enemy");
+				e.currentCard.ChangeHighlightState(false);
+
 				m_hoveredStackObject = null;
 				FollowCamera.m_followCamera.SetTarget(Player.m_player.gameObject);
 			}
