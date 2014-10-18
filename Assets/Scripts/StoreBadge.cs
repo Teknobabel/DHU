@@ -33,6 +33,9 @@ public class StoreBadge : MonoBehaviour {
 	public UILabel[]
 		m_miscLabels;
 
+	public GameObject
+		m_badge;
+
 	private Color m_startTextColor = Color.white;
 
 	// Use this for initialization
@@ -190,6 +193,7 @@ public class StoreBadge : MonoBehaviour {
 					{
 						ps.m_badgePortrait.SetBadge(this);
 						ps.m_badgeState = PartySelectMenu.PartySlot.State.Occupied;
+						ps.m_badge = m_badge;
 						break;
 					}
 				}

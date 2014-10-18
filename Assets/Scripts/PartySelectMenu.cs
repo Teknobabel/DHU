@@ -16,6 +16,7 @@ public class PartySelectMenu: MonoBehaviour {
 
 		public State m_followerState = State.Empty;
 		public State m_badgeState = State.Empty;
+		public GameObject m_badge = null;
 		public Follower m_follower = null;
 		public StoreBadge m_badgePortrait = null;
 		public UICard m_portrait = null;
@@ -562,6 +563,15 @@ public class PartySelectMenu: MonoBehaviour {
 								break;
 							}
 						}
+
+					foreach (PartySelectMenu.PartySlot ps in PartySelectMenu.m_partySelectMenu.partySlots)
+					{
+						if (ps.m_followerState == PartySelectMenu.PartySlot.State.Empty)
+						{
+							ps.m_followerState = PartySelectMenu.PartySlot.State.Occupied;
+							break;
+						}
+					}
 //						Follower.Level l = f.m_levelTable[charProgress.m_level];
 //						if (l != null)
 //						{
@@ -689,6 +699,11 @@ public class PartySelectMenu: MonoBehaviour {
 					// remove any equipped badges
 					foreach (PartySlot ps in m_partySlots)
 					{
+						if (ps.m_followerState == PartySlot.State.Occupied)
+						{
+							ps.m_followerState = PartySlot.State.Empty;
+						}
+
 						if (ps.m_badgeState == PartySlot.State.Occupied)
 						{
 							//reactivate badge in bank
@@ -700,6 +715,7 @@ public class PartySelectMenu: MonoBehaviour {
 							SettingsManager.m_settingsManager.badgeStates[ps.m_badgePortrait.id] = 1;
 							ps.m_badgePortrait.ClearBadge();
 							ps.m_badgeState = PartySlot.State.Empty;
+							ps.m_badge = null;
 						}
 					}
 
@@ -799,6 +815,7 @@ public class PartySelectMenu: MonoBehaviour {
 		}
 		
 		SettingsManager.m_settingsManager.party = new List<Follower>();
+		SettingsManager.m_settingsManager.partySlots = m_partySlots;
 		foreach (Follower f in m_followers)
 		{
 			foreach (GameObject fGO in m_followerBank)

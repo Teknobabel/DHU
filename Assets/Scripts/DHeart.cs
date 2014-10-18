@@ -28,9 +28,19 @@ public class DHeart : MonoBehaviour {
 
 		if (GameManager.m_gameManager.doHeartBeat)
 		{
-			Debug.Log("STARTING HEART BEAT");
-			m_anim.Play("HeartBeat");
+//			Debug.Log("STARTING HEART BEAT");
+//			m_anim.Play("HeartBeat");
 			m_isBeating = true;
+
+			for (int i=0; i < PartyCards.m_badges.Count; i++)
+			{
+				Badge b = (Badge)PartyCards.m_badges[i];
+				if (b.m_badgeType == Badge.BadgeType.Conditional_LostSoul)
+				{
+					PartyCards.m_partyCards.m_party[i].m_miscOBJ[4].animation.Play();
+					break;
+				}
+			}
 		}
 	}
 	
@@ -39,8 +49,20 @@ public class DHeart : MonoBehaviour {
 		if (GameManager.m_gameManager.doHeartBeat)
 		{
 			Debug.Log("STOPPING HEART BEAT");
-			this.animation.Stop();	
-			this.animation["HeartBeat"].time = 0;
+//			this.animation.Stop();	
+//			this.animation["HeartBeat"].time = 0;
+
+			for (int i=0; i < PartyCards.m_badges.Count; i++)
+			{
+				Badge b = (Badge)PartyCards.m_badges[i];
+				if (b.m_badgeType == Badge.BadgeType.Conditional_LostSoul)
+				{
+					PartyCards.m_partyCards.m_party[i].m_miscOBJ[4].animation.Stop();
+					break;
+				}
+			}
+
+			m_isBeating = false;
 		}
 	}
 	

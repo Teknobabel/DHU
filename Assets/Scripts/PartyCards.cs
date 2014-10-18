@@ -31,6 +31,9 @@ public class PartyCards : MonoBehaviour {
 	
 	public static PartyCards
 		m_partyCards;
+
+	public static List<Badge>
+		m_badges = new List<Badge> ();
 	
 	void Awake ()
 	{
@@ -1256,5 +1259,6 @@ public class PartyCards : MonoBehaviour {
 	public Vector3 unselectedScale {get {return m_unselectedScale;}}
 	public Vector3 boundsNormalPos {get {return m_boundsNormalPos;}}
 	public Vector3 boundsNormalSize {get {return m_boundsNormalSize;}}
+	public List<Badge> badges {get {return m_badges; } set {m_badges = value;}}
 
 }

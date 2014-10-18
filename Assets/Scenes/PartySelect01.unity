@@ -2296,6 +2296,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: 4decab30760d34833954cb12bda98292, type: 2}
 --- !u!114 &267363631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,6 +2495,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: c9a5a3ca277034ad7835a85125bc6641, type: 2}
 --- !u!114 &273322183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4242,6 +4244,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: a7fe682380699455d988d7b1c67a881d, type: 2}
 --- !u!114 &483482901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4945,6 +4948,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &526445331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5118,6 +5122,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &532560773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5714,6 +5719,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &591743132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6357,6 +6363,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &627193221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7135,6 +7142,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &704891128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7205,8 +7213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMat: {fileID: 0}
-  mTex: {fileID: 0}
+  mMat: {fileID: 2100000, guid: d8b820aea6eaf4d669cf7f565dad14e7, type: 2}
+  mTex: {fileID: 2800000, guid: 5637a1c8e3ff0465a963a3e82bc5aaf3, type: 3}
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mDepth: 0
@@ -8588,6 +8596,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: a7fe682380699455d988d7b1c67a881d, type: 2}
 --- !u!114 &816732686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8946,6 +8955,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: c9a5a3ca277034ad7835a85125bc6641, type: 2}
 --- !u!114 &852002301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9624,6 +9634,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: 1536356a9c11b484c9bdda4b411ac050, type: 2}
 --- !u!114 &914650282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9878,6 +9889,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: 9ea9ea25e559f469db5cab641b017876, type: 2}
 --- !u!114 &944161673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10191,7 +10203,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 987306009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -240.714844, y: -319.332703, z: -5.33789062}
+  m_LocalPosition: {x: -243.791016, y: -311.518188, z: -5.33789062}
   m_LocalScale: {x: .841661811, y: .841661811, z: .841661811}
   m_Children:
   - {fileID: 1799375395}
@@ -10651,6 +10663,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &1040770377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11246,6 +11259,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &1113915101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12384,6 +12398,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: b071b1ae23b624025b06d92dfd897518, type: 2}
 --- !u!114 &1255671489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13107,6 +13122,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &1350724014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13896,6 +13912,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &1426291055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15472,6 +15489,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &1535299960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18673,6 +18691,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: 9ea9ea25e559f469db5cab641b017876, type: 2}
 --- !u!114 &1799375398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19042,6 +19061,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: 4decab30760d34833954cb12bda98292, type: 2}
 --- !u!114 &1830800721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20465,6 +20485,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 100000, guid: 447e08aff7a1648dc9738d34ec3b9532, type: 2}
 --- !u!114 &1976160462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20491,7 +20512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_text: 
+  m_text: The party regains 1 Health between each level.
   m_label: {fileID: 0}
   m_label02: {fileID: 1927724378}
   m_objects: []
@@ -21140,6 +21161,7 @@ MonoBehaviour:
   m_soldSign: {fileID: 0}
   m_miscSprites: []
   m_miscLabels: []
+  m_badge: {fileID: 0}
 --- !u!114 &2042999328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21694,7 +21716,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2094081906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -103.160156, y: -319.756042, z: -5.33789062}
+  m_LocalPosition: {x: -103.306641, y: -311.96109, z: -5.33789062}
   m_LocalScale: {x: .841781795, y: .841781795, z: .841781795}
   m_Children:
   - {fileID: 914650279}

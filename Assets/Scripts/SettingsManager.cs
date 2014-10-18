@@ -45,6 +45,9 @@ public class SettingsManager : MonoBehaviour {
 	private bool
 		m_demo = false,
 		m_trial = false;
+
+	private List<PartySelectMenu.PartySlot>
+		m_partySlots = new List<PartySelectMenu.PartySlot>();
 	
 	void Awake ()
 	{
@@ -102,5 +105,5 @@ public class SettingsManager : MonoBehaviour {
 	public int levelsTravelled {get{return m_levelsTravelled;} set{m_levelsTravelled = value;}}
 	public int xp {get{return m_xp;} set {m_xp = value;}}
 	public int startChapter {get{return m_startChapter;} set {m_startChapter = value;}}
-	
+	public List<PartySelectMenu.PartySlot> partySlots { get { return m_partySlots; } set { m_partySlots = value;}}
 }

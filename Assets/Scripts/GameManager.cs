@@ -541,6 +541,21 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+		//load badges onto heroes in UI
+		if (SettingsManager.m_settingsManager.partySlots.Count > 0) {
+			Debug.Log("LOADING BADGES FROM PARTY SLOTS");
+			for (int i=0; i < SettingsManager.m_settingsManager.partySlots.Count; i++)
+			{
+				PartySelectMenu.PartySlot ps = (PartySelectMenu.PartySlot) SettingsManager.m_settingsManager.partySlots[i];
+				if (ps.m_followerState == PartySelectMenu.PartySlot.State.Occupied && ps.m_badgeState == PartySelectMenu.PartySlot.State.Occupied)
+				{
+					GameObject go = (GameObject) Instantiate(ps.m_badge, Vector3.zero, ps.m_badge.transform.rotation);
+					Badge b = (Badge)go.GetComponent("Badge");
+					PartyCards.m_badges.Add(b);
+					PartyCards.m_partyCards.m_party[i].m_miscOBJ[4].gameObject.SetActive(true);
+				}
+			}
+		}
 
 		Player.m_player.RefillHealth();
 		Player.m_player.RefillEnergy();

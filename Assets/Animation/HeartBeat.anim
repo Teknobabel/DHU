@@ -18,38 +18,28 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: .188305169, y: .161942467, z: 1}
-        inSlope: {x: .904536843, y: .777900636, z: 0}
-        outSlope: {x: .904536843, y: .777900636, z: 0}
+        value: {x: 200, y: 172, z: 1}
+        inSlope: {x: 190.392273, y: 163.737305, z: 0}
+        outSlope: {x: 190.392273, y: 163.737305, z: 0}
         tangentMode: 0
-      - time: .0833333209
-        value: {x: .26368323, y: .22676751, z: 1}
-        inSlope: {x: .347290456, y: .298669279, z: 0}
-        outSlope: {x: .347290456, y: .298669279, z: 0}
-        tangentMode: 983367680
-      - time: .5
-        value: {x: .176201597, y: .151533321, z: 1}
-        inSlope: {x: .165849328, y: .142630354, z: 0}
-        outSlope: {x: .165849328, y: .142630354, z: 0}
-        tangentMode: 422074200
+      - time: .25
+        value: {x: 247.598068, y: 212.934326, z: 1}
+        inSlope: {x: 6.97105408, y: 5.99513245, z: 0}
+        outSlope: {x: 6.97105408, y: 5.99513245, z: 0}
+        tangentMode: 0
       - time: .666666687
-        value: {x: .266477376, y: .229170457, z: 1}
-        inSlope: {x: .319305539, y: .274603009, z: 0}
-        outSlope: {x: .319305539, y: .274603009, z: 0}
-        tangentMode: 258
-      - time: .833333373
-        value: {x: .282636791, y: .243067667, z: 1}
-        inSlope: {x: -.163734496, y: -.140811473, z: 0}
-        outSlope: {x: -.163734496, y: -.140811473, z: 0}
-        tangentMode: 1065353216
-      - time: .99999994
-        value: {x: .211899251, y: .182233334, z: 1}
-        inSlope: {x: -.424425483, y: -.365006208, z: 0}
-        outSlope: {x: -.424425483, y: -.365006208, z: 0}
-        tangentMode: 10117
+        value: {x: 174.077164, y: 149.70639, z: 1}
+        inSlope: {x: -49.3408241, y: -42.4331017, z: 0}
+        outSlope: {x: -49.3408241, y: -42.4331017, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 200, y: 172, z: 1}
+        inSlope: {x: 77.7685165, y: 66.8808365, z: 0}
+        outSlope: {x: 77.7685165, y: 66.8808365, z: 0}
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Sprite (Grphc_DHeart01)
+    path: Sprite_Cost
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -60,7 +50,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .99999994
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,78 +69,58 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .188305169
-        inSlope: .904536843
-        outSlope: .904536843
+        value: 200
+        inSlope: 190.392273
+        outSlope: 190.392273
         tangentMode: 10
-      - time: .0833333209
-        value: .26368323
-        inSlope: .347290456
-        outSlope: .347290456
-        tangentMode: 10
-      - time: .5
-        value: .176201597
-        inSlope: .165849328
-        outSlope: .165849328
+      - time: .25
+        value: 247.598068
+        inSlope: 6.97105408
+        outSlope: 6.97105408
         tangentMode: 10
       - time: .666666687
-        value: .266477376
-        inSlope: .319305539
-        outSlope: .319305539
+        value: 174.077164
+        inSlope: -49.3408241
+        outSlope: -49.3408241
         tangentMode: 10
-      - time: .833333373
-        value: .282636791
-        inSlope: -.163734496
-        outSlope: -.163734496
-        tangentMode: 10
-      - time: .99999994
-        value: .211899251
-        inSlope: -.424425483
-        outSlope: -.424425483
+      - time: 1
+        value: 200
+        inSlope: 77.7685165
+        outSlope: 77.7685165
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.x
-    path: Sprite (Grphc_DHeart01)
+    path: Sprite_Cost
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .161942467
-        inSlope: .777900636
-        outSlope: .777900636
+        value: 172
+        inSlope: 163.737305
+        outSlope: 163.737305
         tangentMode: 10
-      - time: .0833333209
-        value: .22676751
-        inSlope: .298669279
-        outSlope: .298669279
-        tangentMode: 10
-      - time: .5
-        value: .151533321
-        inSlope: .142630354
-        outSlope: .142630354
+      - time: .25
+        value: 212.934326
+        inSlope: 5.99513245
+        outSlope: 5.99513245
         tangentMode: 10
       - time: .666666687
-        value: .229170457
-        inSlope: .274603009
-        outSlope: .274603009
+        value: 149.70639
+        inSlope: -42.4331017
+        outSlope: -42.4331017
         tangentMode: 10
-      - time: .833333373
-        value: .243067667
-        inSlope: -.140811473
-        outSlope: -.140811473
-        tangentMode: 10
-      - time: .99999994
-        value: .182233334
-        inSlope: -.365006208
-        outSlope: -.365006208
+      - time: 1
+        value: 172
+        inSlope: 66.8808365
+        outSlope: 66.8808365
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.y
-    path: Sprite (Grphc_DHeart01)
+    path: Sprite_Cost
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -161,12 +131,7 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .0833333209
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .5
+      - time: .25
         value: 1
         inSlope: 0
         outSlope: 0
@@ -176,12 +141,7 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: .833333373
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .99999994
+      - time: 1
         value: 1
         inSlope: 0
         outSlope: 0
@@ -189,7 +149,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalScale.z
-    path: Sprite (Grphc_DHeart01)
+    path: Sprite_Cost
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
