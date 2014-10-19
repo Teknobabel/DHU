@@ -950,11 +950,10 @@ public class Player : MonoBehaviour {
 
 		yield return StartCoroutine(thisEnemy.TakeDamage(damage));
 
-//		while (animation.IsPlaying("PlayerJump01"))
-//		{
-//
-//			yield return null;
-//		}
+		while (animation.IsPlaying("PlayerJump01"))
+		{
+			yield return null;
+		}
 
 		//if (thisEnemy == null && m_doFencer)
 		if (thisEnemy.enemyState == Enemy.EnemyState.Dead)

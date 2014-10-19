@@ -686,7 +686,36 @@ public class InputManager : MonoBehaviour {
 
 							if (thisItem.adjustedEnergyCost <= Player.m_player.currentEnergy && !thisItem.HasKeyword(Item.Keyword.WhileInHand) && Player.m_player.currentCard.type != Card.CardType.Darkness)
 							{
+								GameManager.m_gameManager.acceptInput = false;
+								// change hero model if not equal to current
+								Follower leader = null;
+								if (thisItem.m_class != GameManager.m_gameManager.currentFollower.m_followerClass)
+								{
+									Debug.Log ("SWAP HEROES");
+									leader = GameManager.m_gameManager.currentFollower;
+									foreach (Follower f in GameManager.m_gameManager.followers)
+									{
+										if (f.m_followerClass == thisItem.m_class)
+										{
+											yield return new WaitForSeconds(0.5f);
+											yield return StartCoroutine( GameManager.m_gameManager.SwapHeroMesh(f));
+											yield return new WaitForSeconds(0.5f);
+											break;
+										}
+									}
+
+								}
+
+
 								yield return StartCoroutine(thisItem.Activate());
+
+								if (leader != null)
+								{
+									yield return StartCoroutine( GameManager.m_gameManager.SwapHeroMesh(leader));
+									yield return new WaitForSeconds(0.5f);
+								}
+
+								GameManager.m_gameManager.acceptInput = true;
 							}
 
 //							if (thisItem.HasKeyword(Item.Keyword.Skill) && PartyCards.m_partyCards.CanEquipSkill(thisItem) && !thisItem.HasKeyword(Item.Keyword.Consumeable))

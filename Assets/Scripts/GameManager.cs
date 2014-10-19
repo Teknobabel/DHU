@@ -1305,6 +1305,17 @@ public class GameManager : MonoBehaviour {
 		return false;
 	}
 
+	public IEnumerator SwapHeroMesh (Follower f)
+	{
+		Instantiate (AssetManager.m_assetManager.m_particleFX [0], f.m_followerMesh.transform.position, AssetManager.m_assetManager.m_particleFX [0].transform.rotation);
+
+		if (f.m_followerType != m_currentFollower.m_followerType){m_currentFollower.m_followerMesh.gameObject.SetActive(false);m_currentFollower = f;}
+		if (f.m_followerType != Player.m_player.playerFollower.m_followerType){Player.m_player.playerFollower.m_followerMesh.SetActive(false);}
+		if (!f.m_followerMesh.gameObject.activeSelf) {f.m_followerMesh.gameObject.SetActive(true); }
+
+		yield return null;
+	}
+
 	public IEnumerator ShowFollower (Follower f, bool useAction)
 	{
 		Debug.Log ("SWAPPING LEADER");
