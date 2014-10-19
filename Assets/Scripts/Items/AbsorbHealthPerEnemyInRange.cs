@@ -37,7 +37,7 @@ public class AbsorbHealthPerEnemyInRange : Item {
 
 		if (enemies.Count > 0) {
 
-			string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 			UIManager.m_uiManager.UpdateActions (newString);
 
 			yield return new WaitForSeconds(0.5f);

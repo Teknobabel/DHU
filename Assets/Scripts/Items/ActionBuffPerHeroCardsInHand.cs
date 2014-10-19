@@ -25,7 +25,7 @@ public class ActionBuffPerHeroCardsInHand : Item {
 
 		if (bonus > 0) {
 
-			string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 			UIManager.m_uiManager.UpdateActions (newString);
 
 			Player.m_player.GainActionPoints(bonus);

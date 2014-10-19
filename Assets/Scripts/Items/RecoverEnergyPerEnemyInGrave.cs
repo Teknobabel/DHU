@@ -23,7 +23,7 @@ public class RecoverEnergyPerEnemyInGrave : Item {
 
 		if (bonus > 0) {
 
-			string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
+			string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 			UIManager.m_uiManager.UpdateActions (newString);
 
 			GameObject pFX = AssetManager.m_assetManager.m_particleFX[1];

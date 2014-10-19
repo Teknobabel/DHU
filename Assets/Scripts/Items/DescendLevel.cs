@@ -5,7 +5,7 @@ public class DescendLevel : Item {
 
 	public override IEnumerator Activate ()
 	{
-		string newString = "\\01" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
+		string newString = "\\1" + GameManager.m_gameManager.currentFollower.m_nameText + "\\0 uses \\8" + m_name;
 		UIManager.m_uiManager.UpdateActions (newString);
 
 		InputManager.m_inputManager.cardsMoving = true;
