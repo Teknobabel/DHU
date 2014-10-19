@@ -2261,6 +2261,20 @@ public class GameManager : MonoBehaviour {
 		UIManager.m_uiManager.SpawnBadges (badgeNames);
 
 	}
+
+	public void TurnIndicator (bool turnOn)
+	{
+		foreach (UICard c in PartyCards.m_partyCards.m_party)
+		{
+			if (c.m_followerData == GameManager.m_gameManager.currentFollower)
+			{
+				c.m_miscOBJ[5].gameObject.SetActive(turnOn);
+			} else {
+				c.m_miscOBJ[5].gameObject.SetActive(false);
+			}
+		
+		}
+	}
 	
 	public int GetNewID ()
 	{
@@ -2345,7 +2359,7 @@ public class GameManager : MonoBehaviour {
 	public bool acceptInput {get{return m_acceptInput;} 
 		set{
 			m_acceptInput = value; Debug.Log("INPUT: " + m_acceptInput);
-			if (m_acceptInput == false) {Player.m_player.m_activityIndicator.SetActive(false);} else {Player.m_player.m_activityIndicator.SetActive(true);}}}
+			if (m_acceptInput == false) {TurnIndicator(false);} else {TurnIndicator(true);}}}
 	public bool acceptInput_KeepIcon { get { return m_acceptInput; } set{m_acceptInput = value; Debug.Log("INPUT_KEEP ICON: " + m_acceptInput);}}
 	public int currentChain {get {return m_currentChain;} set {m_currentChain = value;}}
 	public int accruedXP {get {return m_accruedXP;} set {m_accruedXP = value; UIManager.m_uiManager.UpdateXP(m_accruedXP);}}
