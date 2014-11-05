@@ -1452,7 +1452,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 180320916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 682.664062, y: 0, z: 0}
+  m_LocalPosition: {x: 682.664062, y: -.943496704, z: 0}
   m_LocalScale: {x: .999935985, y: .999935985, z: .999935985}
   m_Children:
   - {fileID: 882854804}
@@ -4955,7 +4955,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 526445327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c041f61e4a9fbf4e830210f5d933ece, type: 3}
   m_Name: 
@@ -4975,9 +4975,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_text: Empty, assign an Available Badge to gain its benefits.
-  m_label: {fileID: 1925973274}
-  m_label02: {fileID: 0}
+  m_text: Assign a Badge to a Hero to gain its benefits.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
   m_objects: []
   m_deactivate: []
 --- !u!65 &526445333
@@ -4990,7 +4990,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 6.15999985}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &526445334
 Rigidbody:
@@ -5129,7 +5129,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 532560769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c041f61e4a9fbf4e830210f5d933ece, type: 3}
   m_Name: 
@@ -5149,9 +5149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_text: Empty, assign an Available Badge to gain its benefits.
-  m_label: {fileID: 1925973274}
-  m_label02: {fileID: 0}
+  m_text: Assign a Badge to a Hero to gain its benefits.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
   m_objects: []
   m_deactivate: []
 --- !u!65 &532560775
@@ -5164,7 +5164,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 6.15999985}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &532560776
 Rigidbody:
@@ -5726,7 +5726,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 591743128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c041f61e4a9fbf4e830210f5d933ece, type: 3}
   m_Name: 
@@ -5746,9 +5746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_text: Empty, assign an Available Badge to gain its benefits.
-  m_label: {fileID: 1925973274}
-  m_label02: {fileID: 0}
+  m_text: Assign a Badge to a Hero to gain its benefits.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
   m_objects: []
   m_deactivate: []
 --- !u!65 &591743134
@@ -5761,7 +5761,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 6.15999985}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &591743135
 Rigidbody:
@@ -6370,7 +6370,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 627193217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c041f61e4a9fbf4e830210f5d933ece, type: 3}
   m_Name: 
@@ -6390,9 +6390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_text: Empty, assign an Available Badge to gain its benefits.
-  m_label: {fileID: 1925973274}
-  m_label02: {fileID: 0}
+  m_text: Assign a Badge to a Hero to gain its benefits.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
   m_objects: []
   m_deactivate: []
 --- !u!65 &627193223
@@ -6405,7 +6405,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 6.15999985}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &627193224
 Rigidbody:
@@ -7471,6 +7471,7 @@ GameObject:
   - 114: {fileID: 721996106}
   - 65: {fileID: 721996108}
   - 114: {fileID: 721996107}
+  - 114: {fileID: 721996110}
   m_Layer: 0
   m_Name: Hero02
   m_TagString: FollowerCard
@@ -7557,8 +7558,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 204.300003, y: 311.299988, z: 10}
-  m_Center: {x: -3.5, y: 166.899994, z: 0}
+  m_Size: {x: 192.5, y: 221.5, z: 10}
+  m_Center: {x: -3.5, y: 149.5, z: 0}
 --- !u!54 &721996109
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7574,6 +7575,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &721996110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 721996104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_text: Add a Hero to the Party.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
+  m_objects: []
+  m_deactivate: []
 --- !u!1 &724078524
 GameObject:
   m_ObjectHideFlags: 0
@@ -8753,7 +8770,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 845194044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -682.664062, y: 0, z: 0}
+  m_LocalPosition: {x: -682.664062, y: -.943496704, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1718902388}
@@ -9075,6 +9092,7 @@ GameObject:
   - 65: {fileID: 877783619}
   - 54: {fileID: 877783618}
   - 114: {fileID: 877783617}
+  - 114: {fileID: 877783620}
   m_Layer: 0
   m_Name: Hero01
   m_TagString: LeaderCard
@@ -9175,8 +9193,24 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 204.300003, y: 311.299988, z: 10}
-  m_Center: {x: -2.4000001, y: 166.899994, z: 0}
+  m_Size: {x: 192.5, y: 221.5, z: 10}
+  m_Center: {x: -3.5, y: 149.5, z: 0}
+--- !u!114 &877783620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877783614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_text: Add a Hero to the Party.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
+  m_objects: []
+  m_deactivate: []
 --- !u!1 &882854803
 GameObject:
   m_ObjectHideFlags: 0
@@ -12722,7 +12756,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1290570470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 384, z: 0}
+  m_LocalPosition: {x: .943359375, y: 384, z: 0}
   m_LocalScale: {x: .999935985, y: .999935985, z: .999935985}
   m_Children:
   - {fileID: 1316701152}
@@ -15012,6 +15046,7 @@ GameObject:
   - 54: {fileID: 1528113302}
   - 114: {fileID: 1528113300}
   - 114: {fileID: 1528113301}
+  - 114: {fileID: 1528113304}
   m_Layer: 0
   m_Name: Hero04
   m_TagString: FollowerCard
@@ -15112,8 +15147,24 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 204.300003, y: 311.299988, z: 10}
-  m_Center: {x: 15, y: 166.899994, z: 0}
+  m_Size: {x: 192.5, y: 221.5, z: 10}
+  m_Center: {x: -3.5, y: 149.5, z: 0}
+--- !u!114 &1528113304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528113298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_text: Add a Hero to the Party.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
+  m_objects: []
+  m_deactivate: []
 --- !u!1 &1528299982
 GameObject:
   m_ObjectHideFlags: 0
@@ -17709,7 +17760,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704643772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .943359375, y: -.943496704, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453328430}
@@ -18321,6 +18372,7 @@ GameObject:
   - 54: {fileID: 1766383454}
   - 114: {fileID: 1766383453}
   - 114: {fileID: 1766383452}
+  - 114: {fileID: 1766383456}
   m_Layer: 0
   m_Name: Hero03
   m_TagString: FollowerCard
@@ -18421,8 +18473,24 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 204.300003, y: 311.299988, z: 10}
-  m_Center: {x: 16.7999992, y: 166.899994, z: 0}
+  m_Size: {x: 192.5, y: 221.5, z: 10}
+  m_Center: {x: -3.5, y: 149.5, z: 0}
+--- !u!114 &1766383456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766383450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_text: Add a Hero to the Party.
+  m_label: {fileID: 0}
+  m_label02: {fileID: 1927724378}
+  m_objects: []
+  m_deactivate: []
 --- !u!1 &1770798195
 GameObject:
   m_ObjectHideFlags: 0

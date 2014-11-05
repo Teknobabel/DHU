@@ -892,6 +892,7 @@ public class Player : MonoBehaviour {
 		currentActionPoints --;
 		UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
 		if (m_currentActionPoints <= 0) {
+			AssetManager.m_assetManager.m_props[37].SetActive(false);
 			//UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
 //			currentActionPoints = m_maxActionPoints;	
 			StartCoroutine (GameManager.m_gameManager.Changeturn (GameManager.Turn.Enemy));
@@ -907,6 +908,10 @@ public class Player : MonoBehaviour {
 		Debug.Log("GAINING ACTION POINTS");
 		currentActionPoints = Mathf.Clamp(m_currentActionPoints + amt, 0, 20);	
 		//UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
+
+		if (amt > 0 && !AssetManager.m_assetManager.m_props[37].activeSelf) {
+			AssetManager.m_assetManager.m_props[37].SetActive(true);
+		}
 		
 		
 	}

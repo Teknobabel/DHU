@@ -858,6 +858,9 @@ public class PartySelectMenu: MonoBehaviour {
 			m_openCard.m_nameText.gameObject.SetActive(true);
 			m_openCard.m_miscOBJ[1].gameObject.SetActive(true);
 			m_openCard.m_portrait.spriteName = f.m_portraitSpriteName;
+			BoxCollider bc = (BoxCollider)m_openCard.GetComponent("BoxCollider");
+			bc.enabled = false;
+
 //			m_openCard.m_abilityUI.text = PartyCards.m_partyCards.UpdateAbilityText(f, charProgress.m_level);
 			//m_openCard.m_shortCutUI.text = PartyCards.m_partyCards.UpdateShortAbilityText(f, charProgress.m_level);
 //			m_openCard.m_abilityUI.gameObject.SetActive(true);
@@ -996,6 +999,8 @@ public class PartySelectMenu: MonoBehaviour {
 		c.m_portrait.spriteName = "Token_Empty";
 		c.m_nameText.gameObject.SetActive(false);
 		c.m_miscOBJ[1].gameObject.SetActive(false);
+		BoxCollider bc = (BoxCollider)c.GetComponent("BoxCollider");
+		bc.enabled = true;
 //		c.m_abilityUI.gameObject.SetActive(false);
 //		c.m_rankUI.gameObject.SetActive(false);
 //		c.m_passive01UI.gameObject.SetActive(false);

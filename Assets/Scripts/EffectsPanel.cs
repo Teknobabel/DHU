@@ -303,10 +303,10 @@ public class EffectsPanel : MonoBehaviour {
 					Vector3 tipPos = m_tipParent.transform.localPosition;
 					if (m_effectStack.Count < 7)
 					{
-						tipPos.y = 639.5429f;	
+						tipPos.y = 615.4717f;	
 //						if (m_dropDownMode){tipPos.y = -103.9039f;}
 					} else {
-						tipPos.y = 601.4921f;
+						tipPos.y = 579.1042f;
 					}
 //						else if (m_effectStack.Count < 7)
 //					{

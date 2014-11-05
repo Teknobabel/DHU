@@ -161,21 +161,21 @@ public class StoreBadge : MonoBehaviour {
 			}
 
 			//increase max badges if needed
-			if (m_ID >= 13 && m_ID <= 17)
-			{
-				MainMenu.m_mainMenu.maxBadges ++;
-				MainMenu.m_mainMenu.m_labels [1].text = "BADGES CURRENTLY IN USE: " + MainMenu.m_mainMenu.currentBadges + "/" + MainMenu.m_mainMenu.maxBadges.ToString();
-
-				//unlock new badge in Badges menu
-				foreach (StoreBadge b in PartySelectMenu.m_partySelectMenu.m_badgeSlots)
-				{
-					if (!b.gameObject.activeSelf)
-					{
-						b.gameObject.SetActive(true);
-						break;
-					}
-				}
-			}
+//			if (m_ID >= 13 && m_ID <= 17)
+//			{
+//				MainMenu.m_mainMenu.maxBadges ++;
+//				MainMenu.m_mainMenu.m_labels [1].text = "BADGES CURRENTLY IN USE: " + MainMenu.m_mainMenu.currentBadges + "/" + MainMenu.m_mainMenu.maxBadges.ToString();
+//
+//				//unlock new badge in Badges menu
+//				foreach (StoreBadge b in PartySelectMenu.m_partySelectMenu.m_badgeSlots)
+//				{
+//					if (!b.gameObject.activeSelf)
+//					{
+//						b.gameObject.SetActive(true);
+//						break;
+//					}
+//				}
+//			}
 
 		} else if (m_state != State.Locked )
 		{
@@ -257,7 +257,7 @@ public class StoreBadge : MonoBehaviour {
 		m_priceBG.gameObject.SetActive (false);
 		m_priceLabel.gameObject.SetActive (false);
 		MouseHover mh1 = (MouseHover)this.GetComponent ("MouseHover");
-		mh1.m_text = "Empty, assign an Available Badge to gain its benefits.";
+		mh1.m_text = "Assign a Badge to a Hero to gain its benefits.";
 
 		UIButtonScale bs = (UIButtonScale)this.gameObject.GetComponent("UIButtonScale");
 		bs.enabled = false;

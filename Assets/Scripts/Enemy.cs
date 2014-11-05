@@ -2080,7 +2080,7 @@ public class Enemy : MonoBehaviour {
 		set{
 			if (m_stunDuration == 0 && m_topAnchor != null)
 			{
-				Vector3 pos = this.transform.position;
+				Vector3 pos = m_topAnchor.position;
 				GameObject go = AssetManager.m_assetManager.m_props [35];
 				m_stunAlert = (GameObject) Instantiate (go, pos, go.transform.rotation);
 				m_stunAlert.transform.parent = m_topAnchor;

@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour {
 		m_currentChain = 0,
 		m_currentID = 0,
 		m_accruedXP = 0,
-		m_currentTurnNum = 0;
+		m_currentTurnNum = 0,
+		m_levelsCompletedBonus = 0;
 	
 	public GameObject[]
 		m_followerBank,
@@ -553,6 +554,10 @@ public class GameManager : MonoBehaviour {
 					Badge b = (Badge)go.GetComponent("Badge");
 					PartyCards.m_badges.Add(b);
 					PartyCards.m_partyCards.m_party[i].m_miscOBJ[4].gameObject.SetActive(true);
+
+					// set mouse hover text from badge
+					MouseHover m = (MouseHover) PartyCards.m_partyCards.m_party[i].m_miscOBJ[4].GetComponent("MouseHover");
+					m.m_text = b.m_badgeDescription;
 				}
 			}
 		}
@@ -784,16 +789,52 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public IEnumerator moveCard (Transform target, Transform[] path, Vector3 startScale, Vector3 endScale)
+	{
+		float t = 0;
+		float time = 1.5f;
+
+		while (t < time)
+		{
+			t += Time.deltaTime;
+
+			iTween.PutOnPath(target, path, t / time);
+			
+//			Vector3 nPos = Vector3.Lerp(startPos, endPos , t / time);
+			Vector3 newScale = Vector3.Lerp(startScale, endScale, t / time);
+			//				go.transform.position = nPos;
+			target.localScale = newScale;
+			yield return null;
+			
+		}
+
+		Destroy (target.gameObject);
+	}
+
 	public IEnumerator ShuffleCards ()
 	{
 		yield return new WaitForSeconds(1.0f);
-//		foreach (List<GameObject> l in heroCards) {
 		foreach (GameObject go in heroCards)
 		{
 			StartCoroutine(MoveCardToGrave(go));
+//			float t = 0;
+//			float time = 0.5f;
+//			Vector3 startPos = go.transform.position;
+//			Vector3 endPos = AssetManager.m_assetManager.m_props [34].transform.position;
+//			Vector3 startScale = go.transform.localScale;
+//			Vector3 endScale = startScale * 1.5f;
+//
+//			Transform[] path = new Transform[2];
+//			path[0] = go.transform;
+//			//path[1] = UIManager.m_uiManager.m_HUD.transform;
+//			path[1] = AssetManager.m_assetManager.m_props [34].transform;
+//
+//			StartCoroutine(moveCard(go.transform, path, startScale, endScale));
+			
+
+
 			yield return new WaitForSeconds(0.07f);
 		}
-//		}
 
 		yield return new WaitForSeconds(1.0f);
 
@@ -1348,11 +1389,15 @@ public class GameManager : MonoBehaviour {
 					Vector3 newPos = c.transform.localPosition;
 					newPos.x = -218.5371f;
 					c.transform.localPosition = newPos;
+					MouseHover m = (MouseHover) c.GetComponent("MouseHover");
+					m.enabled = false;
 				} else {
 					c.m_miscOBJ[3].gameObject.SetActive(false);
 					Vector3 newPos = c.transform.localPosition;
 					newPos.x = -85.44141f;
 					c.transform.localPosition = newPos;
+					MouseHover m = (MouseHover) c.GetComponent("MouseHover");
+					m.enabled = true;
 				}
 			}
 		}
@@ -2264,15 +2309,15 @@ public class GameManager : MonoBehaviour {
 
 	public void TurnIndicator (bool turnOn)
 	{
-		foreach (UICard c in PartyCards.m_partyCards.m_party)
-		{
-			if (c.m_followerData == GameManager.m_gameManager.currentFollower)
-			{
-				c.m_miscOBJ[5].gameObject.SetActive(turnOn);
-			} else {
-				c.m_miscOBJ[5].gameObject.SetActive(false);
-			}
+		if (GameManager.m_gameManager.followers.Count > 1) {
+			foreach (UICard c in PartyCards.m_partyCards.m_party) {
+				if (c.m_followerData == GameManager.m_gameManager.currentFollower) {
+					c.m_miscOBJ [5].gameObject.SetActive (turnOn);
+				} else {
+					c.m_miscOBJ [5].gameObject.SetActive (false);
+				}
 		
+			}
 		}
 	}
 	
@@ -2386,6 +2431,7 @@ public class GameManager : MonoBehaviour {
 	public int numTilesFlipped { get { return m_numTilesFlipped; } set { m_numTilesFlipped = value; } }
 	public int initiative {get{m_initiative ++; return m_initiative;} set{m_initiative = value;}}
 	public bool showDetailedActions {get{return m_showDetailedActions;}}
+	public int levelsCompletedBonus {get{return m_levelsCompletedBonus;}set{m_levelsCompletedBonus = value;}}
 	public int numStunned {
 		get
 		{

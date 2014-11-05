@@ -2923,6 +2923,7 @@ public class MapManager : MonoBehaviour {
 		SetDistanceToPlayer();		
 
 		DHeart.m_dHeart.SetLevel(SettingsManager.m_settingsManager.difficultyLevel);
+		GameManager.m_gameManager.levelsCompletedBonus ++;
 //		yield return StartCoroutine( GameManager.m_gameManager.FillHand());
 //		UIManager.m_uiManager.RefreshInventoryMenu ();
 //		Player.m_player.animation.Stop();

@@ -24,7 +24,7 @@ public class HeroPortraitHover : MonoBehaviour {
 		if (m_card.m_followerData != null) {
 			if (m_card.m_followerData != GameManager.m_gameManager.currentFollower)
 			{
-				transform.localPosition = m_hoverPos;
+//				transform.localPosition = m_hoverPos;
 				m_card.m_miscOBJ[3].gameObject.SetActive(true);
 			}
 		}
@@ -35,7 +35,7 @@ public class HeroPortraitHover : MonoBehaviour {
 		if (m_card.m_followerData != null) {
 			if (m_card.m_followerData != GameManager.m_gameManager.currentFollower)
 			{
-				transform.localPosition = m_normalPos;
+//				transform.localPosition = m_normalPos;
 				m_card.m_miscOBJ[3].gameObject.SetActive(false);
 			}
 		}

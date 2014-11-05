@@ -320,7 +320,7 @@ public class GameState {
 		// serializer.SaveInt; SaveFloat; etc.
 		serializer.SaveString(Version, SettingsManager.m_settingsManager.version);
 		serializer.SaveInt(Gold, 10);
-		serializer.SaveInt (XP, 0);
+		serializer.SaveInt (XP, 1000);
 		PlayerPrefs.SetInt("DoTutorial", 0);
 		PlayerPrefs.Save();
 

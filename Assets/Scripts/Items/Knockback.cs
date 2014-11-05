@@ -72,14 +72,14 @@ public class Knockback : Item {
 				}
 				GameManager.m_gameManager.selectedCard = null;
 
-			} else {m_abort = false;}
+			} else {m_abort = true;}
 
 			foreach (Card vc in validCards)
 			{
 				vc.ChangeHighlightState(false);	
 			}
 			
-		} else {m_abort = false;}
+		} else {m_abort = true;}
 
 		if (!m_abort) {
 			InputManager.m_inputManager.cardsMoving = true;

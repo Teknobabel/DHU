@@ -28,6 +28,39 @@ public class InputManager : MonoBehaviour {
 		m_inputManager = this;
 	}
 
+	void Update () {
+		if (UIManager.m_uiManager.menuMode == UIManager.MenuMode.None && Player.m_player != null)
+		{
+			if (Input.GetKey(KeyCode.LeftBracket))
+			{
+				FollowCamera.m_followCamera.ChangeZoomDistance(-0.01f);
+				//		   		if (Camera.main.fieldOfView<=80)
+				//		   			Camera.main.fieldOfView +=2;
+			} else if (Input.GetKey(KeyCode.RightBracket))
+			{
+				FollowCamera.m_followCamera.ChangeZoomDistance(0.01f);
+				//	    		if (Camera.main.fieldOfView>20)
+				//	    			Camera.main.fieldOfView -=2;
+			} else if (Input.GetAxis("Mouse ScrollWheel") != 0)
+			{
+
+				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 0.05f;
+				
+				FollowCamera.m_followCamera.ChangeZoomDistance(zoomDist);
+				
+				//				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 10;
+				//				
+				//				if (Camera.main.fieldOfView<=80 && zoomDist > 0)
+				//		   		{
+				//		   			Camera.main.fieldOfView +=zoomDist;
+				//			   	} else if (Camera.main.fieldOfView>20 && zoomDist < 0)
+				//		    	{
+				//		    		Camera.main.fieldOfView +=zoomDist;
+				//		    	}
+			}
+		}
+	}
+
 	public IEnumerator DoUpdate ()
 	{
 		if (Input.GetKeyUp(KeyCode.M))
@@ -161,6 +194,8 @@ public class InputManager : MonoBehaviour {
 			}
 		}
 
+
+
 		if (Player.m_player.playerState == Player.PlayerState.Idle && GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && !Player.m_player.cardsFlipping && GameManager.m_gameManager.acceptInput)
 		{
 
@@ -231,17 +266,7 @@ public class InputManager : MonoBehaviour {
 				GameManager.m_gameManager.ShiftFocus();
 			}
 
-			if (Input.GetKey(KeyCode.LeftBracket))
-		   	{
-				FollowCamera.m_followCamera.ChangeZoomDistance(-0.01f);
-//		   		if (Camera.main.fieldOfView<=80)
-//		   			Camera.main.fieldOfView +=2;
-		   	} else if (Input.GetKey(KeyCode.RightBracket))
-	    	{
-				FollowCamera.m_followCamera.ChangeZoomDistance(0.01f);
-//	    		if (Camera.main.fieldOfView>20)
-//	    			Camera.main.fieldOfView -=2;
-	    	}
+
 
 			if (Input.GetKeyUp(KeyCode.Alpha0) && GameManager.m_gameManager.inventory.Count < GameManager.m_gameManager.maxBP && 
 			    GameManager.m_gameManager.currentTurn == GameManager.Turn.Player && Player.m_player.currentEnergy >= GameManager.m_gameManager.drawCost && Player.m_player.playerState == Player.PlayerState.Idle )
@@ -457,22 +482,7 @@ public class InputManager : MonoBehaviour {
 //				}
 //			}
 			
-			if (Input.GetAxis("Mouse ScrollWheel") != 0)
-			{
-				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 0.05f;
 
-				FollowCamera.m_followCamera.ChangeZoomDistance(zoomDist);
-
-//				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 10;
-//				
-//				if (Camera.main.fieldOfView<=80 && zoomDist > 0)
-//		   		{
-//		   			Camera.main.fieldOfView +=zoomDist;
-//			   	} else if (Camera.main.fieldOfView>20 && zoomDist < 0)
-//		    	{
-//		    		Camera.main.fieldOfView +=zoomDist;
-//		    	}
-			}
 			
 //			if (Input.GetMouseButton(2) || Input.GetMouseButton(1))
 //			{
@@ -2407,7 +2417,34 @@ public class InputManager : MonoBehaviour {
 							yield break;
 						}else if (hitInfo.transform.gameObject.tag == "ResetButton")
 						{
+							//yield return StartCoroutine(UIManager.m_uiManager.ChangeMenuMode(UIManager.MenuMode.GameOver));
+
+							if (GameManager.m_gameManager.levelsCompletedBonus > 0)
+							{
+								// apply levels completed bonus
+								SettingsManager.m_settingsManager.xp += GameManager.m_gameManager.levelsCompletedBonus;
+								UIManager.m_uiManager.UpdateGoldUI();
+								AssetManager.m_assetManager.m_props[40].animation.Play();
+								AssetManager.m_assetManager.m_props[36].SetActive(false);
+								// turn off bonus visuals
+							}
+
 							Time.timeScale = 1.0f;
+							yield return new WaitForSeconds(0.5f);
+
+							AssetManager.m_assetManager.m_uiSprites [0].gameObject.SetActive (true);
+							float time = 0.0f;
+							while (time < 1.5f) {
+								time += Time.deltaTime;
+								float a = Mathf.Lerp (0.0f, 1.0f, time / 1.0f);
+								Color c = AssetManager.m_assetManager.m_uiSprites [0].color;
+								c.a = a;
+								AssetManager.m_assetManager.m_uiSprites [0].color = c;
+								yield return null;
+							}
+							AssetManager.m_assetManager.m_uiSprites [0].color = Color.white;
+
+							GameManager.m_gameManager.gameState.saveState();
 							Application.LoadLevel("MainMenu01");
 						}
 					} 

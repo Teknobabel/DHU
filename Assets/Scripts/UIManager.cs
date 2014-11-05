@@ -780,14 +780,15 @@ public class UIManager : MonoBehaviour {
 //		} else if (newAmount > 0) {
 //			if (!m_actionGUI.activeSelf)
 //			{
-				Vector3 offset = Vector3.zero;
-				offset.y = 140;
-				offset.x = 15;
-				m_actionGUI.SetActive(true);
-				gf.SetTarget(Player.m_player.gameObject, offset);
+//				Vector3 offset = Vector3.zero;
+//				offset.y = 140;
+//				offset.x = 15;
+//				m_actionGUI.SetActive(true);
+//				gf.SetTarget(Player.m_player.gameObject, offset);
 //			}	
-			UILabel actionLabel = gf.m_labels[0];
-			actionLabel.text = (newAmount).ToString();			
+//			UILabel actionLabel = gf.m_labels[0];
+//			actionLabel.text = (newAmount).ToString();
+		AssetManager.m_assetManager.m_typogenicText [18].Text = newAmount.ToString ();
 //		}
 	}
 	
@@ -831,6 +832,7 @@ public class UIManager : MonoBehaviour {
 	
 	public IEnumerator ChangeMenuMode (MenuMode newMode)
 	{
+		Debug.Log ("CHANGING MENU MODE : " + newMode);
 		MenuMode oldMode = m_currentMenuMode;
 		m_currentMenuMode = newMode;
 
@@ -1266,27 +1268,27 @@ public class UIManager : MonoBehaviour {
 
 				if (SettingsManager.m_settingsManager.trial)
 				{
-					// turn off limbo, turn on trial ui elements
-					AssetManager.m_assetManager.m_UIelements[3].gameObject.SetActive(false);
-					AssetManager.m_assetManager.m_UIelements[4].gameObject.SetActive(true);
-
-					// update text
-					string prize = "";
-					if (GameManager.m_gameManager.currentMap.m_trial.m_gpPrize > 0)
-					{
-						prize = "Prize: +" + GameManager.m_gameManager.currentMap.m_trial.m_gpPrize.ToString() + "GP";
-						SettingsManager.m_settingsManager.gold += GameManager.m_gameManager.currentMap.m_trial.m_gpPrize;
-					} else if (GameManager.m_gameManager.currentMap.m_trial.m_xpPrize > 0)
-					{
-						prize = "Prize: +" + GameManager.m_gameManager.currentMap.m_trial.m_xpPrize.ToString() + "XP";
-						GameManager.m_gameManager.accruedXP += GameManager.m_gameManager.currentMap.m_trial.m_xpPrize;
-					}
-					string turns = "Turns Taken: " + GameManager.m_gameManager.currentTurnNum.ToString();
-					AssetManager.m_assetManager.m_labels[2].text = prize;
-					AssetManager.m_assetManager.m_labels[3].text = turns;
-
-					// save completed trial state
-					SettingsManager.m_settingsManager.trialStates[SettingsManager.m_settingsManager.difficultyLevel] = 1;
+//					// turn off limbo, turn on trial ui elements
+//					AssetManager.m_assetManager.m_UIelements[3].gameObject.SetActive(false);
+//					AssetManager.m_assetManager.m_UIelements[4].gameObject.SetActive(true);
+//
+//					// update text
+//					string prize = "";
+//					if (GameManager.m_gameManager.currentMap.m_trial.m_gpPrize > 0)
+//					{
+//						prize = "Prize: +" + GameManager.m_gameManager.currentMap.m_trial.m_gpPrize.ToString() + "GP";
+//						SettingsManager.m_settingsManager.gold += GameManager.m_gameManager.currentMap.m_trial.m_gpPrize;
+//					} else if (GameManager.m_gameManager.currentMap.m_trial.m_xpPrize > 0)
+//					{
+//						prize = "Prize: +" + GameManager.m_gameManager.currentMap.m_trial.m_xpPrize.ToString() + "XP";
+//						GameManager.m_gameManager.accruedXP += GameManager.m_gameManager.currentMap.m_trial.m_xpPrize;
+//					}
+//					string turns = "Turns Taken: " + GameManager.m_gameManager.currentTurnNum.ToString();
+//					AssetManager.m_assetManager.m_labels[2].text = prize;
+//					AssetManager.m_assetManager.m_labels[3].text = turns;
+//
+//					// save completed trial state
+//					SettingsManager.m_settingsManager.trialStates[SettingsManager.m_settingsManager.difficultyLevel] = 1;
 
 				} else {
 
@@ -1298,6 +1300,7 @@ public class UIManager : MonoBehaviour {
 					{
 						Item thisItem = (Item)GameManager.m_gameManager.inventory[i];
 						Debug.Log("LIMBO: " + i.ToString());
+
 						if (thisItem.HasKeyword(Item.Keyword.Limbo))
 						{
 							Debug.Log("LIMBO CARD FOUND");
@@ -1335,7 +1338,9 @@ public class UIManager : MonoBehaviour {
 								i = 0;
 							} else { i = 999;}
 						}
+
 					}
+				
 					if (discards.Count > 0)
 					{
 						while (discards.Count > 0)
@@ -1345,6 +1350,7 @@ public class UIManager : MonoBehaviour {
 							Destroy(d.gameObject);
 						}
 					}
+				
 
 					if (GameManager.m_gameManager.numTilesFlipped == (GameManager.m_gameManager.numTiles-1) && GameManager.m_gameManager.numTiles > 0)
 					{
@@ -1367,7 +1373,33 @@ public class UIManager : MonoBehaviour {
 
 				}
 			} else {
-				m_levelEndHeader[0].text = "Game Over";
+
+				int ascendBonusXP = 0;
+				int bonusxp = 0;
+				if (oldMode == MenuMode.Pause)
+				{
+					m_pauseUI.SetActive(false);
+					AssetManager.m_assetManager.m_labels[7].text = "Ascend Bonus";
+					ascendBonusXP += GameManager.m_gameManager.levelsCompletedBonus;
+				}
+
+				if (GameManager.m_gameManager.numTilesFlipped == (GameManager.m_gameManager.numTiles-1) && GameManager.m_gameManager.numTiles > 0)
+				{
+					
+					bonusxp = (int)Mathf.Clamp(((GameManager.m_gameManager.accruedXP + ascendBonusXP) * 0.1f),1, 999);
+					
+					Debug.Log("ALL TILES FLIPPED : " + bonusxp);
+				}
+
+				int totalXP = GameManager.m_gameManager.accruedXP + ascendBonusXP + bonusxp;
+				
+				AssetManager.m_assetManager.m_labels[8].text = "+" + bonusxp.ToString();
+				AssetManager.m_assetManager.m_labels[9].text = "+" + ascendBonusXP.ToString();
+				AssetManager.m_assetManager.m_labels[10].text = "+" + totalXP.ToString();
+				SettingsManager.m_settingsManager.xp += totalXP;
+				AssetManager.m_assetManager.m_labels[5].text = "+" + GameManager.m_gameManager.accruedXP.ToString();
+
+				//m_levelEndHeader[0].text = "Game Over";
 				AssetManager.m_assetManager.m_typogenicText[16].Text = "MENU";
 				AssetManager.m_assetManager.m_UIelements[2].SetActive(false);
 				AssetManager.m_assetManager.m_props[32].SetActive(true);
@@ -1619,6 +1651,8 @@ public class UIManager : MonoBehaviour {
 			PartyCards.m_partyCards.gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[16].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
 
 			UIManager.m_uiManager.UpdateGoldUI();
 			AssetManager.m_assetManager.m_UIelements[5].gameObject.SetActive(true);
@@ -1960,6 +1994,8 @@ public class UIManager : MonoBehaviour {
 				PartyCards.m_partyCards.gameObject.SetActive(true);
 				AssetManager.m_assetManager.m_props[16].gameObject.SetActive(true);
 				AssetManager.m_assetManager.m_props[17].gameObject.SetActive(true);
+				AssetManager.m_assetManager.m_props[38].gameObject.SetActive(true);
+				AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
 				AssetManager.m_assetManager.m_props[10].SetActive(false);
 //				UIManager.m_uiManager.m_XPUI[1].gameObject.SetActive(false);
 				UIManager.m_uiManager.m_XPUI[2].gameObject.SetActive(false);
@@ -2176,12 +2212,19 @@ public class UIManager : MonoBehaviour {
 //				unlockSlot++;
 //			}
 
+			if (GameManager.m_gameManager.levelsCompletedBonus > 0)
+			{
+				AssetManager.m_assetManager.m_typogenicText[17].Text = GameManager.m_gameManager.levelsCompletedBonus.ToString("D2");
+				AssetManager.m_assetManager.m_props[36].SetActive(true);
+			}
 
 			AssetManager.m_assetManager.m_props[10].SetActive(true);
 			m_HUD.SetActive(false);
 			PartyCards.m_partyCards.gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[16].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
 			m_buttonUI.SetActive(false);
 			m_pauseUI.SetActive(true);
 			AssetManager.m_assetManager.m_props[19].SetActive(false);
@@ -2199,6 +2242,8 @@ public class UIManager : MonoBehaviour {
 			m_HUD.SetActive(true);
 			AssetManager.m_assetManager.m_props[16].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(true);
+			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(true);
+			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(true);
 			m_buttonUI.SetActive(true);
 			m_pauseUI.SetActive(false);
 			AssetManager.m_assetManager.m_props[19].SetActive(true);
