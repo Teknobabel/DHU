@@ -70,6 +70,7 @@ public class HeroMenu : MonoBehaviour {
 	void Start () {
 	
 		ClearMenu ();
+		AssetManager.m_assetManager.m_props [1].gameObject.SetActive (true);
 		UIManager.m_uiManager.UpdateGoldUI(); 
 		int numObjects = m_followerBank.Length-1;
 		
@@ -364,9 +365,9 @@ public class HeroMenu : MonoBehaviour {
 		}
 
 		m_cardList.Clear ();
-		AssetManager.m_assetManager.m_props [1].gameObject.SetActive (true);
-		AssetManager.m_assetManager.m_props [2].gameObject.SetActive (true);
-
+//		AssetManager.m_assetManager.m_props [1].gameObject.SetActive (true);
+//		AssetManager.m_assetManager.m_props [2].gameObject.SetActive (true);
+		AssetManager.m_assetManager.m_props [3].gameObject.SetActive (false);
 		AssetManager.m_assetManager.m_props [0].gameObject.SetActive (false);
 		UIManager.m_uiManager.m_inventoryUI.SetActive (false);
 	}
@@ -387,7 +388,8 @@ public class HeroMenu : MonoBehaviour {
 		//m_heroCard.m_nameUI.gameObject.SetActive (true);
 		AssetManager.m_assetManager.m_props [0].gameObject.SetActive (true);
 		AssetManager.m_assetManager.m_props [1].gameObject.SetActive (false);
-		AssetManager.m_assetManager.m_props [2].gameObject.SetActive (false);
+		AssetManager.m_assetManager.m_props [3].gameObject.SetActive (true);
+//		AssetManager.m_assetManager.m_props [2].gameObject.SetActive (false);
 
 
 		//display a purchase button only for the next level

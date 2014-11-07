@@ -686,6 +686,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!65 &35344647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2679,6 +2680,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!54 &158588660
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3812,6 +3814,7 @@ MonoBehaviour:
   m_objects:
   - {fileID: 816670242}
   m_deactivate: []
+  m_active: 0
 --- !u!54 &215510113
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8758,6 +8761,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!54 &527366349
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9019,6 +9023,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!54 &545191221
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9096,6 +9101,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!65 &548095592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9593,6 +9599,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &565774351
 GameObject:
   m_ObjectHideFlags: 0
@@ -12466,6 +12473,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &756630198
 GameObject:
   m_ObjectHideFlags: 0
@@ -12634,6 +12642,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &757530771
 GameObject:
   m_ObjectHideFlags: 0
@@ -15602,6 +15611,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &988549950
 GameObject:
   m_ObjectHideFlags: 0
@@ -16330,6 +16340,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!114 &1025833209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19197,6 +19208,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &1217389211
 GameObject:
   m_ObjectHideFlags: 0
@@ -19609,6 +19621,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!54 &1243633416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19965,6 +19978,7 @@ MonoBehaviour:
   m_objects:
   - {fileID: 1451830894}
   m_deactivate: []
+  m_active: 0
 --- !u!54 &1259337273
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20744,6 +20758,7 @@ MonoBehaviour:
   m_objects:
   - {fileID: 276722464}
   m_deactivate: []
+  m_active: 0
 --- !u!1 &1298308724
 GameObject:
   m_ObjectHideFlags: 0
@@ -21576,6 +21591,7 @@ MonoBehaviour:
   m_objects:
   - {fileID: 1078222166}
   m_deactivate: []
+  m_active: 0
 --- !u!54 &1346960694
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25920,6 +25936,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!65 &1539146453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27368,6 +27385,8 @@ MonoBehaviour:
   m_startLevel: 0
   m_customParty:
   - {fileID: 100004, guid: b00953e86600446cb8bc4bd5130316ca, type: 2}
+  - {fileID: 100004, guid: 0f6e5b129132c4a4d8c227ec57dcff4c, type: 2}
+  - {fileID: 100004, guid: f71130ad4f3814efeb48237d4b8b73b2, type: 2}
   m_startItems:
   - {fileID: 100000, guid: 308c2d4fbc6c147afaad71f9d9a4e0b5, type: 2}
   - {fileID: 100000, guid: fac14ef3748d940cbb333bb65590d1a4, type: 2}
@@ -27823,7 +27842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6ac92462e7b4434a140969a176f106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doSpawnEnemies: 1
+  doSpawnEnemies: 0
   m_card: {fileID: 100002, guid: 62ca4910fc3e840b4a42ee9a5c4cc426, type: 2}
   m_player: {fileID: 100002, guid: 34242f6d8618a49a2b0ce6f0c99556d3, type: 2}
   m_enemy: {fileID: 100002, guid: 75ed5a9559be14375aa0eff186dafeaf, type: 2}
@@ -33299,6 +33318,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &1850293969
 GameObject:
   m_ObjectHideFlags: 0
@@ -33345,6 +33365,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!54 &1850293972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33796,6 +33817,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &1865507126
 GameObject:
   m_ObjectHideFlags: 0
@@ -34529,6 +34551,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!65 &1931851962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36815,6 +36838,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!1 &2088098548
 GameObject:
   m_ObjectHideFlags: 0
@@ -37382,6 +37406,7 @@ MonoBehaviour:
   m_label02: {fileID: 342974489}
   m_objects: []
   m_deactivate: []
+  m_active: 0
 --- !u!65 &2103707253
 BoxCollider:
   m_ObjectHideFlags: 0

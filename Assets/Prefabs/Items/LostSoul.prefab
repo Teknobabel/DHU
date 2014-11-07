@@ -43,7 +43,8 @@ MonoBehaviour:
   m_portraitSpriteName: Card_Portrait_Item02
   m_energyCost: 0
   m_healthCost: 0
-  m_class: 2
+  m_canDiscard: 1
+  m_class: 0
   m_keywords: 07000000
   m_graveBonus: 0000000003000000
 --- !u!1001 &100100000

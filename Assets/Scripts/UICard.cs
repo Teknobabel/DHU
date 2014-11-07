@@ -185,6 +185,7 @@ public class UICard : MonoBehaviour {
 //				m_damageIcon.gameObject.SetActive(false);
 //			}
 
+
 		if (doSmall)
 		{
 //			m_portrait.spriteName = item.m_fullPortraitSpriteName;
@@ -207,6 +208,11 @@ public class UICard : MonoBehaviour {
 			{
 				m_shortCutUI.gameObject.SetActive(false);
 			}
+		}
+
+		if (item.HasKeyword (Item.Keyword.LostSoul) || item.HasKeyword (Item.Keyword.Key)) {
+			m_healthUI.gameObject.SetActive(false);
+			m_damageIcon.gameObject.SetActive(false);
 		}
 
 		m_portrait.gameObject.SetActive(true);

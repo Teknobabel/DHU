@@ -287,6 +287,13 @@ public class GameManager : MonoBehaviour {
 
 			m_customParty = party;
 		}
+		if (m_doCustomParty) {
+			for (int j=0; j < SettingsManager.m_settingsManager.badgeStates.Count; j++) {
+				if (SettingsManager.m_settingsManager.badgeStates [j] == 2) {
+					SettingsManager.m_settingsManager.badgeStates [j] = 1;
+				}
+			}
+		}
 
 		LoadBadges ();
 		
@@ -356,6 +363,7 @@ public class GameManager : MonoBehaviour {
 			
 			if (m_doCustomParty)
 			{
+
 				for (int i=1; i < m_customParty.Length; i++)
 				{
 					GameObject follower = m_customParty[i];

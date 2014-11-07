@@ -11,6 +11,7 @@ public class StoreBadge : MonoBehaviour {
 		UnEquipped,
 		Locked,
 		BadgeSlot,
+		None,
 	}
 
 	private State m_state = State.NotOwned;
@@ -40,18 +41,23 @@ public class StoreBadge : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		if (PartySelectMenu.m_partySelectMenu != null) {
+			m_state = State.None;	
+		}
 	}
 
 	public void Initialize (int price, State state, int ID)
 	{
+
 		if (m_priceLabel != null)
 		{
 			m_startTextColor = m_priceLabel.color;
 		}
 		m_ID = ID;
 		m_price = price;
+
 		ChangeState (state);
+
 	}
 
 	public void ChangeState (State newState)

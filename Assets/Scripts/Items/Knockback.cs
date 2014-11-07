@@ -68,6 +68,9 @@ public class Knockback : Item {
 						newString = "\\3" + GameManager.m_gameManager.selectedCard.enemy.m_displayName + "\\0 is knocked back";
 						UIManager.m_uiManager.UpdateActions (newString);
 						yield return StartCoroutine(GameManager.m_gameManager.selectedCard.enemy.DoKnockback(dir));
+					} else {
+						// Play hop anim
+						GameManager.m_gameManager.selectedCard.enemy.animation.Play("EnemyJump01");
 					}
 				}
 				GameManager.m_gameManager.selectedCard = null;

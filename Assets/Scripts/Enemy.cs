@@ -1494,7 +1494,7 @@ public class Enemy : MonoBehaviour {
 		
 		if (thisCard != null)
 		{
-			if (!thisCard.isOccupied)	
+			if (!thisCard.isOccupied && thisCard.cardState != Card.CardState.Hidden)	
 			{
 				return true;	
 			}

@@ -29,34 +29,32 @@ public class InputManager : MonoBehaviour {
 	}
 
 	void Update () {
-		if (UIManager.m_uiManager.menuMode == UIManager.MenuMode.None && Player.m_player != null)
-		{
-			if (Input.GetKey(KeyCode.LeftBracket))
-			{
-				FollowCamera.m_followCamera.ChangeZoomDistance(-0.01f);
-				//		   		if (Camera.main.fieldOfView<=80)
-				//		   			Camera.main.fieldOfView +=2;
-			} else if (Input.GetKey(KeyCode.RightBracket))
-			{
-				FollowCamera.m_followCamera.ChangeZoomDistance(0.01f);
-				//	    		if (Camera.main.fieldOfView>20)
-				//	    			Camera.main.fieldOfView -=2;
-			} else if (Input.GetAxis("Mouse ScrollWheel") != 0)
-			{
+		if (UIManager.m_uiManager != null && Player.m_player != null) {
+			if (UIManager.m_uiManager.menuMode == UIManager.MenuMode.None) {
+				if (Input.GetKey (KeyCode.LeftBracket)) {
+					FollowCamera.m_followCamera.ChangeZoomDistance (-0.01f);
+					//		   		if (Camera.main.fieldOfView<=80)
+					//		   			Camera.main.fieldOfView +=2;
+				} else if (Input.GetKey (KeyCode.RightBracket)) {
+						FollowCamera.m_followCamera.ChangeZoomDistance (0.01f);
+						//	    		if (Camera.main.fieldOfView>20)
+						//	    			Camera.main.fieldOfView -=2;
+					} else if (Input.GetAxis ("Mouse ScrollWheel") != 0) {
 
-				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 0.05f;
+							float zoomDist = Input.GetAxis ("Mouse ScrollWheel") * 0.05f;
 				
-				FollowCamera.m_followCamera.ChangeZoomDistance(zoomDist);
+							FollowCamera.m_followCamera.ChangeZoomDistance (zoomDist);
 				
-				//				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 10;
-				//				
-				//				if (Camera.main.fieldOfView<=80 && zoomDist > 0)
-				//		   		{
-				//		   			Camera.main.fieldOfView +=zoomDist;
-				//			   	} else if (Camera.main.fieldOfView>20 && zoomDist < 0)
-				//		    	{
-				//		    		Camera.main.fieldOfView +=zoomDist;
-				//		    	}
+							//				float zoomDist = Input.GetAxis("Mouse ScrollWheel") * 10;
+							//				
+							//				if (Camera.main.fieldOfView<=80 && zoomDist > 0)
+							//		   		{
+							//		   			Camera.main.fieldOfView +=zoomDist;
+							//			   	} else if (Camera.main.fieldOfView>20 && zoomDist < 0)
+							//		    	{
+							//		    		Camera.main.fieldOfView +=zoomDist;
+							//		    	}
+						}
 			}
 		}
 	}
@@ -694,7 +692,8 @@ public class InputManager : MonoBehaviour {
 						if (thisItem != null)
 						{
 
-							if (thisItem.adjustedEnergyCost <= Player.m_player.currentEnergy && !thisItem.HasKeyword(Item.Keyword.WhileInHand) && Player.m_player.currentCard.type != Card.CardType.Darkness)
+							if (thisItem.adjustedEnergyCost <= Player.m_player.currentEnergy && !thisItem.HasKeyword(Item.Keyword.WhileInHand) && Player.m_player.currentCard.type != Card.CardType.Darkness
+							    && !thisItem.HasKeyword(Item.Keyword.LostSoul) && !thisItem.HasKeyword(Item.Keyword.Key))
 							{
 								GameManager.m_gameManager.acceptInput = false;
 								// change hero model if not equal to current

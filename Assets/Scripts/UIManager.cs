@@ -3391,6 +3391,11 @@ public class UIManager : MonoBehaviour {
 				{
 					cardUI.m_miscOBJ[0].gameObject.SetActive(true);
 				}
+
+				if (thisItem.HasKeyword (Item.Keyword.LostSoul) || thisItem.HasKeyword (Item.Keyword.Key)) {
+					cardUI.m_healthUI.gameObject.SetActive(false);
+					cardUI.m_damageIcon.gameObject.SetActive(false);
+				}
 //				cardUI.m_shortCutUI.gameObject.SetActive(true);
 				
 				

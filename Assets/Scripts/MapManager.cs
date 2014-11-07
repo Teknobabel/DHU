@@ -2222,22 +2222,7 @@ public class MapManager : MonoBehaviour {
 			int chunkY = thisCell.m_yPos;
 			
 			int i=0;
-			int[] thisChunk = GetChunk(ChunkType.Standard);
-
-			if (difficulty < 0)
-			{
-				thisChunk = GetChunk(ChunkType.Tutorial);
-			}
-			else if ((difficulty+1) % 10 == 0)
-			{
-				thisChunk = GetChunk(ChunkType.Boss);
-			} else if (chunksPlaced == 1)
-			{
-				thisChunk = GetChunk(ChunkType.Entrance);
-			} else if (chunksPlaced == numChunks)
-			{
-				thisChunk = GetChunk(ChunkType.Exit);
-			}
+			int[] thisChunk = null;
 
 			if (numChunks == 1 && (difficulty+1) % 10 != 0)
 			{
@@ -2254,7 +2239,26 @@ public class MapManager : MonoBehaviour {
 				{
 					thisChunk = GetChunk(ChunkType.SingleLarge);
 				}
+			} else {
+
+				if (difficulty < 0)
+				{
+					thisChunk = GetChunk(ChunkType.Tutorial);
+				}
+				else if ((difficulty+1) % 10 == 0)
+				{
+					thisChunk = GetChunk(ChunkType.Boss);
+				} else if (chunksPlaced == 1)
+				{
+					thisChunk = GetChunk(ChunkType.Entrance);
+				} else if (chunksPlaced == numChunks)
+				{
+					thisChunk = GetChunk(ChunkType.Exit);
+				} else {
+					thisChunk = GetChunk(ChunkType.Standard);
+				}
 			}
+
 				
 			for (int x=0; x<chunkXSize; x++)
 			{
@@ -2987,6 +2991,7 @@ public class MapManager : MonoBehaviour {
 	
 	private int[] GetChunk (ChunkType type)
 	{
+		Debug.Log ("GETTING CHUNK TYPE: " + type.ToString ());
 		//tile types:
 		// 0: Empty
 		// 1: Normal tile
@@ -3238,34 +3243,34 @@ public class MapManager : MonoBehaviour {
 			// 5x5 chunks
 //			chunkArray.Add( new int[] {0,0,3,0,0,0,9,1,2,0,3,5,2,3,1,0,1,1,4,0,0,0,8,0,0});
 			chunkArray.Add( new int[] {0,0,3,0,0,0,9,1,2,0,3,5,2,3,1,0,2,3,1,0,0,0,8,0,0});
-//			chunkArray.Add( new int[] {8,5,3,0,0,1,2,1,0,0,5,1,2,5,1,3,1,9,0,0,1,5,7,0,0});
-//			chunkArray.Add( new int[] {0,0,1,2,1,0,3,1,9,2,1,1,1,1,1,0,2,3,0,1,0,0,8,0,3});
-//			chunkArray.Add( new int[] {0,0,3,1,9,0,0,0,1,0,8,0,0,1,3,1,1,0,1,1,3,1,2,3,2});
-//			chunkArray.Add( new int[] {0,0,1,1,8,0,0,0,1,0,9,0,0,1,1,3,1,0,2,2,7,1,1,3,3});
-//			chunkArray.Add( new int[] {0,0,3,1,2,0,0,0,1,0,9,0,0,3,7,1,1,0,1,1,1,3,1,2,8});
-//			chunkArray.Add( new int[] {0,0,1,1,9,0,0,0,7,0,3,0,0,1,1,1,1,0,1,1,7,1,1,3,8});
-//			chunkArray.Add( new int[] {0,0,1,1,9,0,1,7,3,1,3,1,2,1,3,0,1,1,0,1,0,0,8,0,1});
-//			chunkArray.Add( new int[] {0,0,1,1,1,0,7,1,3,1,9,1,1,1,2,0,3,7,0,1,0,0,1,0,8});
-//			chunkArray.Add( new int[] {0,0,1,1,3,0,1,2,1,1,1,1,1,2,1,0,8,1,0,1,0,0,3,0,9});
-//			chunkArray.Add( new int[] {0,0,1,0,0,0,3,1,2,0,1,7,1,1,8,0,3,1,1,0,0,0,9,0,0});
-//			chunkArray.Add( new int[] {0,0,1,0,0,0,1,3,1,0,2,1,8,1,3,0,1,7,1,0,0,0,9,0,0});
-//			chunkArray.Add( new int[] {0,0,1,0,0,0,2,3,3,0,9,1,1,1,1,0,3,1,2,0,0,0,8,0,0});
-//			chunkArray.Add( new int[] {1,1,1,3,1,1,9,0,1,1,1,0,0,0,2,1,3,0,1,1,3,1,2,1,8});
-//			chunkArray.Add( new int[] {1,1,1,2,3,1,1,0,3,2,1,0,0,0,1,1,8,0,9,3,3,1,7,1,1});
-//			chunkArray.Add( new int[] {9,7,1,1,1,7,2,0,3,1,1,0,0,0,1,1,3,0,2,1,1,1,8,1,1});
-//			chunkArray.Add( new int[] {0,9,1,1,0,0,3,1,3,0,1,2,1,2,3,0,1,0,1,0,0,1,8,1,0});
-//			chunkArray.Add( new int[] {0,9,1,3,0,0,1,3,2,0,1,1,3,2,1,0,1,0,1,0,0,1,8,1,0});
-//			chunkArray.Add( new int[] {0,2,1,8,0,0,1,1,1,0,9,1,3,1,1,0,1,0,1,0,0,3,1,2,0});
-//			chunkArray.Add( new int[] {0,7,3,3,0,0,1,1,1,0,8,1,1,2,1,0,1,0,1,0,0,1,1,9,0});
-//			chunkArray.Add( new int[] {0,0,9,3,1,0,0,0,2,1,1,3,1,1,1,1,7,0,0,0,1,1,8,0,0});
-//			chunkArray.Add( new int[] {0,0,1,1,9,0,0,0,7,1,1,2,3,1,1,1,1,0,0,0,1,1,8,0,0});
-//			chunkArray.Add( new int[] {0,0,9,1,1,0,0,0,7,3,1,1,1,1,2,1,1,0,0,0,8,1,3,0,0});
-//			chunkArray.Add( new int[] {0,1,9,1,0,0,7,1,7,0,0,1,0,1,0,0,1,1,1,0,0,1,8,1,0});
-//			chunkArray.Add( new int[] {0,1,9,1,0,0,1,7,1,0,0,2,0,3,0,0,1,1,1,0,0,1,8,1,0});
-//			chunkArray.Add( new int[] {0,0,9,0,0,0,3,1,2,0,1,2,1,1,3,0,1,1,1,0,0,0,8,0,0});
-//			chunkArray.Add( new int[] {0,0,9,0,0,0,2,1,1,0,7,1,1,1,7,0,1,1,1,0,0,0,8,0,0});
-//			chunkArray.Add( new int[] {0,0,1,0,0,0,2,3,1,0,1,1,1,3,9,0,1,1,2,0,0,0,8,0,0});
-//			chunkArray.Add( new int[] {0,0,9,0,0,0,3,1,3,0,1,1,1,1,1,0,2,2,2,0,0,0,8,0,0});
+			chunkArray.Add( new int[] {8,5,3,0,0,1,2,1,0,0,5,1,2,5,1,3,1,9,0,0,1,5,7,0,0});
+			chunkArray.Add( new int[] {0,0,1,2,1,0,3,1,9,2,1,1,1,1,1,0,2,3,0,1,0,0,8,0,3});
+			chunkArray.Add( new int[] {0,0,3,1,9,0,0,0,1,0,8,0,0,1,3,1,1,0,1,1,3,1,2,3,2});
+			chunkArray.Add( new int[] {0,0,1,1,8,0,0,0,1,0,9,0,0,1,1,3,1,0,2,2,7,1,1,3,3});
+			chunkArray.Add( new int[] {0,0,3,1,2,0,0,0,1,0,9,0,0,3,7,1,1,0,1,1,1,3,1,2,8});
+			chunkArray.Add( new int[] {0,0,1,1,9,0,0,0,7,0,3,0,0,1,1,1,1,0,1,1,7,1,1,3,8});
+			chunkArray.Add( new int[] {0,0,1,1,9,0,1,7,3,1,3,1,2,1,3,0,1,1,0,1,0,0,8,0,1});
+			chunkArray.Add( new int[] {0,0,1,1,1,0,7,1,3,1,9,1,1,1,2,0,3,7,0,1,0,0,1,0,8});
+			chunkArray.Add( new int[] {0,0,1,1,3,0,1,2,1,1,1,1,1,2,1,0,8,1,0,1,0,0,3,0,9});
+			chunkArray.Add( new int[] {0,0,1,0,0,0,3,1,2,0,1,7,1,1,8,0,3,1,1,0,0,0,9,0,0});
+			chunkArray.Add( new int[] {0,0,1,0,0,0,1,3,1,0,2,1,8,1,3,0,1,7,1,0,0,0,9,0,0});
+			chunkArray.Add( new int[] {0,0,1,0,0,0,2,3,3,0,9,1,1,1,1,0,3,1,2,0,0,0,8,0,0});
+			chunkArray.Add( new int[] {1,1,1,3,1,1,9,0,1,1,1,0,0,0,2,1,3,0,1,1,3,1,2,1,8});
+			chunkArray.Add( new int[] {1,1,1,2,3,1,1,0,3,2,1,0,0,0,1,1,8,0,9,3,3,1,7,1,1});
+			chunkArray.Add( new int[] {9,7,1,1,1,7,2,0,3,1,1,0,0,0,1,1,3,0,2,1,1,1,8,1,1});
+			chunkArray.Add( new int[] {0,9,1,1,0,0,3,1,3,0,1,2,1,2,3,0,1,0,1,0,0,1,8,1,0});
+			chunkArray.Add( new int[] {0,9,1,3,0,0,1,3,2,0,1,1,3,2,1,0,1,0,1,0,0,1,8,1,0});
+			chunkArray.Add( new int[] {0,2,1,8,0,0,1,1,1,0,9,1,3,1,1,0,1,0,1,0,0,3,1,2,0});
+			chunkArray.Add( new int[] {0,7,3,3,0,0,1,1,1,0,8,1,1,2,1,0,1,0,1,0,0,1,1,9,0});
+			chunkArray.Add( new int[] {0,0,9,3,1,0,0,0,2,1,1,3,1,1,1,1,7,0,0,0,1,1,8,0,0});
+			chunkArray.Add( new int[] {0,0,1,1,9,0,0,0,7,1,1,2,3,1,1,1,1,0,0,0,1,1,8,0,0});
+			chunkArray.Add( new int[] {0,0,9,1,1,0,0,0,7,3,1,1,1,1,2,1,1,0,0,0,8,1,3,0,0});
+			chunkArray.Add( new int[] {0,1,9,1,0,0,7,1,7,0,0,1,0,1,0,0,1,1,1,0,0,1,8,1,0});
+			chunkArray.Add( new int[] {0,1,9,1,0,0,1,7,1,0,0,2,0,3,0,0,1,1,1,0,0,1,8,1,0});
+			chunkArray.Add( new int[] {0,0,9,0,0,0,3,1,2,0,1,2,1,1,3,0,1,1,1,0,0,0,8,0,0});
+			chunkArray.Add( new int[] {0,0,9,0,0,0,2,1,1,0,7,1,1,1,7,0,1,1,1,0,0,0,8,0,0});
+			chunkArray.Add( new int[] {0,0,1,0,0,0,2,3,1,0,1,1,1,3,9,0,1,1,2,0,0,0,8,0,0});
+			chunkArray.Add( new int[] {0,0,9,0,0,0,3,1,3,0,1,1,1,1,1,0,2,2,2,0,0,0,8,0,0});
 //			chunkArray.Add( new int[] {});
 //			chunkArray.Add( new int[] {});
 //			chunkArray.Add( new int[] {});

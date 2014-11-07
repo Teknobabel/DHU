@@ -2435,7 +2435,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437535985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -181.242188, y: -314.738159, z: 0}
+  m_LocalPosition: {x: -181.242188, y: -300.71814, z: 0}
   m_LocalScale: {x: .673536003, y: .673536003, z: .673536003}
   m_Children:
   - {fileID: 171553979}
@@ -2878,7 +2878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &523265777
 Transform:
   m_ObjectHideFlags: 0
@@ -3031,7 +3031,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 562164033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -614.789062, y: 0, z: 0}
+  m_LocalPosition: {x: -615.626953, y: 0, z: 0}
   m_LocalScale: {x: .746682882, y: .746682882, z: .746682882}
   m_Children:
   - {fileID: 863482035}
@@ -4026,7 +4026,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 755791873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 682.664062, y: 384, z: 0}
+  m_LocalPosition: {x: 681.720703, y: 384.943481, z: 0}
   m_LocalScale: {x: .999935985, y: .999935985, z: .999935985}
   m_Children:
   - {fileID: 1222092363}
@@ -4195,7 +4195,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 766765113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 518.4375, y: -107.327545, z: 0}
+  m_LocalPosition: {x: 518.4375, y: -100.621193, z: 0}
   m_LocalScale: {x: .673536003, y: .673536003, z: .673536003}
   m_Children:
   - {fileID: 909375714}
@@ -4370,7 +4370,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 812871135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -183.193359, y: -107.836395, z: 0}
+  m_LocalPosition: {x: -183.193359, y: -101.130043, z: 0}
   m_LocalScale: {x: .673536003, y: .673536003, z: .673536003}
   m_Children:
   - {fileID: 1179050970}
@@ -6638,7 +6638,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269246883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 173.496094, y: -314.737976, z: 0}
+  m_LocalPosition: {x: 173.496094, y: -300.717957, z: 0}
   m_LocalScale: {x: .673536003, y: .673536003, z: .673536003}
   m_Children:
   - {fileID: 2121088858}
@@ -8075,6 +8075,7 @@ MonoBehaviour:
   - {fileID: 562164033}
   - {fileID: 1889958532}
   - {fileID: 523265776}
+  - {fileID: 1222092362}
   m_UIelements: []
   m_sfx: []
   m_sfxMove: []
@@ -8235,7 +8236,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1597608213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 469.154297, y: -314.737976, z: 0}
+  m_LocalPosition: {x: 469.154297, y: -300.717957, z: 0}
   m_LocalScale: {x: .673536003, y: .673536003, z: .673536003}
   m_Children:
   - {fileID: 1513895728}
@@ -8742,7 +8743,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704643772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .943359375, y: -.943496704, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 755791874}
@@ -9238,7 +9239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1889958533
 Transform:
   m_ObjectHideFlags: 0
@@ -9246,7 +9247,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1889958532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.2070312, y: -691.878174, z: -4.21875}
+  m_LocalPosition: {x: 79.2070312, y: -722.961304, z: -4.21875}
   m_LocalScale: {x: 83.5184631, y: 73.9180908, z: 119.312645}
   m_Children: []
   m_Father: {fileID: 159357236}
@@ -9858,7 +9859,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2041351241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 167.167969, y: -107.836418, z: 0}
+  m_LocalPosition: {x: 167.167969, y: -101.130066, z: 0}
   m_LocalScale: {x: .673536003, y: .673536003, z: .673536003}
   m_Children:
   - {fileID: 1701899668}
@@ -9893,7 +9894,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2047337949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 750.544922, y: 0, z: 0}
+  m_LocalPosition: {x: 750.650391, y: -.943496704, z: 0}
   m_LocalScale: {x: 1.90963197, y: 1.90963197, z: 1.90963197}
   m_Children:
   - {fileID: 728287152}
@@ -9905,18 +9906,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2047337949}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca6afe2aae3a49409f33250a1043d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_text: None
+  m_text: Netherite is used to Level Up Heroes to unlock new Cards, and purchase Badges.
   m_label: {fileID: 0}
-  m_label02: {fileID: 0}
-  m_objects:
-  - {fileID: 0}
-  m_deactivate:
-  - {fileID: 0}
+  m_label02: {fileID: 1889958534}
+  m_objects: []
+  m_deactivate: []
+  m_active: 0
 --- !u!54 &2047337952
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9940,10 +9940,10 @@ BoxCollider:
   m_GameObject: {fileID: 2047337949}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 97.8000031, y: 32.9000015, z: 51.2999992}
-  m_Center: {x: 29.2399998, y: -.699999988, z: 0}
+  m_Size: {x: 140.300003, y: 38.4000015, z: 51.2999992}
+  m_Center: {x: -166.699997, y: 155.800003, z: 0}
 --- !u!114 &2047337954
 MonoBehaviour:
   m_ObjectHideFlags: 0

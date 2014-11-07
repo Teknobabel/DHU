@@ -80,6 +80,19 @@ public class SettingsManager : MonoBehaviour {
 		m_difficultyLevel += difficultyIncrease;			
 	}
 
+	public void RemoveBadges ()
+	{
+		if (m_badgeStates.Count > 0) {
+			for (int i = 0; i < m_badgeStates.Count; i ++)
+			{
+				if (m_badgeStates[i] == 2)
+				{
+					m_badgeStates[i] = 1;
+				}
+			}
+		}
+	} 
+
 	public string version{get{return m_version;}}
 	public int difficultyLevel{get{return m_difficultyLevel;} set {m_difficultyLevel = value;}}
 	public int lastRandomSeed{get{return m_lastRandomSeed;} set{m_lastRandomSeed = value;}}
