@@ -2214,6 +2214,8 @@ public class GameManager : MonoBehaviour {
 
 		if (badgeStates[0] == 2)
 		{
+			SettingsManager.m_settingsManager.startingDamage = 99;
+			SettingsManager.m_settingsManager.startingHealth = 99;
 			m_doHeartBeat = true;
 			badgeNames.Add("Dungeon Heart");
 		} else {
@@ -2380,7 +2382,12 @@ public class GameManager : MonoBehaviour {
 	{
 		get
 		{
-			return m_currentMap.m_enemies;	
+			if (m_currentMap == null)
+			{
+				return null;
+			} else {
+				return m_currentMap.m_enemies;
+			}
 		}
 		set
 		{

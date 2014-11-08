@@ -539,50 +539,51 @@ public class UIManager : MonoBehaviour {
 		}
 
 		//get all enemies with an initiative
-		List<Enemy> activeEnemies = new List<Enemy> ();
-		GameObject lastStackGO = null;
-		foreach (Enemy e in GameManager.m_gameManager.enemies) {
-			if (e.initiative > 0)
-			{
-				activeEnemies.Add(e);
-			}
-		}
+		if (GameManager.m_gameManager.enemies != null) {
 
-		activeEnemies.Sort(delegate(Enemy i2, Enemy i1) { return i2.initiative.CompareTo(i1.initiative); });
-
-		int numCards = Mathf.Clamp( activeEnemies.Count-1, 1, 99);
-		float height = 0.09f;
-
-		Vector3 startPos = AssetManager.m_assetManager.m_props [27].transform.position;
-		Vector3 endPos = AssetManager.m_assetManager.m_props [28].transform.position;
-		
-		for (int i=0; i <activeEnemies.Count; i++) {
-			Vector3 cardPos = Vector3.Lerp (startPos, endPos, ((float)i) / ((float)numCards));
-			GameObject fCard = (GameObject)Instantiate(AssetManager.m_assetManager.m_props[30], cardPos, m_cardSmall.transform.rotation);
-			UISprite spr = (UISprite)fCard.GetComponent("UISprite");
-			StackObject so = (StackObject)fCard.GetComponent("StackObject");
-
-			Enemy thisE = (Enemy)activeEnemies[i];
-			so.m_target = thisE.transform;
-			spr.spriteName = thisE.m_stackPortraitName;
-			if (thisE.enemyState == Enemy.EnemyState.Idle || thisE.enemyState == Enemy.EnemyState.Inactive)
-			{
-				spr.color = Color.gray;
-			}
-
-			if (lastStackGO != null)
-			{
-				if (lastStackGO.transform.position.y - fCard.transform.position.y  > height)
-				{
-					Vector3 newPos = lastStackGO.transform.position;
-					newPos.y -= height;
-					fCard.transform.position = newPos;
+			List<Enemy> activeEnemies = new List<Enemy> ();
+			GameObject lastStackGO = null;
+			foreach (Enemy e in GameManager.m_gameManager.enemies) {
+				if (e.initiative > 0) {
+					activeEnemies.Add (e);
 				}
 			}
-			lastStackGO = fCard;
 
-			fCard.transform.parent = AssetManager.m_assetManager.m_props[29].transform;
-			m_stackGOList.Add(fCard);
+			activeEnemies.Sort (delegate(Enemy i2, Enemy i1) {
+				return i2.initiative.CompareTo (i1.initiative);
+			});
+
+			int numCards = Mathf.Clamp (activeEnemies.Count - 1, 1, 99);
+			float height = 0.09f;
+
+			Vector3 startPos = AssetManager.m_assetManager.m_props [27].transform.position;
+			Vector3 endPos = AssetManager.m_assetManager.m_props [28].transform.position;
+		
+			for (int i=0; i <activeEnemies.Count; i++) {
+				Vector3 cardPos = Vector3.Lerp (startPos, endPos, ((float)i) / ((float)numCards));
+				GameObject fCard = (GameObject)Instantiate (AssetManager.m_assetManager.m_props [30], cardPos, m_cardSmall.transform.rotation);
+				UISprite spr = (UISprite)fCard.GetComponent ("UISprite");
+				StackObject so = (StackObject)fCard.GetComponent ("StackObject");
+
+				Enemy thisE = (Enemy)activeEnemies [i];
+				so.m_target = thisE.transform;
+				spr.spriteName = thisE.m_stackPortraitName;
+				if (thisE.enemyState == Enemy.EnemyState.Idle || thisE.enemyState == Enemy.EnemyState.Inactive) {
+					spr.color = Color.gray;
+				}
+
+				if (lastStackGO != null) {
+					if (lastStackGO.transform.position.y - fCard.transform.position.y > height) {
+						Vector3 newPos = lastStackGO.transform.position;
+						newPos.y -= height;
+						fCard.transform.position = newPos;
+					}
+				}
+				lastStackGO = fCard;
+
+				fCard.transform.parent = AssetManager.m_assetManager.m_props [29].transform;
+				m_stackGOList.Add (fCard);
+			}
 		}
 
 		yield return true;
@@ -1299,7 +1300,7 @@ public class UIManager : MonoBehaviour {
 					for (int i=0; i < GameManager.m_gameManager.inventory.Count; i++)
 					{
 						Item thisItem = (Item)GameManager.m_gameManager.inventory[i];
-						Debug.Log("LIMBO: " + i.ToString());
+//						Debug.Log("LIMBO: " + i.ToString());
 
 						if (thisItem.HasKeyword(Item.Keyword.Limbo))
 						{

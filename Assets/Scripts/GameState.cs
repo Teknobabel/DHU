@@ -320,7 +320,7 @@ public class GameState {
 		// serializer.SaveInt; SaveFloat; etc.
 		serializer.SaveString(Version, SettingsManager.m_settingsManager.version);
 		serializer.SaveInt(Gold, 10);
-		serializer.SaveInt (XP, 1000);
+		serializer.SaveInt (XP, 0);
 		PlayerPrefs.SetInt("DoTutorial", 0);
 		PlayerPrefs.Save();
 
@@ -585,7 +585,7 @@ public class GameState {
 		serializer.SaveInt (Trial09State, 0);
 		serializer.SaveInt (Trial10State, 0);
 
-		serializer.SaveInt (Shortcut01, 0);
+		serializer.SaveInt (Shortcut01, 1);
 		serializer.SaveInt (Shortcut02, 0);
 		serializer.SaveInt (Shortcut03, 0);
 		serializer.SaveInt (Shortcut04, 0);
@@ -946,11 +946,11 @@ public class GameState {
 			{
 				List<int> scs = SettingsManager.m_settingsManager.shortcutStates;
 				
-				serializer.SaveInt (Trial01State, scs[0]);
-				serializer.SaveInt (Trial02State, scs[1]);
-				serializer.SaveInt (Trial03State, scs[2]);
-				serializer.SaveInt (Trial04State, scs[3]);
-				serializer.SaveInt (Trial05State, scs[4]);
+				serializer.SaveInt (Shortcut01, scs[0]);
+				serializer.SaveInt (Shortcut02, scs[1]);
+				serializer.SaveInt (Shortcut03, scs[2]);
+				serializer.SaveInt (Shortcut04, scs[3]);
+				serializer.SaveInt (Shortcut05, scs[4]);
 			}
 		}
 		

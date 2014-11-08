@@ -230,7 +230,7 @@ MonoBehaviour:
   m_flipTrapMesh: {fileID: 0}
   m_fx01: {fileID: 0}
   m_displayName: Razorvine
-  m_abilityText: Lose 1& every turn.
+  m_abilityText: Take 1$ each turn.
   m_portraitSpriteName: Card_Portrait_Item02
   m_spawn: {fileID: 0}
   m_actorBase: {fileID: 0}

@@ -693,7 +693,7 @@ public class InputManager : MonoBehaviour {
 						{
 
 							if (thisItem.adjustedEnergyCost <= Player.m_player.currentEnergy && !thisItem.HasKeyword(Item.Keyword.WhileInHand) && Player.m_player.currentCard.type != Card.CardType.Darkness
-							    && !thisItem.HasKeyword(Item.Keyword.LostSoul) && !thisItem.HasKeyword(Item.Keyword.Key))
+							    && !thisItem.HasKeyword(Item.Keyword.LostSoul) && !thisItem.HasKeyword(Item.Keyword.Key) && !thisItem.HasKeyword(Item.Keyword.Limbo))
 							{
 								GameManager.m_gameManager.acceptInput = false;
 								// change hero model if not equal to current

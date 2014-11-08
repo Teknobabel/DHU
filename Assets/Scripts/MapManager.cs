@@ -2914,7 +2914,7 @@ public class MapManager : MonoBehaviour {
 		Map thisMap = GameManager.m_gameManager.currentMap;
 		Destroy(thisMap.m_root.gameObject);
 		GameManager.m_gameManager.currentMap = null;
-		//MapManager.m_mapManager.RemoveMap();
+		StartCoroutine (UIManager.m_uiManager.UpdateStack ());
 		GameManager.m_gameManager.currentMap = BuildLevel(SettingsManager.m_settingsManager.difficultyLevel);
 		
 		//place player

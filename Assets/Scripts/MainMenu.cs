@@ -151,6 +151,7 @@ public class MainMenu : MonoBehaviour {
 
 
 //		m_labels [0].text = SettingsManager.m_settingsManager.gold.ToString ();
+		//SettingsManager.m_settingsManager.xp += 1000;
 		m_typogenicText[0].Text = SettingsManager.m_settingsManager.xp.ToString ("D4");
 
 		//initialize trial buttons

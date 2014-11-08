@@ -222,7 +222,8 @@ public class Follower : MonoBehaviour {
 		
 		if (m_currentLevel <= m_levelTable.Length)
 		{
-			m_level = m_levelTable[m_currentLevel];	
+//			Debug.Log(m_currentLevel);
+			m_level = m_levelTable[m_currentLevel-1];	
 		}
 		
 		if (m_currentLevel == 1)

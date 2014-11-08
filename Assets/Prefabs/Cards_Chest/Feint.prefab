@@ -39,10 +39,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_name: Feint
-  m_description: Move to an adjacent Site.
+  m_description: Move to an adjacent Tile.
   m_portraitSpriteName: Card_Portrait_Item02
   m_energyCost: 2
   m_healthCost: 0
+  m_canDiscard: 1
   m_class: 0
   m_keywords: 
   m_graveBonus: 

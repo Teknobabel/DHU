@@ -1335,6 +1335,12 @@ public class Enemy : MonoBehaviour {
 		{
 			animation.Stop();
 
+			if (m_stunAlert != null)
+			{
+				Destroy(m_stunAlert.gameObject);
+				m_stunAlert = null;
+			}
+
 			if (m_enemyType != EnemyType.Pet)
 			{
 				List<Enemy> enemies = GameManager.m_gameManager.enemies;
@@ -1393,12 +1399,50 @@ public class Enemy : MonoBehaviour {
 
 			if (m_enemyType == EnemyType.Boss)
 			{
+				// enable shortcut if not already enabled
+				List<int> scStates = SettingsManager.m_settingsManager.shortcutStates;
+				int shortcutNum = -1;
+				if (SettingsManager.m_settingsManager.difficultyLevel+1 == 10)
+				{
+					shortcutNum = 1;
+				} else if (SettingsManager.m_settingsManager.difficultyLevel+1 == 20)
+				{
+					shortcutNum = 2;
+				} else if (SettingsManager.m_settingsManager.difficultyLevel+1 == 30)
+				{
+					shortcutNum = 3;
+				} else if (SettingsManager.m_settingsManager.difficultyLevel+1 == 40)
+				{
+					shortcutNum = 4;
+				}
+
+				if (shortcutNum > 0 && shortcutNum < scStates.Count)
+				{
+					scStates[shortcutNum] = 1;
+				}
+
+				SettingsManager.m_settingsManager.shortcutStates = scStates;
+
+
+
+				// enable exit to next chapter
 				Card c = m_currentCard;
 				if (c.type != Card.CardType.Exit)
 				{
+
+					StartCoroutine( c.ChangeCardType(AssetManager.m_assetManager.m_uniqueCards[0]));
 					c.type = Card.CardType.Exit;
-					c.m_cardMesh.material = ((Card)MapManager.m_mapManager.m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-//					UIManager.m_uiManager.m_exitButton.SetActive(true);
+					c.SetColor(Color.yellow);
+					c.m_highlightMesh.material.color = Color.yellow;
+					
+					string newString2 = "The Exit appears";
+					UIManager.m_uiManager.UpdateActions (newString2);
+
+
+
+
+//					c.type = Card.CardType.Exit;
+//					c.m_cardMesh.material = ((Card)MapManager.m_mapManager.m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
 				}
 			}
 		}
