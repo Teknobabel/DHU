@@ -1331,6 +1331,9 @@ public class UIManager : MonoBehaviour {
 							AssetManager.m_assetManager.m_uiSprites[1].spriteName = GameManager.m_gameManager.currentMap.m_follower.m_portraitSpriteName;
 							AssetManager.m_assetManager.m_props[23].SetActive(true);
 
+							string newString = "\\6" + GameManager.m_gameManager.currentMap.m_follower.m_nameText + "'s Soul has been recovered!";
+							UIManager.m_uiManager.UpdateActions (newString);
+
 							// get rid of item
 							GameManager.m_gameManager.inventory.RemoveAt(i);
 							discards.Add(thisItem);

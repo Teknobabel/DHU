@@ -698,7 +698,7 @@ public class InputManager : MonoBehaviour {
 								GameManager.m_gameManager.acceptInput = false;
 								// change hero model if not equal to current
 								Follower leader = null;
-								if (thisItem.m_class != GameManager.m_gameManager.currentFollower.m_followerClass)
+								if (thisItem.m_class != GameManager.m_gameManager.currentFollower.m_followerClass && thisItem.m_class != Follower.FollowerClass.None)
 								{
 									Debug.Log ("SWAP HEROES");
 									leader = GameManager.m_gameManager.currentFollower;
@@ -1093,7 +1093,7 @@ public class InputManager : MonoBehaviour {
 			} else {
 
 				//MOUSE HOVER
-				
+
 				Ray worldTouchRay = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hitInfo;
 				bool objectTouched = false;
@@ -2792,7 +2792,7 @@ public class InputManager : MonoBehaviour {
 			{
 				EffectsPanel.m_effectsPanel.DeactivateTip();	
 			}
-			
+
 			if (UIManager.m_uiManager.invHoveredCard != null && UIManager.m_uiManager.menuMode != UIManager.MenuMode.SelectHero && !m_cardsMoving)
 			{
 				UIManager.m_uiManager.ClearInvSelection();	
@@ -2807,6 +2807,30 @@ public class InputManager : MonoBehaviour {
 			}
 		}
 	}
+
+	public void DoHoverHand()
+	{
+		Debug.Log (Time.deltaTime);
+		Ray cardTouchRay = UIManager.m_uiManager.m_uiCamera.camera.ScreenPointToRay (Input.mousePosition);
+		RaycastHit hit;
+		if (Physics.Raycast (cardTouchRay, out hit)) {
+
+			if (hit.transform.gameObject.tag == "InvCard" && !m_cardsMoving && UIManager.m_uiManager.menuMode != UIManager.MenuMode.SelectHero)
+			{
+				UICard c = (UICard)hit.transform.GetComponent("UICard");
+				UIManager.m_uiManager.InventoryCardHovered(hit.transform.gameObject);
+			}
+		} else {
+
+			if (UIManager.m_uiManager.invHoveredCard != null && UIManager.m_uiManager.menuMode != UIManager.MenuMode.SelectHero && !m_cardsMoving)
+			{
+				UIManager.m_uiManager.ClearInvSelection();	
+			}
+
+
+		}
+	}
+
 
 	public IEnumerator GetHeroSelection (Item item, UICard card)
 	{

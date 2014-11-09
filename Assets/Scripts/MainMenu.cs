@@ -83,7 +83,7 @@ public class MainMenu : MonoBehaviour {
 		// load save state for badge states
 		SettingsManager.m_settingsManager.gameState = new GameState();
 //		Debug.Log (SettingsManager.m_settingsManager.gameState.saveStateExists ());
-		if (m_Demo || (m_resetIfDiffVersion && PlayerPrefs.GetString("Version") != SettingsManager.m_settingsManager.version) || (!SettingsManager.m_settingsManager.gameState.saveStateExists() && !m_deleteSave))
+		if (m_Demo || (m_resetIfDiffVersion && PlayerPrefs.GetString("Version") != SettingsManager.m_settingsManager.version && m_Demo) || (!SettingsManager.m_settingsManager.gameState.saveStateExists() && !m_deleteSave))
 		{
 			Debug.Log("INITIALIZING DEMO STATE");
 			SettingsManager.m_settingsManager.demo = true;
@@ -107,7 +107,7 @@ public class MainMenu : MonoBehaviour {
 //			}
 
 			//debug unlocking
-			SettingsManager.m_settingsManager.badgeStates[2] = 1;
+//			SettingsManager.m_settingsManager.badgeStates[2] = 1;
 
 			// unlock specified heroes
 //			foreach (GameState.ProgressState thisCharState in SettingsManager.m_settingsManager.gameProgress)
@@ -136,18 +136,22 @@ public class MainMenu : MonoBehaviour {
 		} else { 
 
 			//Debug.Log("LOADING SAVE STATE");
-			SettingsManager.m_settingsManager.gameProgress = SettingsManager.m_settingsManager.gameState.loadState(); }
 
-//			if (m_resetIfDiffVersion && PlayerPrefs.GetString("Version") != SettingsManager.m_settingsManager.version)
-//			{
-//				SettingsManager.m_settingsManager.gameState.clearState();
-//				PlayerPrefs.SetString("Version", SettingsManager.m_settingsManager.version);
-//				PlayerPrefs.Save();
-//			} else if (!m_resetIfDiffVersion && PlayerPrefs.GetString("Version") != SettingsManager.m_settingsManager.version)
-//			{
-//				PlayerPrefs.SetString("Version", SettingsManager.m_settingsManager.version);
-//				PlayerPrefs.Save();	
-//			}
+
+			if (m_resetIfDiffVersion && PlayerPrefs.GetString("Version") != SettingsManager.m_settingsManager.version)
+			{
+				Debug.Log("RESETTING SAVE STATE");
+				//SettingsManager.m_settingsManager.gameState.clearState();
+				SettingsManager.m_settingsManager.gameState.InitializeSaveState();
+				PlayerPrefs.SetString("Version", SettingsManager.m_settingsManager.version);
+				PlayerPrefs.Save();
+			} else if (!m_resetIfDiffVersion && PlayerPrefs.GetString("Version") != SettingsManager.m_settingsManager.version)
+			{
+				PlayerPrefs.SetString("Version", SettingsManager.m_settingsManager.version);
+				PlayerPrefs.Save();	
+			}
+
+			SettingsManager.m_settingsManager.gameProgress = SettingsManager.m_settingsManager.gameState.loadState(); }
 
 
 //		m_labels [0].text = SettingsManager.m_settingsManager.gold.ToString ();

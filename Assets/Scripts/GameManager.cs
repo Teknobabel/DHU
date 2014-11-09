@@ -1019,10 +1019,12 @@ public class GameManager : MonoBehaviour {
 			{
 				StartCoroutine(InputManager.m_inputManager.DoUpdate());
 			}
-//			if (currentTurn == Turn.Player)
-//			{
-//				StartCoroutine(Player.m_player.DoUpdate());
-//			}
+			if (currentTurn != Turn.Player)
+			{
+		
+				InputManager.m_inputManager.DoHoverHand();
+			
+			}
 		}
 	}
 	
