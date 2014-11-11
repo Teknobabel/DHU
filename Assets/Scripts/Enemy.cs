@@ -1842,9 +1842,6 @@ public class Enemy : MonoBehaviour {
 			yield return null;
 		}
 
-
-
-
 		yield return new WaitForSeconds (0.5f);
 
 		t = 0;
@@ -1864,7 +1861,7 @@ public class Enemy : MonoBehaviour {
 		}
 		//card.transform.position = endPos;
 		//card.transform.localScale = endScale;
-
+		AssetManager.m_assetManager.m_props [20].animation.Play ();
 		Destroy (card.gameObject);
 
 		//yield return new WaitForSeconds (0.5f);

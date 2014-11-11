@@ -200,6 +200,13 @@ public class Player : MonoBehaviour {
 	public IEnumerator StartTurn()
 	{
 		Debug.Log ("PLAYER START TURN PHASE");
+
+		//check current card to see if effects need to be applied
+		if (Player.m_player.currentCard.doUpkeep) {
+			Debug.Log("DOING UPKEEP ON PLAYER CARD");
+			yield return StartCoroutine(Player.m_player.currentCard.DoTurn());	
+		}
+
 		m_turnDamage = 0;
 		m_turnArmor = 0;
 		m_reflectDamage = 0;
@@ -275,12 +282,6 @@ public class Player : MonoBehaviour {
 					break;
 				}
 			}
-		}
-
-		//check current card to see if effects need to be applied
-		if (Player.m_player.currentCard.doUpkeep) {
-			Debug.Log("DOING UPKEEP ON PLAYER CARD");
-			yield return StartCoroutine(Player.m_player.currentCard.DoTurn());	
 		}
 		
 		yield return null;

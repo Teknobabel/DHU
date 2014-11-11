@@ -1658,6 +1658,7 @@ public class UIManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[42].gameObject.SetActive(false);
 
 			UIManager.m_uiManager.UpdateGoldUI();
 			AssetManager.m_assetManager.m_UIelements[5].gameObject.SetActive(true);
@@ -2000,7 +2001,8 @@ public class UIManager : MonoBehaviour {
 				AssetManager.m_assetManager.m_props[16].gameObject.SetActive(true);
 				AssetManager.m_assetManager.m_props[17].gameObject.SetActive(true);
 				AssetManager.m_assetManager.m_props[38].gameObject.SetActive(true);
-				AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
+				AssetManager.m_assetManager.m_props[39].gameObject.SetActive(true);
+				AssetManager.m_assetManager.m_props[42].gameObject.SetActive(true);
 				AssetManager.m_assetManager.m_props[10].SetActive(false);
 //				UIManager.m_uiManager.m_XPUI[1].gameObject.SetActive(false);
 				UIManager.m_uiManager.m_XPUI[2].gameObject.SetActive(false);
@@ -2230,6 +2232,7 @@ public class UIManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_props[42].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_UIelements[6].gameObject.SetActive(false);
 			m_buttonUI.SetActive(false);
 			m_pauseUI.SetActive(true);
@@ -2250,6 +2253,7 @@ public class UIManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(true);
+			AssetManager.m_assetManager.m_props[42].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_UIelements[6].gameObject.SetActive(true);
 			m_buttonUI.SetActive(true);
 			m_pauseUI.SetActive(false);

@@ -2104,8 +2104,6 @@ public class GameManager : MonoBehaviour {
 
 		Debug.Log ("ADDING ENEMY TO GRAVE");
 
-		AssetManager.m_assetManager.m_props [20].animation.Play ();
-
 		GraveSlot gs = new GraveSlot ();
 		gs.type = GraveSlot.ObjectType.Enemy;
 		gs.enemy = enemy;
