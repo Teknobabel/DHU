@@ -1355,6 +1355,20 @@ public class Enemy : MonoBehaviour {
 					}
 				}
 				GameManager.m_gameManager.enemies = enemies;
+
+				int xp = m_level;
+				Card c = (Card) m_currentCard;
+				GameObject drop = (GameObject)AssetManager.m_assetManager.m_props[41];
+				Vector3 dropPos = c.m_actorBase.position;
+				dropPos.y += 0.04f;
+				dropPos.x += Random.Range(-0.4f, 0.4f);
+				dropPos.z += Random.Range(-0.5f, 0.5f);
+				GameObject go = (GameObject)Instantiate(drop, dropPos, drop.transform.rotation);
+				TypogenicText t = go.GetComponentInChildren<TypogenicText>();
+				t.Text = xp.ToString();
+				c.netherite += xp;
+				c.netheriteGO.Add(go);
+
 			} else {
 				List<Pet> pets = GameManager.m_gameManager.currentMap.m_pets;
 				for (int i=0; i < pets.Count; i++)
@@ -1769,8 +1783,9 @@ public class Enemy : MonoBehaviour {
 				yield return new WaitForSeconds(1.0f);
 			}
 
-			yield return StartCoroutine(SendCardToGrave());
+
 			yield return StartCoroutine(ChangeState(EnemyState.Dead));
+			yield return StartCoroutine(SendCardToGrave());
 		}
 		yield return true;
 	}
@@ -2036,8 +2051,10 @@ public class Enemy : MonoBehaviour {
 //			{
 //				Player.m_player.GainEnergy(1);
 //			}
-			yield return StartCoroutine(SendCardToGrave());
+
 			yield return StartCoroutine(ChangeState(EnemyState.Dead));
+			yield return StartCoroutine(SendCardToGrave());
+
 			yield return null;
 		}
 		else if (m_currentHealth > 0 && (m_abilityType == AbilityType.Counterattack || m_abilityType == AbilityType.Wall))

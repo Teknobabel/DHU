@@ -850,6 +850,24 @@ public class Player : MonoBehaviour {
 //			}
 //		}
 
+		//check for any Netherite on the tile
+		if (currentCard.netherite > 0) {
+
+			GameManager.m_gameManager.accruedXP += currentCard.netherite;
+			UIManager.m_uiManager.SpawnFloatingText("+" + currentCard.netherite.ToString(), UIManager.Icon.Gold,m_currentCard.transform);
+			currentCard.netherite = 0;
+
+			if (currentCard.netheriteGO.Count > 0)
+			{
+				while (currentCard.netheriteGO.Count > 0)
+				{
+					GameObject go = (GameObject)currentCard.netheriteGO[0];
+					currentCard.netheriteGO.RemoveAt(0);
+					Destroy(go);
+				}
+			}
+		}
+
 		// display target card if current card is special
 		if (currentCard.type != Card.CardType.Normal && currentCard.type != Card.CardType.Entrance && !m_doingSiteCard) {
 			m_doingSiteCard = true;
@@ -993,18 +1011,10 @@ public class Player : MonoBehaviour {
 				thisEnemy.ChangeEffectState(GameManager.StatusEffect.Poison, 3);
 			}
 
-			// Gain XP
-			int xp = thisEnemy.m_level;
-			GameManager.m_gameManager.accruedXP += xp;
-			UIManager.m_uiManager.SpawnFloatingText("+" + xp.ToString(), UIManager.Icon.Gold,m_currentCard.transform);
-
-			// Gain GP
-//			if (thisEnemy.m_level > 0 && !SettingsManager.m_settingsManager.trial)
-//			{
-//				int gp = thisEnemy.m_level;
-//				SettingsManager.m_settingsManager.gold += gp;
-//				UIManager.m_uiManager.SpawnFloatingText("+" + gp.ToString(), UIManager.Icon.Gold,thisEnemy.currentCard.transform);
-//			}
+			// Drop Netherite
+//			int xp = thisEnemy.m_level;
+//			GameManager.m_gameManager.accruedXP += xp;
+//			UIManager.m_uiManager.SpawnFloatingText("+" + xp.ToString(), UIManager.Icon.Gold,m_currentCard.transform);
 		}
 
 

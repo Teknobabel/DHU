@@ -26,7 +26,7 @@ public class SettingsManager : MonoBehaviour {
 		m_startChapter = -1;
 	
 	private string
-		m_version = "0.0.82";
+		m_version = "0.0.832";
 	
 	private List<Follower>
 		m_party = null;

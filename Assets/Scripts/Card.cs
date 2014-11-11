@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Card : MonoBehaviour {
 	
@@ -143,6 +144,8 @@ public class Card : MonoBehaviour {
 	private GameObject
 		m_goal,
 		m_follower;
+
+	private List<GameObject> m_netheriteGO = new List<GameObject>();
 		
 	private int
 		m_id,
@@ -155,7 +158,8 @@ public class Card : MonoBehaviour {
 		m_siteArmorBonus = 0,
 		m_siteDamageBonus = 0,
 		m_siteRangeBonus = 0,
-		m_energyValue = 1;
+		m_energyValue = 1,
+		m_netherite = 0;
 	
 	private bool
 		m_isOccupied = false,
@@ -1216,4 +1220,6 @@ public class Card : MonoBehaviour {
 	public bool doAmbush {get{return m_doAmbush;}}
 	public SubType subType {get{return m_subType;} set{m_subType = value;}}
 	public int id {get{return m_id;}}
+	public int netherite {get{return m_netherite;}set{m_netherite = value;}}
+	public List<GameObject> netheriteGO {get{return m_netheriteGO;} set{m_netheriteGO = value;}}
 }

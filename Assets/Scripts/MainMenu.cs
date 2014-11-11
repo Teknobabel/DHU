@@ -176,10 +176,10 @@ public class MainMenu : MonoBehaviour {
 			switch (i)
 			{
 			case 1: // Damage boost
-				price = 50;
+				price = 100;
 				break;
 			case 2: // Damage boost
-				price = 100;
+				price = 200;
 				break;
 			case 3: // Damage boost
 				price = 200;
@@ -200,10 +200,10 @@ public class MainMenu : MonoBehaviour {
 				price = 300;
 				break;
 			case 9: // Energy boost
-				price = 30;
+				price = 50;
 				break;
 			case 10: // Energy boost
-				price = 80;
+				price = 100;
 				break;
 			case 11: // Energy boost
 				price = 160;

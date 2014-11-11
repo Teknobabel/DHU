@@ -719,8 +719,9 @@ public class UIManager : MonoBehaviour {
 	
 	public void UpdateXP (int newXP)
 	{
-		string newAmt = "XP: " + newXP.ToString();
-		m_XPUI[0].text = newAmt;
+		//string newAmt = "XP: " + newXP.ToString();
+		//m_XPUI[0].text = newAmt;
+		AssetManager.m_assetManager.m_typogenicText [19].Text = newXP.ToString ("D2");
 	}
 	
 	public IEnumerator UpdateArmor (int newArmor)
@@ -2229,6 +2230,7 @@ public class UIManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(false);
 			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[6].gameObject.SetActive(false);
 			m_buttonUI.SetActive(false);
 			m_pauseUI.SetActive(true);
 			AssetManager.m_assetManager.m_props[19].SetActive(false);
@@ -2248,6 +2250,7 @@ public class UIManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_props[17].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[38].gameObject.SetActive(true);
 			AssetManager.m_assetManager.m_props[39].gameObject.SetActive(true);
+			AssetManager.m_assetManager.m_UIelements[6].gameObject.SetActive(true);
 			m_buttonUI.SetActive(true);
 			m_pauseUI.SetActive(false);
 			AssetManager.m_assetManager.m_props[19].SetActive(true);
