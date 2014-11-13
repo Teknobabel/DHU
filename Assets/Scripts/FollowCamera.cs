@@ -100,7 +100,9 @@ public class FollowCamera : MonoBehaviour {
 		Vector3 tOffset = Vector3.Lerp (targetOffset, Vector3.zero, m_zoomDist);
 		//Debug.Log (newPos);
 		m_camera.transform.localPosition = newPos;
-		transform.LookAt(target.transform.position + tOffset);
+		if (target != null) {
+			transform.LookAt (target.transform.position + tOffset);
+		}
 		//Debug.Log (m_camera.transform.position);
 	}
 
@@ -110,7 +112,9 @@ public class FollowCamera : MonoBehaviour {
 		Vector3 newPos = Vector3.Lerp (m_minZoom, m_maxZoom, m_zoomDist);
 		Vector3 tOffset = Vector3.Lerp (targetOffset, Vector3.zero, m_zoomDist);
 		m_camera.transform.localPosition = newPos;
-		transform.LookAt(target.transform.position + tOffset);
+		if (target != null) {
+			transform.LookAt (target.transform.position + tOffset);
+		}
 	}
 
 	public float zoomDist {get{return m_zoomDist;}}

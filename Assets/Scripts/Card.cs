@@ -949,7 +949,7 @@ public class Card : MonoBehaviour {
 			m_highlightMesh.material.color = m_highlightColor;
 		} else
 		{
-			m_highlightState = HighlightState.NotHighlighted;	
+			m_highlightState = HighlightState.NotHighlighted;
 			//m_highlightMesh.enabled = false;
 			m_highlightMesh.material.color = previousColor;
 		}

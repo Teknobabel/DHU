@@ -57,6 +57,27 @@ public class InputManager : MonoBehaviour {
 						}
 			}
 		}
+
+//		Vector3 mousePos = Input.mousePosition;
+//		if (mousePos.x < 10) {
+//			Vector3 newPos = Vector3.zero;
+//			newPos.x -= 4 * Time.deltaTime;
+//			FollowCamera.m_followCamera.MoveCamera (newPos);	
+//		} else if (mousePos.x > Screen.width - 10) {
+//			Vector3 newPos = Vector3.zero;
+//			newPos.x += 4 * Time.deltaTime;
+//			FollowCamera.m_followCamera.MoveCamera (newPos);
+//			}
+//		else if (mousePos.y < 10) {
+//			Vector3 newPos = Vector3.zero;
+//			newPos.z -= 4 * Time.deltaTime;
+//			FollowCamera.m_followCamera.MoveCamera (newPos);
+//		}
+//		else if (mousePos.y > Screen.height - 10) {
+//			Vector3 newPos = Vector3.zero;
+//			newPos.z += 4 * Time.deltaTime;
+//			FollowCamera.m_followCamera.MoveCamera (newPos);
+//		}
 	}
 
 	public IEnumerator DoUpdate ()
