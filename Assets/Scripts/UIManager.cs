@@ -647,6 +647,60 @@ public class UIManager : MonoBehaviour {
 			AssetManager.m_assetManager.m_typogenicText[7].Text = "/" + newEnergy.ToString();                                   
 		}
 	}
+
+	public void ReflowStats ()
+	{
+		Debug.Log ("REFLOWING STATS");
+		float scaleFactor = 1.0f;
+		List<Transform> displayedElements = new List<Transform> ();
+		List<Vector3> elementPos = new List<Vector3> ();
+
+		// get all currently displayed stat elements
+		displayedElements.Add (AssetManager.m_assetManager.m_UIelements [7].transform);
+		displayedElements.Add (AssetManager.m_assetManager.m_UIelements [8].transform);
+		displayedElements.Add (AssetManager.m_assetManager.m_UIelements [9].transform);
+		if (AssetManager.m_assetManager.m_UIelements [10].activeSelf)
+		{
+			displayedElements.Add (AssetManager.m_assetManager.m_UIelements [10].transform);
+		}
+		if (AssetManager.m_assetManager.m_UIelements [11].activeSelf)
+		{
+			displayedElements.Add (AssetManager.m_assetManager.m_UIelements [11].transform);
+		}
+
+		// update scale factor as needed
+		if (displayedElements.Count == 5) {
+			scaleFactor = 0.831f;
+		}
+
+		// determine element positions based on # of displayed elements
+		if (displayedElements.Count == 3) {
+			elementPos.Add(new Vector3(-110.9004f,-52.83594f,0));
+			elementPos.Add(new Vector3(31.98047f,-52.83609f,0));
+			elementPos.Add(new Vector3(176.0742f,-52.83594f,0));
+		} else if (displayedElements.Count == 4) {
+			elementPos.Add(new Vector3(-171.2871f,-52.83594f,0));
+			elementPos.Add(new Vector3(-28.40625f,-52.83594f,0));
+			elementPos.Add(new Vector3(115.6875f,-52.83594f,0));
+			elementPos.Add(new Vector3(257.748f,-52.83594f,0));
+		} else if (displayedElements.Count == 5) {
+			elementPos.Add(new Vector3(-200.2852f,-52.83594f,0));
+			elementPos.Add(new Vector3(-80.7832f,-52.83594f,0));
+			elementPos.Add(new Vector3(37.99219f,-52.83594f,0));
+			elementPos.Add(new Vector3(156.6738f,-52.83594f,0));
+			elementPos.Add(new Vector3(264.3633f,-52.83594f,0));
+		}
+
+		//move and scale elements
+		for (int i=0; i < displayedElements.Count; i++) {
+			if (i < elementPos.Count)
+			{
+				Transform e = (Transform)displayedElements[i];
+				e.localScale = Vector3.one * scaleFactor;
+				e.localPosition = elementPos[i];
+			}
+		}
+	}
 	
 	public void UpdateHealth (int newHealth)
 	{
@@ -753,6 +807,14 @@ public class UIManager : MonoBehaviour {
 		AssetManager.m_assetManager.m_typogenicText [4].ColorBottomLeft = textColor;
 
 		AssetManager.m_assetManager.m_typogenicText[4].Text = newArmor.ToString();
+
+		if (newArmor == 0) {
+			AssetManager.m_assetManager.m_UIelements [10].SetActive (false);
+		} else if (!AssetManager.m_assetManager.m_UIelements [10].activeSelf) {
+			AssetManager.m_assetManager.m_UIelements [10].SetActive (true);
+			}
+
+		UIManager.m_uiManager.ReflowStats ();
 		
 		yield return null;
 	}
@@ -774,7 +836,7 @@ public class UIManager : MonoBehaviour {
 //			m_actionGUI.SetActive(false);
 //		}
 		
-		GUIFollow gf = (GUIFollow)m_actionGUI.GetComponent("GUIFollow");
+//		GUIFollow gf = (GUIFollow)m_actionGUI.GetComponent("GUIFollow");
 //		if (newAmount <= 0 && m_actionGUI.activeSelf)
 //		{
 //			gf.SetTarget(null);

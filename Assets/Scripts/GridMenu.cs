@@ -11,6 +11,9 @@ public class GridMenu : MonoBehaviour {
 	public GameObject[]
 		m_cardTypes;
 
+	private GameObject
+		m_hoveredGO = null;
+
 	void Awake () {
 		if (SettingsManager.m_settingsManager == null)
 		{
@@ -24,6 +27,8 @@ public class GridMenu : MonoBehaviour {
 	void Start () {
 	
 		// build grid of cards
+
+		// initialize values
 		int[] grid = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,0,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,3,1,1,0,1,1,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,2,0,3,2,2,0,2,2,5,0,5,0,0,6,0,0,0,0,0,0,0,0,0,0,4,4,4,2,2,3,2,2,2,2,2,2,2,2,6,6,6,0,0,0,0,0,0,0,0,0,0,0,3,3,4,3,3,0,0,2,0,0,5,5,6,5,5,0,0,0,0,0,0,0,0,0,0,4,0,4,4,4,3,3,0,10,2,11,0,5,5,6,6,6,0,6,0,0,0,0,0,0,4,4,4,4,4,0,0,0,3,3,3,9,5,5,5,0,0,0,6,6,6,6,6,0,0,0,0,0,0,4,0,4,4,4,3,3,0,13,7,12,0,5,5,6,6,6,0,6,0,0,0,0,0,0,0,0,0,0,3,3,4,3,3,0,0,7,0,0,5,5,6,5,5,0,0,0,0,0,0,0,0,0,0,0,4,4,4,7,7,7,7,7,7,7,7,5,7,7,6,6,6,0,0,0,0,0,0,0,0,0,0,4,0,0,3,0,3,7,7,0,7,7,5,0,7,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,8,8,0,8,8,5,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,7,8,0,8,7,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,7,8,8,8,7,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,8,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		int[] gridCardType = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,2,0,0,2,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,2,1,2,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,3,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,3,10,3,3,0,2,3,3,2,11,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,2,0,2,2,3,0,3,2,2,0,3,0,0,19,0,0,0,0,0,0,0,0,0,0,2,3,2,3,2,2,3,2,3,2,3,2,2,4,2,3,2,0,0,0,0,0,0,0,0,0,0,0,12,3,3,2,3,0,0,2,0,0,3,2,3,2,3,0,0,0,0,0,0,0,0,0,0,3,0,2,3,2,3,2,0,0,1,0,0,2,3,2,3,2,0,3,0,0,0,0,0,0,14,3,2,2,1,0,0,0,3,2,1,0,1,2,3,0,0,0,1,2,2,3,16,0,0,0,0,0,0,3,0,2,3,2,3,2,0,0,1,0,0,2,3,2,3,2,0,3,0,0,0,0,0,0,0,0,0,0,3,2,3,2,3,0,0,2,0,0,3,2,3,2,17,0,0,0,0,0,0,0,0,0,0,0,2,3,2,21,2,2,3,2,3,2,3,2,2,3,2,3,2,0,0,0,0,0,0,0,0,0,0,15,0,0,3,0,2,2,3,0,3,2,2,0,2,0,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,27,2,3,3,2,0,2,3,20,3,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,3,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,25,2,1,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,2,0,0,2,0,0,2,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
@@ -39,6 +44,9 @@ public class GridMenu : MonoBehaviour {
 		int centerCell = ((numChunks*2)+1)/2;
 		int i=0;
 
+		bool[] gridCardStates = SettingsManager.m_settingsManager.gridCardStates;
+
+		// place grid cards
 		for (int x=0; x<chunkXSize; x++) {
 			for (int y=0; y<chunkYSize; y++) {
 
@@ -65,52 +73,108 @@ public class GridMenu : MonoBehaviour {
 
 					//Initialize highlight color
 					Color newColor = Color.black;
+					float darkColorTint = 0.1f;
 
 					switch (grid[i])
 					{
 					case 1:
-
+						newCard.collider.enabled = false;
 						break;
 					case 2:
-						newColor = Color.red;
+
 						if (IsUnlocked(Follower.FollowerType.Brand))
 						{
-							newCard.m_cardMesh.material = ((Card)m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-							newCard.m_displayName = ((Card)m_cardTypes[2].transform.GetComponent("Card")).m_displayName;
-							newCard.m_abilityText = ((Card)m_cardTypes[2].transform.GetComponent("Card")).m_abilityText;
-							newCard.m_portraitSpriteName = ((Card)m_cardTypes[2].transform.GetComponent("Card")).m_portraitSpriteName;
+							bool active = gridCardStates[i];
+							if (active)
+							{
+								newColor = Color.red;
+							} else {
+								newColor = Color.red * darkColorTint;
+								newColor.a = 1;
+							}
+							newCard.tempColor = Color.red;
+							//get card type
+							int gridCard = gridCardType[i];
+							switch (gridCard)
+							{
+							case 1:
+								newCard.m_cardMesh.material = ((Card)m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
+								newCard.m_displayName = "Brand Unlocked";
+								newCard.m_abilityText = "";
+//								newCard.m_portraitSpriteName = ((Card)m_cardTypes[2].transform.GetComponent("Card")).m_portraitSpriteName;
+								break;
+							case 2:
+								newCard.m_cardMesh.material = ((Card)m_cardTypes[3].transform.GetComponent("Card")).cardMesh.sharedMaterial;
+								newCard.m_displayName = "Level Up";
+								if (!active)
+								{
+									newCard.m_abilityText = "Brand gains a Level, unlocking new Skills.";
+								} else {
+									newCard.m_abilityText = "Owned";
+								}
+//								newCard.m_portraitSpriteName = ((Card)m_cardTypes[3].transform.GetComponent("Card")).m_portraitSpriteName;
+								break;
+							case 3:
+								newCard.m_cardMesh.material = ((Card)m_cardTypes[4].transform.GetComponent("Card")).cardMesh.sharedMaterial;
+								newCard.m_displayName = "Codex Unlock";
+								if (!active)
+								{
+									newCard.m_abilityText = "Unlock the next chapter of Brand's Codex";
+								} else {
+									newCard.m_abilityText = "Owned";
+								}
+//								newCard.m_portraitSpriteName = ((Card)m_cardTypes[4].transform.GetComponent("Card")).m_portraitSpriteName;
+								break;
+							}
+
+							newCard.type = Card.CardType.Brand;
 							newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Normal);
 						}
 						break;
 					case 3:
-						newColor = Color.yellow;
+						newColor = Color.yellow * darkColorTint;
+						newColor.a = 1;
+						newCard.tempColor = Color.yellow;
 						if (IsUnlocked(Follower.FollowerType.Jin))
 						{
-
-						}
+							newCard.type = Card.CardType.Jin;
+						} else {newCard.collider.enabled = false; }
 						break;
 					case 4:
-						newColor = Color.grey;
+						newColor = Color.grey * darkColorTint;
+						newColor.a = 1;
+						newCard.tempColor = Color.grey;
+						newCard.collider.enabled = false;
 						break;
 					case 5:
-						newColor = Color.green;
+						newColor = Color.green * darkColorTint;
+						newColor.a = 1;
+						newCard.tempColor = Color.green;
 						if (IsUnlocked(Follower.FollowerType.Telina))
 						{
-
-						}
+							newCard.type = Card.CardType.Telina;
+						} else {newCard.collider.enabled = false; }
 						break;
 					case 6:
-						newColor = Color.cyan;
+						newColor = Color.cyan * darkColorTint;
+						newColor.a = 1;
+						newCard.tempColor = Color.cyan;
+						newCard.collider.enabled = false;
 						break;
 					case 7:
-						newColor = Color.blue;
+						newColor = Color.blue * darkColorTint;
+						newColor.a = 1;
+						newCard.tempColor = Color.blue;
 						if (IsUnlocked(Follower.FollowerType.August))
 						{
-
-						}
+							newCard.type = Card.CardType.August;
+						} else {newCard.collider.enabled = false; }
 						break;
 					case 8:
-						newColor = Color.magenta;
+						newColor = Color.magenta * darkColorTint;
+						newColor.a = 1;
+						newCard.collider.enabled = false;
+						newCard.tempColor = Color.magenta;
 						break;
 					case 9:
 						newColor = Color.white;
@@ -122,16 +186,24 @@ public class GridMenu : MonoBehaviour {
 						newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Exit);
 						break;
 					case 10:
-						newColor = Color.white;
+						newColor = Color.white * darkColorTint;
+						newColor.a = 1;
+						newCard.collider.enabled = false;
 						break;
 					case 11:
-						newColor = Color.white;
+						newColor = Color.white * darkColorTint;
+						newColor.a = 1;
+						newCard.collider.enabled = false;
 						break;
 					case 12:
-						newColor = Color.white;
+						newColor = Color.white * darkColorTint;
+						newColor.a = 1;
+						newCard.collider.enabled = false;
 						break;
 					case 13:
-						newColor = Color.white;
+						newColor = Color.white * darkColorTint;
+						newColor.a = 1;
+						newCard.collider.enabled = false; 
 						break;
 					}
 
@@ -191,6 +263,44 @@ public class GridMenu : MonoBehaviour {
 	void Update () {
 	
 
+		// mouse clicks
+
+		if (Input.GetMouseButtonUp (0)) {
+			Ray worldTouchRay = Camera.mainCamera.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hitInfo;
+			bool objectTouched = false;
+			if (Physics.Raycast (worldTouchRay, out hitInfo)) {
+				
+				if (hitInfo.transform.gameObject.tag == "Card") {
+
+					Debug.Log("CARD CLICKED");
+					Card clickedCard = (Card)hitInfo.transform.GetComponent ("Card");
+					bool isActive = SettingsManager.m_settingsManager.gridCardStates[clickedCard.id];
+					if (clickedCard.cardState == Card.CardState.Normal && !isActive)
+					{
+						// there must be an adjacent unlocked card to "path" to this one
+						Card[] linkedCards = clickedCard.linkedCards;
+						foreach (Card c in linkedCards)
+						{
+							if (c != null)
+							{
+								if (c.cardState == Card.CardState.Normal && c.type == clickedCard.type && 
+								    SettingsManager.m_settingsManager.gridCardStates[c.id])
+								{
+
+									Debug.Log("CARD UNLOCKED");
+									SettingsManager.m_settingsManager.gridCardStates[clickedCard.id] = true;
+									clickedCard.SetColor(clickedCard.tempColor);
+									clickedCard.m_highlightMesh.material.color = clickedCard.tempColor;
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
 		// move camera based on keyboard input
 		Vector3 newPos = Vector3.zero;
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -211,8 +321,8 @@ public class GridMenu : MonoBehaviour {
 		}
 
 		Vector3 mousePos = Input.mousePosition;
-		float edgeBuffer = 200;
-		float cornerBuffer = 300;
+		float edgeBuffer = Screen.height * 0.25f;
+		float cornerBuffer = Screen.height * 0.35f;
 		if (mousePos.x < cornerBuffer && mousePos.y > Screen.height - cornerBuffer) {
 			newPos.x -= 4 * Time.deltaTime;
 			newPos.z += 4 * Time.deltaTime;
@@ -245,6 +355,7 @@ public class GridMenu : MonoBehaviour {
 
 
 		//zoom camera in / out
+
 		if (Input.GetKey (KeyCode.LeftBracket)) {
 			FollowCamera.m_followCamera.ChangeZoomDistance (-0.01f);
 		} else if (Input.GetKey (KeyCode.RightBracket)) {
@@ -253,5 +364,28 @@ public class GridMenu : MonoBehaviour {
 			float zoomDist = Input.GetAxis ("Mouse ScrollWheel") * 0.05f;
 			FollowCamera.m_followCamera.ChangeZoomDistance (zoomDist);
 		}
+
+
+
+		// Mouse Hover
+		
+		Ray worldTouchRay2 = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hitInfo2;
+		bool objectTouched2 = false;
+		if (Physics.Raycast (worldTouchRay2, out hitInfo2)) {
+
+			if (hitInfo2.transform.gameObject.tag == "Card") {
+				Card thisCard = (Card)hitInfo2.transform.GetComponent ("Card");
+
+				if (m_hoveredGO != hitInfo2.transform.gameObject) {
+					m_hoveredGO = hitInfo2.transform.gameObject;
+					StartCoroutine (UIManager.m_uiManager.DisplayTargetCard (thisCard, UIManager.m_uiManager.m_followerCards [4]));
+				}
+			}
+		} else if (m_hoveredGO != null) {
+//			Debug.Log(";LKSDJ;LSKFJD");
+			m_hoveredGO = null;
+			StartCoroutine(UIManager.m_uiManager.TurnOffTargetCard());
+			}
 	}
 }

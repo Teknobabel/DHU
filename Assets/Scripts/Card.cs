@@ -46,6 +46,10 @@ public class Card : MonoBehaviour {
 		RazorGlade,
 		ManaBurn,
 		BrokenGround,
+		Brand,
+		August,
+		Telina,
+		Jin,
 	}
 	
 	public enum SubType
@@ -174,7 +178,8 @@ public class Card : MonoBehaviour {
 		m_highlightState = HighlightState.NotHighlighted;
 
 	private Color
-		m_highlightColor = Color.white;
+		m_highlightColor = Color.white,
+		m_tempColor = Color.white;
 
 	void Awake ()
 	{
@@ -695,6 +700,7 @@ public class Card : MonoBehaviour {
 
 	void OnMouseEnter ()
 	{
+		Debug.Log ("SLDKJSLKDFJ;");
 		if (m_cardState == CardState.Normal) {
 			Color highlightColor = neutralColor * 1.5f;
 
@@ -1222,4 +1228,5 @@ public class Card : MonoBehaviour {
 	public int id {get{return m_id;}}
 	public int netherite {get{return m_netherite;}set{m_netherite = value;}}
 	public List<GameObject> netheriteGO {get{return m_netheriteGO;} set{m_netheriteGO = value;}}
+	public Color tempColor {get{return m_tempColor;}set{m_tempColor = value;}}
 }

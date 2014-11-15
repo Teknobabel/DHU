@@ -316,6 +316,18 @@ public class GameState {
 //		{
 //			lockHero = false;	
 //		}
+
+		// initialize grid card states
+		bool[] gridCardStates = new bool[27*27];
+
+		// unlock initial grid cards
+		gridCardStates [337] = true;
+
+		// set grid cards
+		if (SettingsManager.m_settingsManager != null) {
+			SettingsManager.m_settingsManager.gridCardStates = gridCardStates;
+			PlayerPrefsX.SetBoolArray("GridCardStates", gridCardStates);
+		}
 		
 		// serializer.SaveInt; SaveFloat; etc.
 		serializer.SaveString(Version, SettingsManager.m_settingsManager.version);
@@ -607,6 +619,8 @@ public class GameState {
 		serializer.SaveString(Version, SettingsManager.m_settingsManager.version);
 		serializer.SaveInt (Gold, SettingsManager.m_settingsManager.gold);
 		serializer.SaveInt (XP, SettingsManager.m_settingsManager.xp);
+
+		PlayerPrefsX.SetBoolArray("GridCardStates", SettingsManager.m_settingsManager.gridCardStates);
 		
 		//foreach (ProgressState thisFollower in GameManager.m_gameManager.gameProgress)
 		foreach (ProgressState thisFollower in SettingsManager.m_settingsManager.gameProgress)
@@ -960,6 +974,8 @@ public class GameState {
 	
 	public void SaveStorageState ()
 	{
+		PlayerPrefsX.SetBoolArray("GridCardStates", SettingsManager.m_settingsManager.gridCardStates);
+
 //		Debug.Log("SAVING STATE WITH STORAGE");
 //		GameSerializer serializer = GameSerializer.Instance;
 //		serializer.ClearSerializedData();
@@ -1454,6 +1470,13 @@ public class GameState {
 		//serializer.CompressData = false;
 		serializer.ClearSerializedData();
 		serializer.DeserializeDataFromFile(SaveFileName);
+
+		// load grid card states
+		bool[] gridCardStates = PlayerPrefsX.GetBoolArray ("GridCardStates");
+		if (SettingsManager.m_settingsManager != null) {
+			SettingsManager.m_settingsManager.gridCardStates = gridCardStates;
+		}
+
 
 
 		SettingsManager.m_settingsManager.gold = serializer.LoadInt(Gold);

@@ -911,9 +911,10 @@ public class Player : MonoBehaviour {
 		currentActionPoints --;
 		UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
 		if (m_currentActionPoints <= 0) {
-			AssetManager.m_assetManager.m_props[37].SetActive(false);
-			//UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
-//			currentActionPoints = m_maxActionPoints;	
+			//AssetManager.m_assetManager.m_props[37].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[11].SetActive(false);
+			UIManager.m_uiManager.ReflowStats();
+	
 			StartCoroutine (GameManager.m_gameManager.Changeturn (GameManager.Turn.Enemy));
 		} else {
 	
@@ -928,8 +929,10 @@ public class Player : MonoBehaviour {
 		currentActionPoints = Mathf.Clamp(m_currentActionPoints + amt, 0, 20);	
 		//UIManager.m_uiManager.UpdateActionPoints(m_currentActionPoints);
 
-		if (amt > 0 && !AssetManager.m_assetManager.m_props[37].activeSelf) {
-			AssetManager.m_assetManager.m_props[37].SetActive(true);
+		if (amt > 0 && !AssetManager.m_assetManager.m_UIelements[11].activeSelf) {
+			//AssetManager.m_assetManager.m_props[37].SetActive(true);
+			AssetManager.m_assetManager.m_UIelements[11].SetActive(true);
+			UIManager.m_uiManager.ReflowStats();
 		}
 		
 		
