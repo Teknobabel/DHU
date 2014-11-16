@@ -11,6 +11,9 @@ public class GridMenu : MonoBehaviour {
 	public GameObject[]
 		m_cardTypes;
 
+	public Material
+		m_cardBackLocked;
+
 	private GameObject
 		m_hoveredGO = null;
 
@@ -70,6 +73,11 @@ public class GridMenu : MonoBehaviour {
 					// spawn card
 					Card newCard = (Card)((GameObject)Instantiate(m_card, pos, Quaternion.Euler(rot))).transform.GetComponent("Card");	
 					newCard.Initialize(0, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+					newCard.m_meshes[2].renderer.material = m_cardBackLocked;
+
+					GridCard thisCard = null;
+					bool active = gridCardStates[i];
+					int gridCard = gridCardType[i];
 
 					//Initialize highlight color
 					Color newColor = Color.black;
@@ -84,7 +92,6 @@ public class GridMenu : MonoBehaviour {
 
 						if (IsUnlocked(Follower.FollowerType.Brand))
 						{
-							bool active = gridCardStates[i];
 							if (active)
 							{
 								newColor = Color.red;
@@ -92,52 +99,68 @@ public class GridMenu : MonoBehaviour {
 								newColor = Color.red * darkColorTint;
 								newColor.a = 1;
 							}
-							newCard.tempColor = Color.red;
-							//get card type
-							int gridCard = gridCardType[i];
+
 							switch (gridCard)
 							{
 							case 1:
-								newCard.m_cardMesh.material = ((Card)m_cardTypes[2].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-								newCard.m_displayName = "Brand Unlocked";
-								newCard.m_abilityText = "";
-//								newCard.m_portraitSpriteName = ((Card)m_cardTypes[2].transform.GetComponent("Card")).m_portraitSpriteName;
+								thisCard = (GridCard)m_cardTypes[7].transform.GetComponent("GridCard");
 								break;
 							case 2:
-								newCard.m_cardMesh.material = ((Card)m_cardTypes[3].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-								newCard.m_displayName = "Level Up";
-								if (!active)
-								{
-									newCard.m_abilityText = "Brand gains a Level, unlocking new Skills.";
-								} else {
-									newCard.m_abilityText = "Owned";
-								}
-//								newCard.m_portraitSpriteName = ((Card)m_cardTypes[3].transform.GetComponent("Card")).m_portraitSpriteName;
+								thisCard = (GridCard)m_cardTypes[7].transform.GetComponent("GridCard");
 								break;
 							case 3:
-								newCard.m_cardMesh.material = ((Card)m_cardTypes[4].transform.GetComponent("Card")).cardMesh.sharedMaterial;
-								newCard.m_displayName = "Codex Unlock";
-								if (!active)
-								{
-									newCard.m_abilityText = "Unlock the next chapter of Brand's Codex";
-								} else {
-									newCard.m_abilityText = "Owned";
-								}
-//								newCard.m_portraitSpriteName = ((Card)m_cardTypes[4].transform.GetComponent("Card")).m_portraitSpriteName;
+								thisCard = (GridCard)m_cardTypes[6].transform.GetComponent("GridCard");
 								break;
-							}
+							case 4:
+								thisCard = (GridCard)m_cardTypes[7].transform.GetComponent("GridCard");
+								break;
+							case 5:
+								thisCard = (GridCard)m_cardTypes[5].transform.GetComponent("GridCard");
+								break;
+							case 6:
+								thisCard = (GridCard)m_cardTypes[5].transform.GetComponent("GridCard");
+								break;
+							} 
 
-							newCard.type = Card.CardType.Brand;
 							newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Normal);
 						}
 						break;
 					case 3:
-						newColor = Color.yellow * darkColorTint;
-						newColor.a = 1;
-						newCard.tempColor = Color.yellow;
 						if (IsUnlocked(Follower.FollowerType.Jin))
 						{
-							newCard.type = Card.CardType.Jin;
+							if (active)
+							{
+								newColor = Color.yellow;
+							} else {
+								newColor = Color.yellow * darkColorTint;
+								newColor.a = 1;
+							}
+
+							switch (gridCard)
+							{
+							case 1:
+								thisCard = (GridCard)m_cardTypes[10].transform.GetComponent("GridCard");
+								break;
+							case 2:
+								thisCard = (GridCard)m_cardTypes[10].transform.GetComponent("GridCard");
+								break;
+							case 3:
+								thisCard = (GridCard)m_cardTypes[9].transform.GetComponent("GridCard");
+								break;
+							case 4:
+								thisCard = (GridCard)m_cardTypes[10].transform.GetComponent("GridCard");
+								break;
+							case 5:
+								thisCard = (GridCard)m_cardTypes[8].transform.GetComponent("GridCard");
+								break;
+							case 6:
+								thisCard = (GridCard)m_cardTypes[8].transform.GetComponent("GridCard");
+								break;
+							} 
+							
+							newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Normal);
+
+
 						} else {newCard.collider.enabled = false; }
 						break;
 					case 4:
@@ -147,12 +170,40 @@ public class GridMenu : MonoBehaviour {
 						newCard.collider.enabled = false;
 						break;
 					case 5:
-						newColor = Color.green * darkColorTint;
-						newColor.a = 1;
-						newCard.tempColor = Color.green;
 						if (IsUnlocked(Follower.FollowerType.Telina))
 						{
-							newCard.type = Card.CardType.Telina;
+							if (active)
+							{
+								newColor = Color.green;
+							} else {
+								newColor = Color.green * darkColorTint;
+								newColor.a = 1;
+							}
+
+							switch (gridCard)
+							{
+							case 1:
+								thisCard = (GridCard)m_cardTypes[13].transform.GetComponent("GridCard");
+								break;
+							case 2:
+								thisCard = (GridCard)m_cardTypes[13].transform.GetComponent("GridCard");
+								break;
+							case 3:
+								thisCard = (GridCard)m_cardTypes[12].transform.GetComponent("GridCard");
+								break;
+							case 4:
+								thisCard = (GridCard)m_cardTypes[13].transform.GetComponent("GridCard");
+								break;
+							case 5:
+								thisCard = (GridCard)m_cardTypes[11].transform.GetComponent("GridCard");
+								break;
+							case 6:
+								thisCard = (GridCard)m_cardTypes[11].transform.GetComponent("GridCard");
+								break;
+							} 
+							
+							newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Normal);
+
 						} else {newCard.collider.enabled = false; }
 						break;
 					case 6:
@@ -162,12 +213,41 @@ public class GridMenu : MonoBehaviour {
 						newCard.collider.enabled = false;
 						break;
 					case 7:
-						newColor = Color.blue * darkColorTint;
-						newColor.a = 1;
-						newCard.tempColor = Color.blue;
 						if (IsUnlocked(Follower.FollowerType.August))
 						{
-							newCard.type = Card.CardType.August;
+							if (active)
+							{
+								newColor = Color.blue;
+							} else {
+								newColor = Color.blue * darkColorTint;
+								newColor.a = 1;
+							}
+
+							switch (gridCard)
+							{
+							case 1:
+								thisCard = (GridCard)m_cardTypes[4].transform.GetComponent("GridCard");
+								break;
+							case 2:
+								thisCard = (GridCard)m_cardTypes[4].transform.GetComponent("GridCard");
+								break;
+							case 3:
+								thisCard = (GridCard)m_cardTypes[3].transform.GetComponent("GridCard");
+								break;
+							case 4:
+								thisCard = (GridCard)m_cardTypes[4].transform.GetComponent("GridCard");
+								break;
+							case 5:
+								thisCard = (GridCard)m_cardTypes[2].transform.GetComponent("GridCard");
+								break;
+							case 6:
+								thisCard = (GridCard)m_cardTypes[2].transform.GetComponent("GridCard");
+								break;
+							} 
+							
+							newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Normal);
+
+
 						} else {newCard.collider.enabled = false; }
 						break;
 					case 8:
@@ -207,9 +287,21 @@ public class GridMenu : MonoBehaviour {
 						break;
 					}
 
-					newCard.SetColor(newColor);
-					newCard.m_highlightMesh.material.color = newColor;
-					gridCards.Add(newCard);
+					if (thisCard != null)
+					{
+						newCard.type = thisCard.m_type;
+						newCard.m_cardMesh.material = thisCard.m_material;
+						newCard.m_displayName = thisCard.m_name;
+						if (!active)
+						{
+							newCard.m_abilityText = thisCard.m_lockedDescription;
+						} else {
+							newCard.m_abilityText = thisCard.m_unlockedDescription;
+						}
+						newCard.SetColor(newColor);
+						newCard.m_highlightMesh.material.color = newColor;
+						gridCards.Add(newCard);
+					}
 				}
 
 				i++;

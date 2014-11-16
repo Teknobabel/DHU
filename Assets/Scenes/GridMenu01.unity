@@ -6902,7 +6902,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 817508983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 682.664062, y: 384, z: 0}
+  m_LocalPosition: {x: 683.701172, y: 384, z: 0}
   m_LocalScale: {x: 1.90963197, y: 1.90963197, z: 1.90963197}
   m_Children:
   - {fileID: 1931851960}
@@ -14819,9 +14819,19 @@ MonoBehaviour:
   m_cardTypes:
   - {fileID: 100002, guid: 62ca4910fc3e840b4a42ee9a5c4cc426, type: 2}
   - {fileID: 100002, guid: 40a654739c166486f83d3af35211f75e, type: 2}
-  - {fileID: 100006, guid: b01906f033f7e43d0b61592d4e406f0e, type: 2}
-  - {fileID: 100006, guid: d3afae44440dc480499c0d2ba6f28d28, type: 2}
-  - {fileID: 100006, guid: fbdd956d624174b7cbe420cb477b2dfd, type: 2}
+  - {fileID: 100000, guid: a0fb25b39f6ae47528d4d3a32cefe4a3, type: 2}
+  - {fileID: 100000, guid: 2f68a3590a90f458eb1270227e2a7c79, type: 2}
+  - {fileID: 100000, guid: fd483b906a2304170a22b7e90c54c7ee, type: 2}
+  - {fileID: 100000, guid: 692e6c6be47c84ec090c40da92f74b58, type: 2}
+  - {fileID: 100000, guid: 8442a89ebd8e64e588d1db070fdbb897, type: 2}
+  - {fileID: 100000, guid: d03387c61ed884a6c9e46c50e31b63f3, type: 2}
+  - {fileID: 100000, guid: 7ff30825b32594f9686bb3fc2aaa3765, type: 2}
+  - {fileID: 100000, guid: 0f864ace507e94365a8458d7654ebba6, type: 2}
+  - {fileID: 100000, guid: cd6bfed6d31004256ac598d84ac3b56a, type: 2}
+  - {fileID: 100000, guid: 7653d1e7de86f4bb7a6dd793567ff255, type: 2}
+  - {fileID: 100000, guid: 17490cb431621430798a45e470b7f3fb, type: 2}
+  - {fileID: 100000, guid: 6cc56c779cbf94b48bee995f7e5ff608, type: 2}
+  m_cardBackLocked: {fileID: 2100000, guid: b01768a2e235c406488a1d4a269efbff, type: 2}
 --- !u!114 &1585719319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15822,7 +15832,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704643772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.03710938, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 540508328}

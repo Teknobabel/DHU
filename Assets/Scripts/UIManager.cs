@@ -808,13 +808,17 @@ public class UIManager : MonoBehaviour {
 
 		AssetManager.m_assetManager.m_typogenicText[4].Text = newArmor.ToString();
 
-		if (newArmor == 0) {
-			AssetManager.m_assetManager.m_UIelements [10].SetActive (false);
-		} else if (!AssetManager.m_assetManager.m_UIelements [10].activeSelf) {
-			AssetManager.m_assetManager.m_UIelements [10].SetActive (true);
-			}
+		if (AssetManager.m_assetManager.m_UIelements.Length >= 10) {
+			if (newArmor == 0) {
+				AssetManager.m_assetManager.m_UIelements [10].SetActive (false);
+			} else if (!AssetManager.m_assetManager.m_UIelements [10].activeSelf) {
+					AssetManager.m_assetManager.m_UIelements [10].SetActive (true);
+				}
 
-		UIManager.m_uiManager.ReflowStats ();
+			UIManager.m_uiManager.ReflowStats ();
+		}
+
+
 		
 		yield return null;
 	}
