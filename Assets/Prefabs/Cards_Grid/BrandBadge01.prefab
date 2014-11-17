@@ -42,7 +42,7 @@ MonoBehaviour:
   m_name: Level Up
   m_lockedDescription: Locked Description
   m_unlockedDescription: Unlocked Description
-  m_type: 28
+  m_type: 30
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

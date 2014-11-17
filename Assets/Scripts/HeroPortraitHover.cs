@@ -21,22 +21,24 @@ public class HeroPortraitHover : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		if (m_card.m_followerData != null) {
-			if (m_card.m_followerData != GameManager.m_gameManager.currentFollower)
-			{
+		if (GameManager.m_gameManager != null) {
+			if (m_card.m_followerData != null) {
+				if (m_card.m_followerData != GameManager.m_gameManager.currentFollower) {
 //				transform.localPosition = m_hoverPos;
-				m_card.m_miscOBJ[3].gameObject.SetActive(true);
+					m_card.m_miscOBJ [3].gameObject.SetActive (true);
+				}
 			}
 		}
 	}
 
 	void OnMouseExit()
 	{
-		if (m_card.m_followerData != null) {
-			if (m_card.m_followerData != GameManager.m_gameManager.currentFollower)
-			{
+		if (GameManager.m_gameManager != null) {
+			if (m_card.m_followerData != null) {
+				if (m_card.m_followerData != GameManager.m_gameManager.currentFollower) {
 //				transform.localPosition = m_normalPos;
-				m_card.m_miscOBJ[3].gameObject.SetActive(false);
+					m_card.m_miscOBJ [3].gameObject.SetActive (false);
+				}
 			}
 		}
 	}

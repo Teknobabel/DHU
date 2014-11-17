@@ -9,13 +9,27 @@ public class GridMenu : MonoBehaviour {
 		m_settingsManager;
 
 	public GameObject[]
-		m_cardTypes;
+		m_cardTypes,
+		m_followers;
+
+	public Camera
+		m_uiCam;
+
+	public UICard[] m_heroCardUI;
 
 	public Material
 		m_cardBackLocked;
 
 	private GameObject
 		m_hoveredGO = null;
+
+	private List<Follower>
+		m_minis = new List<Follower>();
+
+	private Follower
+		m_selectedFollower = null,
+		m_hoveredFollower = null;
+
 
 	void Awake () {
 		if (SettingsManager.m_settingsManager == null)
@@ -28,7 +42,7 @@ public class GridMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 		// build grid of cards
 
 		// initialize values
@@ -36,6 +50,7 @@ public class GridMenu : MonoBehaviour {
 		int[] gridCardType = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,2,0,0,2,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,2,1,2,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,3,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,3,10,3,3,0,2,3,3,2,11,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,2,0,2,2,3,0,3,2,2,0,3,0,0,19,0,0,0,0,0,0,0,0,0,0,2,3,2,3,2,2,3,2,3,2,3,2,2,4,2,3,2,0,0,0,0,0,0,0,0,0,0,0,12,3,3,2,3,0,0,2,0,0,3,2,3,2,3,0,0,0,0,0,0,0,0,0,0,3,0,2,3,2,3,2,0,0,1,0,0,2,3,2,3,2,0,3,0,0,0,0,0,0,14,3,2,2,1,0,0,0,3,2,1,0,1,2,3,0,0,0,1,2,2,3,16,0,0,0,0,0,0,3,0,2,3,2,3,2,0,0,1,0,0,2,3,2,3,2,0,3,0,0,0,0,0,0,0,0,0,0,3,2,3,2,3,0,0,2,0,0,3,2,3,2,17,0,0,0,0,0,0,0,0,0,0,0,2,3,2,21,2,2,3,2,3,2,3,2,2,3,2,3,2,0,0,0,0,0,0,0,0,0,0,15,0,0,3,0,2,2,3,0,3,2,2,0,2,0,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,27,2,3,3,2,0,2,3,20,3,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,0,3,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,25,2,1,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,2,0,0,2,0,0,2,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 		List<Card> gridCards = new List<Card> ();
+		List<Card> startCards = new List<Card> ();
 
 		int chunkXSize = 27;
 		int chunkYSize = 27;
@@ -89,7 +104,7 @@ public class GridMenu : MonoBehaviour {
 						newCard.collider.enabled = false;
 						break;
 					case 2:
-
+						newCard.fType = Follower.FollowerType.Brand;
 						if (IsUnlocked(Follower.FollowerType.Brand))
 						{
 							if (active)
@@ -99,10 +114,12 @@ public class GridMenu : MonoBehaviour {
 								newColor = Color.red * darkColorTint;
 								newColor.a = 1;
 							}
+							newCard.tempColor = Color.red;
 
 							switch (gridCard)
 							{
 							case 1:
+								startCards.Add(newCard);
 								thisCard = (GridCard)m_cardTypes[7].transform.GetComponent("GridCard");
 								break;
 							case 2:
@@ -112,7 +129,7 @@ public class GridMenu : MonoBehaviour {
 								thisCard = (GridCard)m_cardTypes[6].transform.GetComponent("GridCard");
 								break;
 							case 4:
-								thisCard = (GridCard)m_cardTypes[7].transform.GetComponent("GridCard");
+								thisCard = (GridCard)m_cardTypes[5].transform.GetComponent("GridCard");
 								break;
 							case 5:
 								thisCard = (GridCard)m_cardTypes[5].transform.GetComponent("GridCard");
@@ -126,6 +143,7 @@ public class GridMenu : MonoBehaviour {
 						}
 						break;
 					case 3:
+						newCard.fType = Follower.FollowerType.Jin;
 						if (IsUnlocked(Follower.FollowerType.Jin))
 						{
 							if (active)
@@ -135,10 +153,18 @@ public class GridMenu : MonoBehaviour {
 								newColor = Color.yellow * darkColorTint;
 								newColor.a = 1;
 							}
+							newCard.tempColor = Color.yellow;
 
 							switch (gridCard)
 							{
 							case 1:
+								if (!active)
+								{
+									gridCardStates [i] = true;
+									newColor = Color.yellow;
+								}
+
+								startCards.Add(newCard);
 								thisCard = (GridCard)m_cardTypes[10].transform.GetComponent("GridCard");
 								break;
 							case 2:
@@ -147,13 +173,13 @@ public class GridMenu : MonoBehaviour {
 							case 3:
 								thisCard = (GridCard)m_cardTypes[9].transform.GetComponent("GridCard");
 								break;
-							case 4:
-								thisCard = (GridCard)m_cardTypes[10].transform.GetComponent("GridCard");
-								break;
-							case 5:
+							case 27:
 								thisCard = (GridCard)m_cardTypes[8].transform.GetComponent("GridCard");
 								break;
-							case 6:
+							case 10:
+								thisCard = (GridCard)m_cardTypes[8].transform.GetComponent("GridCard");
+								break;
+							case 12:
 								thisCard = (GridCard)m_cardTypes[8].transform.GetComponent("GridCard");
 								break;
 							} 
@@ -170,6 +196,7 @@ public class GridMenu : MonoBehaviour {
 						newCard.collider.enabled = false;
 						break;
 					case 5:
+						newCard.fType = Follower.FollowerType.Telina;
 						if (IsUnlocked(Follower.FollowerType.Telina))
 						{
 							if (active)
@@ -179,10 +206,19 @@ public class GridMenu : MonoBehaviour {
 								newColor = Color.green * darkColorTint;
 								newColor.a = 1;
 							}
+							newCard.tempColor = Color.green;
+
 
 							switch (gridCard)
 							{
 							case 1:
+								if (!active)
+								{
+									gridCardStates [i] = true;
+									newColor = Color.green;
+								}
+
+								startCards.Add(newCard);
 								thisCard = (GridCard)m_cardTypes[13].transform.GetComponent("GridCard");
 								break;
 							case 2:
@@ -191,13 +227,13 @@ public class GridMenu : MonoBehaviour {
 							case 3:
 								thisCard = (GridCard)m_cardTypes[12].transform.GetComponent("GridCard");
 								break;
-							case 4:
-								thisCard = (GridCard)m_cardTypes[13].transform.GetComponent("GridCard");
-								break;
-							case 5:
+							case 11:
 								thisCard = (GridCard)m_cardTypes[11].transform.GetComponent("GridCard");
 								break;
-							case 6:
+							case 17:
+								thisCard = (GridCard)m_cardTypes[11].transform.GetComponent("GridCard");
+								break;
+							case 20:
 								thisCard = (GridCard)m_cardTypes[11].transform.GetComponent("GridCard");
 								break;
 							} 
@@ -213,6 +249,7 @@ public class GridMenu : MonoBehaviour {
 						newCard.collider.enabled = false;
 						break;
 					case 7:
+						newCard.fType = Follower.FollowerType.August;
 						if (IsUnlocked(Follower.FollowerType.August))
 						{
 							if (active)
@@ -222,10 +259,18 @@ public class GridMenu : MonoBehaviour {
 								newColor = Color.blue * darkColorTint;
 								newColor.a = 1;
 							}
+							newCard.tempColor = Color.blue;
 
 							switch (gridCard)
 							{
 							case 1:
+								if (!active)
+								{
+									gridCardStates [i] = true;
+									newColor = Color.blue;
+								}
+
+								startCards.Add(newCard);
 								thisCard = (GridCard)m_cardTypes[4].transform.GetComponent("GridCard");
 								break;
 							case 2:
@@ -234,13 +279,13 @@ public class GridMenu : MonoBehaviour {
 							case 3:
 								thisCard = (GridCard)m_cardTypes[3].transform.GetComponent("GridCard");
 								break;
-							case 4:
-								thisCard = (GridCard)m_cardTypes[4].transform.GetComponent("GridCard");
-								break;
-							case 5:
+							case 21:
 								thisCard = (GridCard)m_cardTypes[2].transform.GetComponent("GridCard");
 								break;
-							case 6:
+							case 24:
+								thisCard = (GridCard)m_cardTypes[2].transform.GetComponent("GridCard");
+								break;
+							case 25:
 								thisCard = (GridCard)m_cardTypes[2].transform.GetComponent("GridCard");
 								break;
 							} 
@@ -258,12 +303,17 @@ public class GridMenu : MonoBehaviour {
 						break;
 					case 9:
 						newColor = Color.white;
+						newCard.tempColor = Color.white;
 
 						newCard.m_cardMesh.material = ((Card)m_cardTypes[1].transform.GetComponent("Card")).cardMesh.sharedMaterial;
 						newCard.m_displayName = ((Card)m_cardTypes[1].transform.GetComponent("Card")).m_displayName;
 						newCard.m_abilityText = ((Card)m_cardTypes[1].transform.GetComponent("Card")).m_abilityText;
 						newCard.m_portraitSpriteName = ((Card)m_cardTypes[1].transform.GetComponent("Card")).m_portraitSpriteName;
 						newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Exit);
+
+						newCard.SetColor(newColor);
+						newCard.m_highlightMesh.material.color = newColor;
+						gridCards.Add(newCard);
 						break;
 					case 10:
 						newColor = Color.white * darkColorTint;
@@ -331,7 +381,58 @@ public class GridMenu : MonoBehaviour {
 			thisCard.SetLinkedCards(linkedCards);
 		}
 
-		FollowCamera.m_followCamera.SetZoomDistance (0.25f);
+//		FollowCamera.m_followCamera.SetZoomDistance (0.25f);
+
+
+		// populate unlocked hero cards
+		int hNum = 0;
+		foreach (GameState.ProgressState p in SettingsManager.m_settingsManager.gameProgress) {
+			if (!p.m_isLocked && hNum < SettingsManager.m_settingsManager.gameProgress.Count)
+			{
+				
+				UICard c = m_heroCardUI[hNum];
+				
+				// find follower
+				for (int j=0; j < m_followers.Length; j++)
+				{
+					Follower f = (Follower)m_followers[j].GetComponent("Follower");
+					if (f.m_followerType == p.m_followerType)
+					{
+						// instantiate mini
+						GameObject mini = (GameObject)Instantiate(m_followers[j], Vector3.zero, m_followers[j].transform.rotation);
+						Follower thisF = (Follower)mini.GetComponent("Follower");
+						m_minis.Add(thisF);
+						
+						// populate party card
+						c.m_portrait.spriteName = thisF.m_portraitSpriteName;
+						c.m_nameText.Text = thisF.m_nameText;
+						c.m_followerData = thisF;
+						c.gameObject.SetActive(true);
+
+						//find start card and place mini
+						foreach (Card startC in startCards)
+						{
+							if (startC.fType == thisF.m_followerType)
+							{
+								mini.transform.position = startC.m_actorBase.position;
+								startC.follower = thisF.gameObject;
+
+								if (thisF.m_followerType == Follower.FollowerType.Brand)
+								{
+									//FollowCamera.m_followCamera.SetTarget(thisF.gameObject);
+									FollowCamera.m_followCamera.Initialize(thisF.gameObject);
+//									m_selectedFollower = thisF;
+									SelectFollower(thisF);
+								}
+								break;
+							}
+						}
+					}
+				}
+				
+				hNum ++;
+			}
+		}
 	}
 
 	private bool IsUnlocked (Follower.FollowerType fType)
@@ -354,6 +455,11 @@ public class GridMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+
+		Vector3 rot = AssetManager.m_assetManager.m_props[14].transform.eulerAngles;
+		rot.y += Time.deltaTime * 100;
+		AssetManager.m_assetManager.m_props[14].transform.eulerAngles = rot;
+
 
 		// mouse clicks
 
@@ -391,6 +497,20 @@ public class GridMenu : MonoBehaviour {
 					}
 				}
 			}
+
+			// ui clicks
+			worldTouchRay = m_uiCam.ScreenPointToRay (Input.mousePosition);
+//			RaycastHit hitInfo;
+			objectTouched = false;
+			if (Physics.Raycast (worldTouchRay, out hitInfo)) {
+				if (hitInfo.transform.gameObject.tag == "FollowerCard") {
+
+					UICard c = (UICard) hitInfo.transform.GetComponent("UICard");
+					SelectFollower( c.m_followerData);
+					m_hoveredGO = null;
+					m_hoveredFollower = null;
+				}
+			}
 		}
 
 		// move camera based on keyboard input
@@ -412,33 +532,33 @@ public class GridMenu : MonoBehaviour {
 			newPos.x += 4 * Time.deltaTime;
 		}
 
-		Vector3 mousePos = Input.mousePosition;
-		float edgeBuffer = Screen.height * 0.25f;
-		float cornerBuffer = Screen.height * 0.35f;
-		if (mousePos.x < cornerBuffer && mousePos.y > Screen.height - cornerBuffer) {
-			newPos.x -= 4 * Time.deltaTime;
-			newPos.z += 4 * Time.deltaTime;
-		} else if (mousePos.x < cornerBuffer && mousePos.y < cornerBuffer) {
-			newPos.x -= 4 * Time.deltaTime;
-			newPos.z -= 4 * Time.deltaTime;
-		} else if (mousePos.x > Screen.width - cornerBuffer && mousePos.y < cornerBuffer) {
-			newPos.x += 4 * Time.deltaTime;
-			newPos.z -= 4 * Time.deltaTime;
-		} else if (mousePos.x > Screen.width - cornerBuffer && mousePos.y > Screen.height - cornerBuffer) {
-			newPos.x += 4 * Time.deltaTime;
-			newPos.z += 4 * Time.deltaTime;
-		}
-		else if (mousePos.x < edgeBuffer) {
-			newPos.x -= 4 * Time.deltaTime;
-		} else if (mousePos.x > Screen.width - edgeBuffer) {
-			newPos.x += 4 * Time.deltaTime;
-		}
-		else if (mousePos.y < edgeBuffer) {
-			newPos.z -= 4 * Time.deltaTime;
-		}
-		else if (mousePos.y > Screen.height - edgeBuffer) {
-			newPos.z += 4 * Time.deltaTime;
-		}
+//		Vector3 mousePos = Input.mousePosition;
+//		float edgeBuffer = Screen.height * 0.25f;
+//		float cornerBuffer = Screen.height * 0.35f;
+//		if (mousePos.x < cornerBuffer && mousePos.y > Screen.height - cornerBuffer) {
+//			newPos.x -= 4 * Time.deltaTime;
+//			newPos.z += 4 * Time.deltaTime;
+//		} else if (mousePos.x < cornerBuffer && mousePos.y < cornerBuffer) {
+//			newPos.x -= 4 * Time.deltaTime;
+//			newPos.z -= 4 * Time.deltaTime;
+//		} else if (mousePos.x > Screen.width - cornerBuffer && mousePos.y < cornerBuffer) {
+//			newPos.x += 4 * Time.deltaTime;
+//			newPos.z -= 4 * Time.deltaTime;
+//		} else if (mousePos.x > Screen.width - cornerBuffer && mousePos.y > Screen.height - cornerBuffer) {
+//			newPos.x += 4 * Time.deltaTime;
+//			newPos.z += 4 * Time.deltaTime;
+//		}
+//		else if (mousePos.x < edgeBuffer) {
+//			newPos.x -= 4 * Time.deltaTime;
+//		} else if (mousePos.x > Screen.width - edgeBuffer) {
+//			newPos.x += 4 * Time.deltaTime;
+//		}
+//		else if (mousePos.y < edgeBuffer) {
+//			newPos.z -= 4 * Time.deltaTime;
+//		}
+//		else if (mousePos.y > Screen.height - edgeBuffer) {
+//			newPos.z += 4 * Time.deltaTime;
+//		}
 
 		if (newPos != Vector3.zero)
 		{
@@ -459,7 +579,7 @@ public class GridMenu : MonoBehaviour {
 
 
 
-		// Mouse Hover
+		// Mouse Hover - in game world
 		
 		Ray worldTouchRay2 = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitInfo2;
@@ -475,9 +595,56 @@ public class GridMenu : MonoBehaviour {
 				}
 			}
 		} else if (m_hoveredGO != null) {
-//			Debug.Log(";LKSDJ;LSKFJD");
+			
 			m_hoveredGO = null;
 			StartCoroutine(UIManager.m_uiManager.TurnOffTargetCard());
 			}
+
+
+
+
+		// Mouse Hover - UI
+		Ray worldTouchRay3 = m_uiCam.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hitInfo3;
+		if (Physics.Raycast (worldTouchRay3, out hitInfo3)) {
+
+			if (hitInfo3.transform.gameObject.tag == "FollowerCard") {
+				UICard c = (UICard)hitInfo3.transform.GetComponent ("UICard");
+				
+				if (c.m_followerData != m_hoveredFollower) {
+					FollowCamera.m_followCamera.SetTarget (c.m_followerData.gameObject);
+					m_hoveredFollower = c.m_followerData;
+				}
+			}
+
+		} else if (m_hoveredGO != null) {
+
+			FollowCamera.m_followCamera.SetTarget (m_selectedFollower.gameObject);
+			m_hoveredFollower = null;
+			m_hoveredGO = null;
+			}
+	}
+
+	private void SelectFollower (Follower f)
+	{
+
+		foreach (UICard c in m_heroCardUI) {
+			if (c.m_followerData == m_selectedFollower)
+			{
+				Vector3 p = c.transform.localPosition;
+				p.x = -85.44141f;
+				c.transform.localPosition = p;
+			} else if (c.m_followerData == f)
+			{
+				Vector3 p = c.transform.localPosition;
+				p.x = -124.6523f;
+				c.transform.localPosition = p;
+
+				AssetManager.m_assetManager.m_props[14].transform.position = f.gameObject.transform.position;
+			}
+		}
+
+
+		m_selectedFollower = f;
 	}
 }

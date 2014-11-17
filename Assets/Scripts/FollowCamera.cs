@@ -39,7 +39,8 @@ public class FollowCamera : MonoBehaviour {
 		offset = new Vector3(0,1.5f,-4);
 		
 		target = cameraTarget;
-		Vector3 position = Player.m_player.transform.position;
+		//Vector3 position = Player.m_player.transform.position;
+		Vector3 position = cameraTarget.transform.position;
 		position.y = m_moveTransform.position.y + offset.y;
 		position.z += offset.z;
 		m_moveTransform.position = position;
