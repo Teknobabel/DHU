@@ -60,13 +60,13 @@ MonoBehaviour:
   - name: Button_Red01
     outer:
       serializedVersion: 2
-      x: 2918
+      x: 2503
       y: 1922
       width: 414
       height: 126
     inner:
       serializedVersion: 2
-      x: 2918
+      x: 2503
       y: 1922
       width: 414
       height: 126
@@ -77,13 +77,13 @@ MonoBehaviour:
   - name: Button_Purple01
     outer:
       serializedVersion: 2
-      x: 2503
+      x: 2918
       y: 1922
       width: 414
       height: 126
     inner:
       serializedVersion: 2
-      x: 2503
+      x: 2918
       y: 1922
       width: 414
       height: 126
@@ -179,14 +179,14 @@ MonoBehaviour:
   - name: Grphc_DHeart01
     outer:
       serializedVersion: 2
-      x: 3047
-      y: 1398
+      x: 2590
+      y: 106
       width: 200
       height: 172
     inner:
       serializedVersion: 2
-      x: 3047
-      y: 1398
+      x: 2590
+      y: 106
       width: 200
       height: 172
     paddingLeft: .00999999978
@@ -1080,14 +1080,14 @@ MonoBehaviour:
   - name: Button_Back_Down
     outer:
       serializedVersion: 2
-      x: 1418
-      y: 29
+      x: 3047
+      y: 1392
       width: 208
       height: 178
     inner:
       serializedVersion: 2
-      x: 1418
-      y: 29
+      x: 3047
+      y: 1392
       width: 208
       height: 178
     paddingLeft: 0
@@ -1131,64 +1131,64 @@ MonoBehaviour:
   - name: Token_Telina
     outer:
       serializedVersion: 2
-      x: 2590
-      y: 86
-      width: 192
+      x: 1418
+      y: 15
+      width: 193
       height: 192
     inner:
       serializedVersion: 2
-      x: 2590
-      y: 86
-      width: 192
+      x: 1418
+      y: 15
+      width: 193
       height: 192
-    paddingLeft: .015625
-    paddingRight: .026041666
+    paddingLeft: .0155440411
+    paddingRight: .0207253881
     paddingTop: .020833334
     paddingBottom: .020833334
   - name: Token_Brand
     outer:
       serializedVersion: 2
-      x: 2389
+      x: 1786
       y: 50
       width: 192
       height: 192
     inner:
       serializedVersion: 2
-      x: 2389
+      x: 1786
       y: 50
       width: 192
       height: 192
-    paddingLeft: .015625
-    paddingRight: .026041666
+    paddingLeft: .020833334
+    paddingRight: .020833334
     paddingTop: .020833334
     paddingBottom: .020833334
   - name: Token_Jin
     outer:
       serializedVersion: 2
-      x: 2188
+      x: 1987
       y: 50
       width: 192
       height: 192
     inner:
       serializedVersion: 2
-      x: 2188
+      x: 1987
       y: 50
       width: 192
       height: 192
-    paddingLeft: .015625
-    paddingRight: .026041666
+    paddingLeft: .020833334
+    paddingRight: .020833334
     paddingTop: .020833334
     paddingBottom: .020833334
   - name: Token_Placeholder
     outer:
       serializedVersion: 2
-      x: 1987
+      x: 2188
       y: 50
       width: 192
       height: 192
     inner:
       serializedVersion: 2
-      x: 1987
+      x: 2188
       y: 50
       width: 192
       height: 192
@@ -1199,31 +1199,31 @@ MonoBehaviour:
   - name: Token_August
     outer:
       serializedVersion: 2
-      x: 1786
+      x: 2389
       y: 50
       width: 192
       height: 192
     inner:
       serializedVersion: 2
-      x: 1786
+      x: 2389
       y: 50
       width: 192
       height: 192
-    paddingLeft: .015625
-    paddingRight: .026041666
+    paddingLeft: .020833334
+    paddingRight: .020833334
     paddingTop: .020833334
     paddingBottom: .020833334
   - name: Token_Selected
     outer:
       serializedVersion: 2
-      x: 2791
-      y: 1020
+      x: 2590
+      y: 279
       width: 194
       height: 295
     inner:
       serializedVersion: 2
-      x: 2791
-      y: 1020
+      x: 2590
+      y: 279
       width: 194
       height: 295
     paddingLeft: .0206185561
@@ -1233,14 +1233,14 @@ MonoBehaviour:
   - name: Portrait_GiantRat01
     outer:
       serializedVersion: 2
-      x: 634
-      y: 399
+      x: 1273
+      y: 949
       width: 64
       height: 32
     inner:
       serializedVersion: 2
-      x: 634
-      y: 399
+      x: 1273
+      y: 949
       width: 64
       height: 32
     paddingLeft: 0
@@ -1250,13 +1250,13 @@ MonoBehaviour:
   - name: Portrait_Skeleton01
     outer:
       serializedVersion: 2
-      x: 569
+      x: 634
       y: 399
       width: 64
       height: 32
     inner:
       serializedVersion: 2
-      x: 569
+      x: 634
       y: 399
       width: 64
       height: 32
@@ -1267,14 +1267,14 @@ MonoBehaviour:
   - name: Portrait_Skweek03
     outer:
       serializedVersion: 2
-      x: 498
-      y: 1
+      x: 569
+      y: 399
       width: 64
       height: 32
     inner:
       serializedVersion: 2
-      x: 498
-      y: 1
+      x: 569
+      y: 399
       width: 64
       height: 32
     paddingLeft: 0
@@ -1285,13 +1285,13 @@ MonoBehaviour:
     outer:
       serializedVersion: 2
       x: 498
-      y: 34
+      y: 1
       width: 64
       height: 32
     inner:
       serializedVersion: 2
       x: 498
-      y: 34
+      y: 1
       width: 64
       height: 32
     paddingLeft: 0
@@ -1302,6 +1302,23 @@ MonoBehaviour:
     outer:
       serializedVersion: 2
       x: 498
+      y: 34
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 498
+      y: 34
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Portrait_Rex01
+    outer:
+      serializedVersion: 2
+      x: 498
       y: 67
       width: 64
       height: 32
@@ -1315,34 +1332,17 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: Portrait_Rex01
-    outer:
-      serializedVersion: 2
-      x: 433
-      y: 1
-      width: 64
-      height: 32
-    inner:
-      serializedVersion: 2
-      x: 433
-      y: 1
-      width: 64
-      height: 32
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
   - name: Portrait_Enemy
     outer:
       serializedVersion: 2
       x: 433
-      y: 34
+      y: 1
       width: 64
       height: 32
     inner:
       serializedVersion: 2
       x: 433
-      y: 34
+      y: 1
       width: 64
       height: 32
     paddingLeft: 0
@@ -1353,6 +1353,23 @@ MonoBehaviour:
     outer:
       serializedVersion: 2
       x: 433
+      y: 34
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 433
+      y: 34
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Portrait_Skweek01
+    outer:
+      serializedVersion: 2
+      x: 433
       y: 67
       width: 64
       height: 32
@@ -1366,34 +1383,17 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: Portrait_Skweek01
-    outer:
-      serializedVersion: 2
-      x: 368
-      y: 1
-      width: 64
-      height: 32
-    inner:
-      serializedVersion: 2
-      x: 368
-      y: 1
-      width: 64
-      height: 32
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
   - name: Portrait_Lag02
     outer:
       serializedVersion: 2
       x: 368
-      y: 34
+      y: 1
       width: 64
       height: 32
     inner:
       serializedVersion: 2
       x: 368
-      y: 34
+      y: 1
       width: 64
       height: 32
     paddingLeft: 0
@@ -1404,6 +1404,23 @@ MonoBehaviour:
     outer:
       serializedVersion: 2
       x: 368
+      y: 34
+      width: 64
+      height: 32
+    inner:
+      serializedVersion: 2
+      x: 368
+      y: 34
+      width: 64
+      height: 32
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Portrait_DarkElf01
+    outer:
+      serializedVersion: 2
+      x: 368
       y: 67
       width: 64
       height: 32
@@ -1417,34 +1434,17 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: Portrait_DarkElf01
-    outer:
-      serializedVersion: 2
-      x: 265
-      y: 19
-      width: 64
-      height: 32
-    inner:
-      serializedVersion: 2
-      x: 265
-      y: 19
-      width: 64
-      height: 32
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
   - name: Portrait_Grok01
     outer:
       serializedVersion: 2
       x: 265
-      y: 52
+      y: 19
       width: 64
       height: 32
     inner:
       serializedVersion: 2
       x: 265
-      y: 52
+      y: 19
       width: 64
       height: 32
     paddingLeft: 0
@@ -1454,14 +1454,14 @@ MonoBehaviour:
   - name: Effect_Reaper
     outer:
       serializedVersion: 2
-      x: 1273
-      y: 949
+      x: 265
+      y: 52
       width: 64
       height: 32
     inner:
       serializedVersion: 2
-      x: 1273
-      y: 949
+      x: 265
+      y: 52
       width: 64
       height: 32
     paddingLeft: 0
@@ -1471,14 +1471,14 @@ MonoBehaviour:
   - name: Token_Empty
     outer:
       serializedVersion: 2
-      x: 2590
-      y: 279
+      x: 2791
+      y: 1020
       width: 194
       height: 295
     inner:
       serializedVersion: 2
-      x: 2590
-      y: 279
+      x: 2791
+      y: 1020
       width: 194
       height: 295
     paddingLeft: .0206185561
@@ -1488,14 +1488,14 @@ MonoBehaviour:
   - name: Card_Stalactites01
     outer:
       serializedVersion: 2
-      x: 1017
-      y: 1065
+      x: 1418
+      y: 1536
       width: 367
       height: 512
     inner:
       serializedVersion: 2
-      x: 1017
-      y: 1065
+      x: 1418
+      y: 1536
       width: 367
       height: 512
     paddingLeft: 0
@@ -1505,13 +1505,13 @@ MonoBehaviour:
   - name: Card_HighGround01
     outer:
       serializedVersion: 2
-      x: 0
+      x: 736
       y: 432
       width: 367
       height: 512
     inner:
       serializedVersion: 2
-      x: 0
+      x: 736
       y: 432
       width: 367
       height: 512
@@ -1539,13 +1539,13 @@ MonoBehaviour:
   - name: Card_Tower01
     outer:
       serializedVersion: 2
-      x: 736
+      x: 0
       y: 432
       width: 367
       height: 512
     inner:
       serializedVersion: 2
-      x: 736
+      x: 0
       y: 432
       width: 367
       height: 512
@@ -1556,14 +1556,14 @@ MonoBehaviour:
   - name: Card_Fort01
     outer:
       serializedVersion: 2
-      x: 1418
-      y: 1536
+      x: 1017
+      y: 1065
       width: 367
       height: 512
     inner:
       serializedVersion: 2
-      x: 1418
-      y: 1536
+      x: 1017
+      y: 1065
       width: 367
       height: 512
     paddingLeft: 0

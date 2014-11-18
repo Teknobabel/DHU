@@ -196,7 +196,7 @@ public class HeroMenu : MonoBehaviour {
 							//Debug.Log( f + " / " + m_selectedFollower);
 							if ( f == m_selectedFollower)
 							{
-								Debug.Log(i.ToString() + " al;ksdf;lskjdf");
+//								Debug.Log(i.ToString() + " al;ksdf;lskjdf");
 								if (i+1 < m_followers.Count)
 								{
 									nextFollower = m_followers[i+1];

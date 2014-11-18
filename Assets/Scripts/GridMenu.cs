@@ -30,6 +30,30 @@ public class GridMenu : MonoBehaviour {
 		m_selectedFollower = null,
 		m_hoveredFollower = null;
 
+	private int
+		m_lvl02Cost = 25,
+		m_lvl03Cost = 50,
+		m_lvl04Cost = 75,
+		m_lvl05Cost = 100,
+		m_lvl06Cost = 150,
+		m_lvl07Cost = 200,
+		m_lvl08Cost = 250,
+		m_lvl09Cost = 300,
+		m_lvl10Cost = 400,
+		m_codex01Cost = 50,
+		m_codex02Cost = 60,
+		m_codex03Cost = 70,
+		m_codex04Cost = 80,
+		m_codex05Cost = 90,
+		m_codex06Cost = 100,
+		m_codex07Cost = 125,
+		m_codex08Cost = 150,
+		m_codex09Cost = 200,
+		m_codex10Cost = 250,
+		m_badge01Cost = 300,
+		m_badge02Cost = 350,
+		m_badge03Cost = 400;
+
 
 	void Awake () {
 		if (SettingsManager.m_settingsManager == null)
@@ -591,6 +615,37 @@ public class GridMenu : MonoBehaviour {
 
 				if (m_hoveredGO != hitInfo2.transform.gameObject) {
 					m_hoveredGO = hitInfo2.transform.gameObject;
+
+					// turn off "Click to unlock if already active or not adjacent
+					bool doHelpText = false;
+					bool isActive = SettingsManager.m_settingsManager.gridCardStates[thisCard.id];
+					if (thisCard.cardState == Card.CardState.Normal && !isActive)
+					{
+						// there must be an adjacent unlocked card to "path" to this one
+						Card[] linkedCards = thisCard.linkedCards;
+						foreach (Card c in linkedCards)
+						{
+							if (c != null)
+							{
+								if (c.cardState == Card.CardState.Normal && c.type == thisCard.type && 
+								    SettingsManager.m_settingsManager.gridCardStates[c.id])
+								{		
+									doHelpText = true;
+									break;
+								}
+							}
+						}
+					}
+
+
+					if (doHelpText)
+					{
+						AssetManager.m_assetManager.m_typogenicText[10].gameObject.SetActive(true);
+						AssetManager.m_assetManager.m_props[8].gameObject.SetActive(true);
+					} else {
+						AssetManager.m_assetManager.m_typogenicText[10].gameObject.SetActive(false);
+						AssetManager.m_assetManager.m_props[8].gameObject.SetActive(false);
+					}
 					StartCoroutine (UIManager.m_uiManager.DisplayTargetCard (thisCard, UIManager.m_uiManager.m_followerCards [4]));
 				}
 			}
