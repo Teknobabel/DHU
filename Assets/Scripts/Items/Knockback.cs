@@ -70,7 +70,36 @@ public class Knockback : Item {
 						yield return StartCoroutine(GameManager.m_gameManager.selectedCard.enemy.DoKnockback(dir));
 					} else {
 						// Play hop anim
-						GameManager.m_gameManager.selectedCard.enemy.animation.Play("EnemyJump01");
+						newString = "\\3" + GameManager.m_gameManager.selectedCard.enemy.m_displayName + "\\0 is knocked back";
+						UIManager.m_uiManager.UpdateActions (newString);
+						Enemy e = GameManager.m_gameManager.selectedCard.enemy;
+						bool damageDone = false;
+						e.animation.Play("EnemyJump01");
+						while (e.animation.IsPlaying("EnemyJump01"))
+						{
+							if (e.animation["EnemyJump01"].time > e.animation["EnemyJump01"].length/1.2f && !damageDone)
+							{
+								damageDone = true;
+								float speed = e.animation["EnemyJump01"].speed;
+								e.animation["EnemyJump01"].speed = 0;
+								if (e.enemyblockingKnockBack != null)
+								{
+									newString = "\\3" + e.m_displayName + "\\0 is knocked into \\3" + e.enemyblockingKnockBack.m_displayName + "\\0!";
+									UIManager.m_uiManager.UpdateActions (newString);
+
+									yield return StartCoroutine(e.enemyblockingKnockBack.TakeDamage(1));
+									e.enemyblockingKnockBack = null;
+
+									yield return new WaitForSeconds(0.25f);
+								}
+
+								yield return StartCoroutine(e.TakeDamage(1));
+								e.animation["EnemyJump01"].speed = speed;
+							}
+							yield return null;
+						}
+
+
 					}
 				}
 				GameManager.m_gameManager.selectedCard = null;

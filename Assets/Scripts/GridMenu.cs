@@ -425,6 +425,7 @@ public class GridMenu : MonoBehaviour {
 						// instantiate mini
 						GameObject mini = (GameObject)Instantiate(m_followers[j], Vector3.zero, m_followers[j].transform.rotation);
 						Follower thisF = (Follower)mini.GetComponent("Follower");
+						thisF.currentLevel = p.m_level;
 						m_minis.Add(thisF);
 						
 						// populate party card
@@ -440,6 +441,7 @@ public class GridMenu : MonoBehaviour {
 							{
 								mini.transform.position = startC.m_actorBase.position;
 								startC.follower = thisF.gameObject;
+								thisF.currentCard = startC;
 
 								if (thisF.m_followerType == Follower.FollowerType.Brand)
 								{
@@ -507,7 +509,7 @@ public class GridMenu : MonoBehaviour {
 							if (c != null)
 							{
 								if (c.cardState == Card.CardState.Normal && c.type == clickedCard.type && 
-								    SettingsManager.m_settingsManager.gridCardStates[c.id])
+								    SettingsManager.m_settingsManager.gridCardStates[c.id] && clickedCard.fType == m_selectedFollower.m_followerType )
 								{
 
 									Debug.Log("CARD UNLOCKED");
@@ -531,7 +533,7 @@ public class GridMenu : MonoBehaviour {
 
 					UICard c = (UICard) hitInfo.transform.GetComponent("UICard");
 					SelectFollower( c.m_followerData);
-					m_hoveredGO = null;
+//					m_hoveredGO = null;
 					m_hoveredFollower = null;
 				}
 			}
@@ -607,7 +609,7 @@ public class GridMenu : MonoBehaviour {
 		
 		Ray worldTouchRay2 = Camera.mainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitInfo2;
-		bool objectTouched2 = false;
+//		bool objectTouched2 = false;
 		if (Physics.Raycast (worldTouchRay2, out hitInfo2)) {
 
 			if (hitInfo2.transform.gameObject.tag == "Card") {
@@ -628,7 +630,7 @@ public class GridMenu : MonoBehaviour {
 							if (c != null)
 							{
 								if (c.cardState == Card.CardState.Normal && c.type == thisCard.type && 
-								    SettingsManager.m_settingsManager.gridCardStates[c.id])
+								    SettingsManager.m_settingsManager.gridCardStates[c.id] && thisCard.fType == m_selectedFollower.m_followerType)
 								{		
 									doHelpText = true;
 									break;
@@ -640,6 +642,16 @@ public class GridMenu : MonoBehaviour {
 
 					if (doHelpText)
 					{
+						if (thisCard.type == Card.CardType.LevelUp)
+						{
+							AssetManager.m_assetManager.m_typogenicText[11].Text = GetLevelCost(thisCard.fType).ToString();
+						} else if (thisCard.type == Card.CardType.Badge)
+						{
+
+						} else if (thisCard.type == Card.CardType.Codex)
+						{
+
+						}
 						AssetManager.m_assetManager.m_typogenicText[10].gameObject.SetActive(true);
 						AssetManager.m_assetManager.m_props[8].gameObject.SetActive(true);
 					} else {
@@ -648,6 +660,10 @@ public class GridMenu : MonoBehaviour {
 					}
 					StartCoroutine (UIManager.m_uiManager.DisplayTargetCard (thisCard, UIManager.m_uiManager.m_followerCards [4]));
 				}
+			} else if (m_hoveredGO != null) {
+				
+				m_hoveredGO = null;
+				StartCoroutine(UIManager.m_uiManager.TurnOffTargetCard());
 			}
 		} else if (m_hoveredGO != null) {
 			
@@ -672,11 +688,11 @@ public class GridMenu : MonoBehaviour {
 				}
 			}
 
-		} else if (m_hoveredGO != null) {
+		} else if (m_hoveredFollower != null) {
 
 			FollowCamera.m_followCamera.SetTarget (m_selectedFollower.gameObject);
 			m_hoveredFollower = null;
-			m_hoveredGO = null;
+//			m_hoveredGO = null;
 			}
 	}
 
@@ -701,5 +717,52 @@ public class GridMenu : MonoBehaviour {
 
 
 		m_selectedFollower = f;
+	}
+
+	private int GetLevelCost (Follower.FollowerType fType)
+	{
+		Follower f = null;
+
+		foreach (Follower fol in m_minis) {
+			if (fol.m_followerType == fType)
+			{
+				f = fol;
+				break;
+			}
+		}
+
+		int cost = 0;
+		int currentLevel = f.currentLevel;
+		switch (currentLevel) {
+		case 1:
+			cost = m_lvl02Cost;
+			break;
+		case 2:
+			cost = m_lvl03Cost;
+			break;
+		case 3:
+			cost = m_lvl04Cost;
+			break;
+		case 4:
+			cost = m_lvl05Cost;
+			break;
+		case 5:
+			cost = m_lvl06Cost;
+			break;
+		case 6:
+			cost = m_lvl07Cost;
+			break;
+		case 7:
+			cost = m_lvl08Cost;
+			break;
+		case 8:
+			cost = m_lvl09Cost;
+			break;
+		case 9:
+			cost = m_lvl10Cost;
+			break;
+		}
+
+		return cost;
 	}
 }

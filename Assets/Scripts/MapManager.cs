@@ -721,7 +721,6 @@ public class MapManager : MonoBehaviour {
 				{
 					if ((lc[3].column == start.column && (Mathf.Abs(lc[3].row - start.row) <= range)) || (lc[3].row == start.row && (Mathf.Abs(lc[3].column - start.column) <= range)))
 					{
-
 						if (lc[3].cardState == Card.CardState.Normal && !lc[3].isOccupied)
 						{
 							validCards.Add(lc[3]);

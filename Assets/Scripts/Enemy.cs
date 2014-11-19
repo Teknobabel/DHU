@@ -1534,7 +1534,9 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	public Enemy enemyblockingKnockBack = null;
+
 	public bool CanBeKnockedBack (GameManager.Direction direction)
 	{
 		Card[] linkedCards = m_currentCard.linkedCards;
@@ -1554,7 +1556,11 @@ public class Enemy : MonoBehaviour {
 		{
 			if (!thisCard.isOccupied && thisCard.cardState != Card.CardState.Hidden)	
 			{
+
 				return true;	
+			} else if (thisCard.enemy != null)
+			{
+				enemyblockingKnockBack = thisCard.enemy;
 			}
 		}
 		
