@@ -44,6 +44,9 @@ public class SettingsManager : MonoBehaviour {
 	private GameState
 		m_gameState;
 
+	private float 
+		m_gameSpeed = 1.0f;
+
 	private bool
 		m_demo = false,
 		m_trial = false;
@@ -122,4 +125,5 @@ public class SettingsManager : MonoBehaviour {
 	public int startChapter {get{return m_startChapter;} set {m_startChapter = value;}}
 	public List<PartySelectMenu.PartySlot> partySlots { get { return m_partySlots; } set { m_partySlots = value;}}
 	public bool[] gridCardStates {get{return m_gridCardStates;} set{m_gridCardStates = value;}}
+	public float gameSpeed {get{ return m_gameSpeed; } set{m_gameSpeed = value;}}
 }

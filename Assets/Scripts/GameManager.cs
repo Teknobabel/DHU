@@ -188,9 +188,10 @@ public class GameManager : MonoBehaviour {
 			Instantiate(m_settingsManager, Vector3.zero, Quaternion.identity);	
 			SettingsManager.m_settingsManager.gameState = new GameState();
 			SettingsManager.m_settingsManager.gameProgress = SettingsManager.m_settingsManager.gameState.loadState();
+
 		}
 
-
+		Time.timeScale = SettingsManager.m_settingsManager.gameSpeed;
 //		if (PlayerPrefs.HasKey("DoTutorial") && !SettingsManager.m_settingsManager.trial)
 //		{
 //			if (PlayerPrefs.GetInt("DoTutorial") == 0)

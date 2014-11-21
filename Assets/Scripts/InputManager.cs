@@ -31,6 +31,20 @@ public class InputManager : MonoBehaviour {
 	void Update () {
 		if (UIManager.m_uiManager != null && Player.m_player != null) {
 			if (UIManager.m_uiManager.menuMode == UIManager.MenuMode.None) {
+
+				if (Input.GetKeyUp(KeyCode.Equals))
+				{
+					SettingsManager.m_settingsManager.gameSpeed = Mathf.Clamp(SettingsManager.m_settingsManager.gameSpeed + 0.25f, 1.0f, 2.0f);
+					Time.timeScale = SettingsManager.m_settingsManager.gameSpeed;
+					Debug.Log(Time.timeScale);
+				}
+				if (Input.GetKeyUp(KeyCode.Minus))
+				{
+					SettingsManager.m_settingsManager.gameSpeed = Mathf.Clamp(SettingsManager.m_settingsManager.gameSpeed - 0.25f, 1.0f, 2.0f);
+					Time.timeScale = SettingsManager.m_settingsManager.gameSpeed;
+					Debug.Log(Time.timeScale);
+				}
+
 				if (Input.GetKey (KeyCode.LeftBracket)) {
 					FollowCamera.m_followCamera.ChangeZoomDistance (-0.01f);
 					//		   		if (Camera.main.fieldOfView<=80)

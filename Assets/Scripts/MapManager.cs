@@ -109,6 +109,9 @@ public class MapManager : MonoBehaviour {
 	
 	public TrapList[]
 		m_trapList;
+
+	public Card.CardState
+		m_cardStartState = Card.CardState.Hidden;
 	
 	private int
 		m_currentFollower = 0,
@@ -1718,15 +1721,15 @@ public class MapManager : MonoBehaviour {
 
 					if (newTrial.m_cardMap[i] == 8)
 					{
-						newCard.Initialize(i, col, row, Card.CardState.Normal, Card.CardType.Entrance);
+						newCard.Initialize(i, col, row, m_cardStartState, Card.CardType.Entrance);
 						newMap.m_entrance = newCard;
 					} else if (newTrial.m_cardMap[i] == 9)
 					{
-						newCard.Initialize(i, col, row, Card.CardState.Hidden, Card.CardType.Exit);
+						newCard.Initialize(i, col, row, m_cardStartState, Card.CardType.Exit);
 						newMap.m_exit = newCard;
 					}
 					else {
-						newCard.Initialize(i, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+						newCard.Initialize(i, col, row, m_cardStartState, Card.CardType.Normal);
 					}
 //					if (thisChunk[i] == 1)
 //					{
@@ -2288,19 +2291,19 @@ public class MapManager : MonoBehaviour {
 						if (thisChunk[i] == 1)
 						{
 					
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+							newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Normal);
 							
 							// Debug
-//							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Trap_Razorvine);
+//							newCard.Initialize(id, col, row, m_cardStartStatedden, Card.CardType.Trap_Razorvine);
 //							newCard.type = Card.CardType.Trap_Razorvine;
 						} else if (thisChunk[i] == 2)
 						{
 							newCard.doFlipTrap = true;
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+							newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Normal);
 							
 						} else if (thisChunk[i] == 3)
 						{
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+							newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Normal);
 							
 							if (doSpawnEnemies)
 							{
@@ -2317,7 +2320,7 @@ public class MapManager : MonoBehaviour {
 							
 						} else if (thisChunk[i] == 4)
 						{
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+							newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Normal);
 							
 							Vector3 cardPos = newCard.m_actorBase.position;
 							Vector3 cardRot = newCard.transform.eulerAngles;
@@ -2392,12 +2395,12 @@ public class MapManager : MonoBehaviour {
 								}
 							}
 							
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, type);
+							newCard.Initialize(id, col, row, m_cardStartState, type);
 							newCard.type = type; // trap card properties are set here, should fix this to be cleaner (done in initialization) later.
 						} else if (thisChunk[i] == 7)
 						{
 							newCard.doFlipTrap = true;
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+							newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Normal);
 							
 							if (doSpawnEnemies)
 							{
@@ -2419,14 +2422,14 @@ public class MapManager : MonoBehaviour {
 						{
 							if (doGate)
 							{
-								newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Gate);
+								newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Gate);
 							} else {
-								newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Exit);
+								newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Exit);
 							}
 							newMap.m_exit = newCard;
 						} else if (thisChunk[i] == 10)
 						{
-							newCard.Initialize(id, col, row, Card.CardState.Hidden, Card.CardType.Normal);
+							newCard.Initialize(id, col, row, m_cardStartState, Card.CardType.Normal);
 							
 							if (doSpawnEnemies)
 							{
@@ -2509,12 +2512,12 @@ public class MapManager : MonoBehaviour {
 		}
 			
 				
-		//place follower if level is a multiple of 3
+		//place follower if level is a multiple of 4
 
 		//remove followers that don't meet minimum difficulty or are already in party
 		List<GameObject> availableFollowers = new List<GameObject>();
 
-		if ((difficulty+1) % 4 == 0 && difficulty >= 0)
+		if ((difficulty+1) % 4 == 0 && difficulty >= 0 && difficulty < 13)
 		//if ((difficulty % 1) == 0)
 		{
 

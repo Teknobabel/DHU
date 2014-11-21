@@ -334,6 +334,7 @@ public class GameState {
 		serializer.SaveInt(Gold, 10);
 		serializer.SaveInt (XP, 0);
 		PlayerPrefs.SetInt("DoTutorial", 0);
+		PlayerPrefs.SetFloat ("GameSpeed", 1.0f);
 		PlayerPrefs.Save();
 
 		serializer.SaveBool (BrandLockState, false);
@@ -619,6 +620,9 @@ public class GameState {
 		serializer.SaveString(Version, SettingsManager.m_settingsManager.version);
 		serializer.SaveInt (Gold, SettingsManager.m_settingsManager.gold);
 		serializer.SaveInt (XP, SettingsManager.m_settingsManager.xp);
+
+		PlayerPrefs.SetFloat ("GameSpeed", SettingsManager.m_settingsManager.gameSpeed);
+		PlayerPrefs.Save ();
 
 		PlayerPrefsX.SetBoolArray("GridCardStates", SettingsManager.m_settingsManager.gridCardStates);
 		
@@ -974,6 +978,10 @@ public class GameState {
 	
 	public void SaveStorageState ()
 	{
+
+		PlayerPrefs.SetFloat ("GameSpeed", SettingsManager.m_settingsManager.gameSpeed);
+		PlayerPrefs.Save ();
+
 		PlayerPrefsX.SetBoolArray("GridCardStates", SettingsManager.m_settingsManager.gridCardStates);
 
 //		Debug.Log("SAVING STATE WITH STORAGE");
@@ -1478,7 +1486,7 @@ public class GameState {
 		}
 
 
-
+		SettingsManager.m_settingsManager.gameSpeed = PlayerPrefs.GetFloat ("GameSpeed");
 		SettingsManager.m_settingsManager.gold = serializer.LoadInt(Gold);
 		SettingsManager.m_settingsManager.xp = serializer.LoadInt (XP);
 		//SettingsManager.m_settingsManager.gold = 1000;

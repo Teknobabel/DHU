@@ -999,36 +999,127 @@ public class UIManager : MonoBehaviour {
 		else if (newMode == MenuMode.Shop)
 		{
 
+			AssetManager.m_assetManager.m_UIelements[12].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[13].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[14].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[15].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[16].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[17].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[18].SetActive(false);
+			AssetManager.m_assetManager.m_UIelements[19].SetActive(false);
+
 			// Get bonus from shop and Update shop UI with bonus type
 			switch (Shop.m_shop.bonus)
 			{
 			case Shop.ShopBonus.DamageBonus1:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Attack";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
 				break;
 			case Shop.ShopBonus.DamageBonus2:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "2";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Attack";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
 				break;
 			case Shop.ShopBonus.HealthBonus1:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Health";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
 				break;
 			case Shop.ShopBonus.HealthBonus2:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "2";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Health";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
 				break;
 			case Shop.ShopBonus.EnergyBonus1:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Energy";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
 				break;
 			case Shop.ShopBonus.EnergyBonus2:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "2";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Energy";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
 				break;
 			case Shop.ShopBonus.ArmorBonus1:
 				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
 				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Armor";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[12].SetActive(true);
+				break;
+			case Shop.ShopBonus.DamageBonus3:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Attack";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[13].SetActive(true);
+				break;
+			case Shop.ShopBonus.DamageBonus4:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Attack";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_typogenicText[20].Text = Shop.m_shop.damageBonus4NCost.ToString();
+				AssetManager.m_assetManager.m_UIelements[14].SetActive(true);
+				break;
+			case Shop.ShopBonus.HealthBonus3:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Health";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[15].SetActive(true);
+				break;
+			case Shop.ShopBonus.HealthBonus4:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Health";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "2";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[17].SetActive(true);
+				break;
+			case Shop.ShopBonus.HealthBonus5:
+				break;
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Health";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[13].SetActive(true);
+			case Shop.ShopBonus.HealthBonus6:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Health";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "1";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_typogenicText[20].Text = Shop.m_shop.healthBonus6NCost.ToString();
+				AssetManager.m_assetManager.m_UIelements[14].SetActive(true);
+				break;
+			case Shop.ShopBonus.HandBonus1:
+				AssetManager.m_assetManager.m_UIelements[19].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[15].SetActive(true);
+				break;
+			case Shop.ShopBonus.HandBonus2:
+				AssetManager.m_assetManager.m_UIelements[19].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[16].SetActive(true);
+				break;
+			case Shop.ShopBonus.HandBonus3:
+				AssetManager.m_assetManager.m_UIelements[19].SetActive(true);
+				AssetManager.m_assetManager.m_typogenicText[20].Text = Shop.m_shop.handBonus3NCost.ToString();
+				AssetManager.m_assetManager.m_UIelements[14].SetActive(true);
+				break;
+			case Shop.ShopBonus.HandBonus4:
+				AssetManager.m_assetManager.m_UIelements[19].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[13].SetActive(true);
+				break;
+			case Shop.ShopBonus.EnergyBonus3:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Energy";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "2";
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[13].SetActive(true);
+				break;
+			case Shop.ShopBonus.EnergyBonus4:
+				AssetManager.m_assetManager.m_uiSprites[2].spriteName = "Icon_Energy";
+				AssetManager.m_assetManager.m_typogenicText[13].Text = "2";
+				AssetManager.m_assetManager.m_typogenicText[20].Text = Shop.m_shop.energyBonus4NCost.ToString();
+				AssetManager.m_assetManager.m_UIelements[14].SetActive(true);
+				AssetManager.m_assetManager.m_UIelements[18].SetActive(true);
 				break;
 			}
 
